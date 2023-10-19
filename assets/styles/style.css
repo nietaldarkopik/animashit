@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Delicious+Handrawn&family=Golos+Text:wght@400;500;600;700;800;900&family=Handlee&family=Indie+Flower&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nanum+Pen+Script&family=Satisfy&family=Sriracha&family=Sue+Ellen+Francisco&display=swap');
+
+@font-face {
+    font-family: "GraphikBold";
+    src: url(../fonts/GraphikBold.otf);
+}
+
+@font-face {
+    font-family: "GraphikRegular";
+    src: url(../fonts/GraphikRegular.otf );
+}
+
+@font-face {
+    font-family: "Poppins-Bold";
+    src: url(../fonts/Poppins-Bold.ttf );
+}
+
+@font-face {
+    font-family: "Poppins-Medium";
+    src: url(../fonts/Poppins-Medium.ttf );
+}
+
+@font-face {
+    font-family: "Poppins-Regular";
+    src: url(../fonts/Poppins-Regular.ttf);
+}
+
+
+@font-face {
+    font-family: "DMSans-Bold-Italic";
+    src: url(../fonts/dm-sans/DMSans-Bold-Italic.woff2);
+}
+
+@font-face {
+    font-family: "DMSans-Bold";
+    src: url(../fonts/dm-sans/DMSans-Bold.woff2);
+}
+
+@font-face {
+    font-family: "DMSans-Regular-Italic";
+    src: url(../fonts/dm-sans/DMSans-Regular-Italic.woff2);
+}
+
+@font-face {
+    font-family: "DMSans-Regular";
+    src: url(../fonts/dm-sans/DMSans-Regular.woff2);
+}
+
+@font-face {
+    font-family: "IBMPlexMono-Bold";
+    src: url(../fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2);
+}
+
+@font-face {
+    font-family: "IBMPlexMono-Italic";
+    src: url(../fonts/ibm-plex-mono/IBMPlexMono-Italic.woff2);
+}
+
+@font-face {
+    font-family: "IBMPlexMono-Light";
+    src: url(../fonts/ibm-plex-mono/IBMPlexMono-Light.woff2);
+}
+
+@font-face {
+    font-family: "IBMPlexMono-Regular";
+    src: url(../fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2);
+}
+
+@font-face {
+    font-family: "SourceSerif4Variable-Italic";
+    src: url(../fonts/source-serif-pro/SourceSerif4Variable-Italic.ttf.woff2);
+}
+
+@font-face {
+    font-family: "SourceSerif4Variable-Roman";
+    src: url(../fonts/source-serif-pro/SourceSerif4Variable-Roman.ttf.woff2);
+}
+
+.ff-graphikbold{
+    font-family: "GraphikBold";
+}
+.ff-graphikregular{
+    font-family: "GraphikRegular";
+}
+.ff-poppins-bold{
+    font-family: "Poppins-Bold";
+}
+.ff-poppins-medium{
+    font-family: "Poppins-Medium";
+}
+.ff-poppins-regular{
+    font-family: "Poppins-Regular";
+}
+.ff-dmsans-bold-italic{
+    font-family: "DMSans-Bold-Italic";
+}
+.ff-dmsans-bold{
+    font-family: "DMSans-Bold";
+}
+.ff-dmsans-regular-italic{
+    font-family: "DMSans-Regular-Italic";
+}
+.ff-dmsans-regular{
+    font-family: "DMSans-Regular";
+}
+.ff-ibmplexmono-bold{
+    font-family: "IBMPlexMono-Bold";
+}
+.ff-ibmplexmono-italic{
+    font-family: "IBMPlexMono-Italic";
+}
+.ff-ibmplexmono-light{
+    font-family: "IBMPlexMono-Light";
+}
+.ff-ibmplexmono-regular{
+    font-family: "IBMPlexMono-Regular";
+}
+.ff-sourceserif4variable-italic{
+    font-family: "SourceSerif4Variable-Italic";
+}
+.ff-sourceserif4variable-roman{
+    font-family: "SourceSerif4Variable-Roman";
+}
+
+.ff-caveat{
+    font-family: 'Caveat', cursive;
+}
+.ff-delicious-handrawn{
+    font-family: 'Delicious Handrawn', cursive;
+}
+.ff-golos-text'{
+    font-family: 'Golos Text', sans-serif;
+}
+.ff-handlee{
+    font-family: 'Handlee', cursive;
+}
+.ff-indie-flower{
+    font-family: 'Indie Flower', cursive;
+}
+.ff-montserrat'{
+    font-family: 'Montserrat', sans-serif;
+}
+.ff-nanum-pen-script{
+    font-family: 'Nanum Pen Script', cursive;
+}
+.ff-satisfy{
+    font-family: 'Satisfy', cursive;
+}
+.ff-sriracha{
+    font-family: 'Sriracha', cursive;
+}
+.ff-sue-ellen-francisco{
+    font-family: 'Sue Ellen Francisco', cursive;
+}
+
+/**** Card ***/
+.anim-shadow {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #EBF0F5;
+    box-shadow: 2px 2px 15px 2px #7f8ba6a9;
+}
+
+.anim-border {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #EBF0F5;
+}
+
+.anim-shadow-hover:hover {
+    box-sizing: border-box;
+    background: #FFFFFF;
+    border: 1px solid #EBF0F5;
+    box-shadow: 2px 2px 15px 2px #7f8ba6a9;
+}
+
+.container-main{
+    /* position: absolute; */
+    position: relative;
+    /* margin-top: calc(-100dh); */
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Set the height to 100% of the viewport height */
+    overflow: hidden;
+}
+
+
+.video-container video{
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+#sticky-navigation{
+    position: fixed;
+    position: fixed;
+    top: 50%; /* Position the element 50% from the top of the viewport */
+    right: 10px; /* Position the element 50% from the left of the viewport */
+    transform: translate(-00%, -50%); /* Center the element vertically and horizontally */
+    max-width: 150px; z-index: 999; }#sticky-navigation .list-group-item{
+    margin-top: 10px;
+    border-radius: 0;
+    border: 0px;
+}
+
+.text1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    line-height: 73px;
+    color: #000000;
+    text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.size1{
+    font-size: 60px;
+    line-height: 73px;
+}
+
+.zindex1{ z-index: 100; }
+.zindex2{ z-index: 200; }
+.zindex3{ z-index: 300; }
+.zindex4{ z-index: 400; }
+.zindex5{ z-index: 500; }
+.zindex6{ z-index: 600; }
+.zindex7{ z-index: 700; }
+.zindex8{ z-index: 800; }
+.zindex9{ z-index: 900; }
+.zindex10{ z-index: 1000; }
+.zindex11{ z-index: 1100; }
+
+.carousel-indicators [data-bs-target]{
+    /* border-radius: 50%; */
+    max-width: 100px;
+    max-height: 100px;
+    list-style-type: none;
+    text-indent: 0;
+    width: auto;
+    height: auto;
+}
+.carousel-indicators [data-bs-target] img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-avatar1{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    border: 2px #f8d300ea solid;
+    padding: 5px;
+    background-color: #f8d300ea;
+
+}
+
+.anime-card1{
+    border-radius: 0%;
+    background-color: #00000081;
+}
+.anime-card1  .card-header:first-child{
+    border-radius: 0%;
+}
+.anime-card1  .nav-link {
+    font-family: "GraphikRegular";
+    color: #000000;
+}
+
+.anime-card1  .nav-link.active {
+    background: #ffc107;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: black;
+}
+
+.text-outline1 {
+    text-shadow:
+        -1px -1px 0 #000,  /* Shadow atas kiri */
+         1px -1px 0 #000,  /* Shadow atas kanan */
+        -1px  1px 0 #000,  /* Shadow bawah kiri */
+         1px  1px 0 #000;  /* Shadow bawah kanan */
+}
+
+.text-outline2 {
+    text-shadow:
+        -1px -1px 0 #ffffff,  /* Shadow atas kiri */
+         1px -1px 0 #ffffff,  /* Shadow atas kanan */
+        -1px  1px 0 #ffffff,  /* Shadow bawah kiri */
+         1px  1px 0 #ffffff;  /* Shadow bawah kanan */
+}
