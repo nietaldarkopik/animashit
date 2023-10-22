@@ -1,6 +1,6 @@
 <nav class="navbar p-0 fixed-top d-flex flex-row">
   <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+    <a class="navbar-brand brand-logo-mini" href="{{ url('/') }}"><img src="{{ asset('backend/corona/assets/images/logo-mini.svg') }}" alt="logo" /></a>
   </div>
   <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -55,12 +55,12 @@
           <p class="p-3 mb-0 text-center">See all projects</p>
         </div>
       </li>
-      <li class="nav-item nav-settings d-none d-lg-block">
+     {{--  <li class="nav-item nav-settings d-none d-lg-block">
         <a class="nav-link" href="#">
           <i class="mdi mdi-view-grid"></i>
         </a>
-      </li>
-      <li class="nav-item dropdown border-left">
+      </li> --}}
+      {{-- <li class="nav-item dropdown border-left">
         <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="mdi mdi-email"></i>
           <span class="count bg-success"></span>
@@ -70,7 +70,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img src="assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
+              <img src="{{ asset('backend/corona/assets/images/faces/face4.jpg') }}" alt="image" class="rounded-circle profile-pic">
             </div>
             <div class="preview-item-content">
               <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
@@ -80,7 +80,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img src="assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
+              <img src="{{ asset('backend/corona/assets/images/faces/face2.jpg') }}" alt="image" class="rounded-circle profile-pic">
             </div>
             <div class="preview-item-content">
               <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
@@ -90,7 +90,7 @@
           <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
-              <img src="assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
+              <img src="{{ asset('backend/corona/assets/images/faces/face3.jpg') }}" alt="image" class="rounded-circle profile-pic">
             </div>
             <div class="preview-item-content">
               <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
@@ -100,7 +100,7 @@
           <div class="dropdown-divider"></div>
           <p class="p-3 mb-0 text-center">4 new messages</p>
         </div>
-      </li>
+      </li> --}}
       <li class="nav-item dropdown border-left">
         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
           <i class="mdi mdi-bell"></i>
@@ -151,7 +151,7 @@
       <li class="nav-item dropdown">
         <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
           <div class="navbar-profile">
-            <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
+            <img class="img-xs rounded-circle" src="{{ asset('backend/corona/assets/images/faces/face15.jpg') }}" alt="">
             <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
             <i class="mdi mdi-menu-down d-none d-sm-block"></i>
           </div>

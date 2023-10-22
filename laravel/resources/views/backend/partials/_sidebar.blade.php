@@ -1,14 +1,14 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-    <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-    <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
+    <a class="sidebar-brand brand-logo" href="index.html"><img src="{{ asset('backend/corona/assets/images/logo.svg') }}" alt="logo" /></a>
+    <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="{{ asset('backend/corona/assets/images/logo-mini.svg') }}" alt="logo" /></a>
   </div>
   <ul class="nav">
     <li class="nav-item profile">
       <div class="profile-desc">
         <div class="profile-pic">
           <div class="count-indicator">
-            <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+            <img class="img-xs rounded-circle " src="{{ asset('backend/corona/assets/images/faces/face15.jpg') }}" alt="">
             <span class="count bg-success"></span>
           </div>
           <div class="profile-name">
@@ -57,14 +57,14 @@
       <span class="nav-link">Navigation</span>
     </li>
     <li class="nav-item menu-items">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{{route('admin.dashboard')}}">
         <span class="menu-icon">
           <i class="mdi mdi-speedometer"></i>
         </span>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-    <li class="nav-item menu-items">
+    <!-- <li class="nav-item menu-items">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <span class="menu-icon">
           <i class="mdi mdi-laptop"></i>
@@ -79,63 +79,86 @@
           <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Typography</a></li>
         </ul>
       </div>
-    </li>
+    </li> -->    
+
     <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/forms/basic_elements.html">
+      <a class="nav-link" href="{{route('admin.gigs.index')}}">
         <span class="menu-icon">
           <i class="mdi mdi-playlist-play"></i>
         </span>
-        <span class="menu-title">Form Elements</span>
+        <span class="menu-title">Gigs</span>
       </a>
     </li>
+
     <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/tables/basic-table.html">
+      <a class="nav-link" href="{{route('admin.artists.index')}}">
         <span class="menu-icon">
-          <i class="mdi mdi-table-large"></i>
+          <i class="mdi mdi-playlist-play"></i>
         </span>
-        <span class="menu-title">Tables</span>
+        <span class="menu-title">Artists</span>
       </a>
     </li>
+
     <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/charts/chartjs.html">
+      <a class="nav-link" href="{{route('admin.orders.index')}}">
         <span class="menu-icon">
-          <i class="mdi mdi-chart-bar"></i>
+          <i class="mdi mdi-playlist-play"></i>
         </span>
-        <span class="menu-title">Charts</span>
+        <span class="menu-title">Orders</span>
       </a>
     </li>
+
     <li class="nav-item menu-items">
-      <a class="nav-link" href="pages/icons/mdi.html">
+      <a class="nav-link" href="{{route('admin.customers.index')}}">
         <span class="menu-icon">
-          <i class="mdi mdi-contacts"></i>
+          <i class="mdi mdi-playlist-play"></i>
         </span>
-        <span class="menu-title">Icons</span>
+        <span class="menu-title">Customers</span>
       </a>
     </li>
+
     <li class="nav-item menu-items">
-      <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+      <a class="nav-link" href="{{route('admin.schedules.index')}}">
         <span class="menu-icon">
-          <i class="mdi mdi-security"></i>
+          <i class="mdi mdi-playlist-play"></i>
         </span>
-        <span class="menu-title">User Pages</span>
-        <i class="menu-arrow"></i>
+        <span class="menu-title">Schedules</span>
       </a>
-      <div class="collapse" id="auth">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html"> Blank Page </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-          <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-        </ul>
-      </div>
     </li>
+
     <li class="nav-item menu-items">
-      <a class="nav-link" href="documentation">
+      <a class="nav-link" href="{{route('admin.pages.index')}}">
         <span class="menu-icon">
-          <i class="mdi mdi-file-document-box"></i>
+          <i class="mdi mdi-playlist-play"></i>
         </span>
-        <span class="menu-title">Documentation</span>
+        <span class="menu-title">Pages</span>
+      </a>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{route('admin.users.index')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-playlist-play"></i>
+        </span>
+        <span class="menu-title">Users</span>
+      </a>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{route('admin.roles.index')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-playlist-play"></i>
+        </span>
+        <span class="menu-title">Roles</span>
+      </a>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{route('admin.siteconfigs.index')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-playlist-play"></i>
+        </span>
+        <span class="menu-title">Site Configs</span>
       </a>
     </li>
   </ul>

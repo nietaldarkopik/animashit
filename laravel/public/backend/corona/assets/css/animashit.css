@@ -1,0 +1,29 @@
+:root {
+  --animashit-primary: #cd1817;
+  --animashit-secondary: #f6e84e;
+  --animashit-dark: #191c24;
+}
+
+.bg-animashit-primary{
+  background-color: var(--animashit-primary) !important;
+}
+.bg-animashit-secondary{
+  background-color: var(--animashit-secondary) !important;
+}
+.bg-animashit-dark{
+  background-color: var(--animashit-dark) !important;
+}
+
+.text-animashit-primary{
+  color: var(--animashit-primary) !important;
+}
+.text-animashit-secondary{
+  color: var(--animashit-secondary) !important;
+}
+.text-animashit-dark{
+  color: var(--animashit-dark) !important;
+}
+
+.table-animashit-primary{
+  
+}
