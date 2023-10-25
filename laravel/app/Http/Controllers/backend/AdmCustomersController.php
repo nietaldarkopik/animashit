@@ -72,7 +72,7 @@ class AdmCustomersController extends Controller
             'ig' => $request->input('ig'),
             'facebook' => $request->input('facebook'),
             'youtube' => $request->input('youtube'),
-            'user_type' => 4,
+            'user_type' => 5,
         ]);
 
         return redirect()->route('admin.customers.index')
@@ -125,7 +125,7 @@ class AdmCustomersController extends Controller
         $profile->ig = $request->input('ig');
         $profile->facebook = $request->input('facebook');
         $profile->youtube = $request->input('youtube');
-        $profile->user_type = 4;
+        $profile->user_type = 5;
         $profile->save();
 
         return redirect()->route('admin.customers.index')

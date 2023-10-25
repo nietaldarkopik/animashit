@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-3 col-sm-2 col-xl-2 ps-0 text-center">
                                 <span>
-                                    <a href="https://www.bootstrapdash.com/customer/corona-admin-template/" target="_blank"
+                                    <a href="https://www.bootstrapdash.com/page/corona-admin-template/" target="_blank"
                                         class="btn btn-outline-light
         btn-rounded get-started-btn">Upgrade to PRO</a>
                                 </span>
@@ -33,11 +33,11 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb mb-4">
                         <div class="pull-left">
-                            <h2>Customer Management
+                            <h2>Page Management
                                 <div class="float-end">
-                                    @can('customer-create')
-                                        <a class="btn btn-success" href="{{ route('admin.customers.create') }}"> Create New
-                                            Customer</a>
+                                    @can('page-create')
+                                        <a class="btn btn-success" href="{{ route('admin.pages.create') }}"> Create New
+                                            Page</a>
                                     @endcan
                                 </div>
                             </h2>
@@ -55,39 +55,44 @@
                         <thead>
                         <tr>
                             <th width="50">No</th>
-                            <th width="150">Avatar</th>
-                            <th>Name</th>
+                            <th>Slug</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Template</th>
                             <th width="100">Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         @php
-                        $no = (($customers->currentPage() - 1) * $customers->perPage()) + 1;
+                        $no = (($pages->currentPage() - 1) * $pages->perPage()) + 1;
                         @endphp
-                        @foreach ($customers as $key => $customer)
+                        @foreach ($pages as $key => $page)
                             <tr>
                                 <td class="text-light">{{ $no }}</td>
                                 <td class="text-light">
-                                    <img class="object-fit-cover object-position-center" src="{{ asset('uploads/customers/' . $customer->avatar) }}" alt="Avatar" style="height: 100px; width: 100px;">
+                                    {{ $page->slug }}
                                 </td>
                                 <td class="text-light">
-                                    <h6 class="preview-subject">{{ $customer->name }}</h6>
-                                    <p class="text-muted text-small">{{ $customer->nickname }}</p>
+                                    {{ $page->title }}
                                 </td>
                                 <td class="text-light">
-                                    <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="POST">
+                                    {{ $page->status }}
+                                </td>
+                                <td class="text-light">
+                                    {{ $page->template }}
+                                </td>
+                                <td class="text-light">
+                                    <form action="{{ route('admin.pages.destroy', $page->id) }}" method="POST">
                                         <a class="btn btn-info"
-                                            href="{{ route('admin.customers.show', $customer->id) }}">Show</a>
-                                        @can('customer-edit')
+                                            href="{{ route('admin.pages.show', $page->id) }}">Show</a>
+                                        @can('page-edit')
                                             <a class="btn btn-primary"
-                                                href="{{ route('admin.customers.edit', $customer->id) }}">Edit</a>
-                                            <a class="btn btn-primary"
-                                                href="{{ route('admin.customers.edit', $customer->id) }}">Orders</a>
+                                                href="{{ route('admin.pages.edit', $page->id) }}">Edit</a>
                                         @endcan
 
                                         @csrf
                                         @method('DELETE')
-                                        @can('customer-delete')
+                                        @can('page-delete')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         @endcan
                                     </form>
@@ -98,7 +103,7 @@
                         </tbody>
                     </table>
                 </div>
-                {!! $customers->links() !!}
+                {!! $pages->links() !!}
             </div>
         </div>
     </div>

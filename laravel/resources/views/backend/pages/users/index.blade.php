@@ -26,13 +26,16 @@
 
 
                 <div class="table-responsive">
-                    <table class="table table-hover table-striped table-light">
+                    <table class="table table-hover table-striped">
+                        <thead>
                         <tr>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Roles</th>
                             <th width="280px">Action</th>
                         </tr>
+                        </thead>
+                        <tbody>
                         @foreach ($data as $key => $user)
                             <tr>
                                 <td>{{ $user->name }}</td>
@@ -52,6 +55,7 @@
                                 </td>
                             </tr>
                         @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>

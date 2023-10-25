@@ -53,35 +53,40 @@
                     </div>
                 @endif
 
-                <table class="table table-striped table-hover table-light text-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th width="280px">Action</th>
-                    </tr>
-                    @foreach ($roles as $key => $role)
+                <table class="table table-striped table-hover">
+                    <thead>
                         <tr>
-                            <td>{{ $role->name }}</td>
-                            <td>
-                                <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST">
-                                    <a class="btn btn-info" href="{{ route('admin.roles.show', $role->id) }}">Show</a>
-                                    @can('role-edit')
-                                        <a class="btn btn-primary" href="{{ route('admin.roles.edit', $role->id) }}">Edit</a>
-                                    @endcan
-
-
-                                    @csrf
-                                    @method('DELETE')
-                                    @can('product-delete')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    @endcan
-                                </form>
-                            </td>
+                            <th>Name</th>
+                            <th width="280px">Action</th>
                         </tr>
-                    @endforeach
+                    </thead>
+                    <tbody>
+                        @foreach ($roles as $key => $role)
+                            <tr>
+                                <td>{{ $role->name }}</td>
+                                <td>
+                                    <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST">
+                                        <a class="btn btn-info" href="{{ route('admin.roles.show', $role->id) }}">Show</a>
+                                        @can('role-edit')
+                                            <a class="btn btn-primary"
+                                                href="{{ route('admin.roles.edit', $role->id) }}">Edit</a>
+                                        @endcan
+
+
+                                        @csrf
+                                        @method('DELETE')
+                                        @can('product-delete')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        @endcan
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
 
-                {!! $roles->render() !!}
-            </div>
+            {!! $roles->render() !!}
         </div>
+    </div>
     </div>
 @endsection

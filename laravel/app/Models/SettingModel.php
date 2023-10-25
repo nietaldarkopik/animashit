@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class SettingModel extends Model
 {
     use HasFactory;
-    protected $table = 'schedules'; // Nama tabel dalam database
+    protected $table = 'settings'; // Nama tabel dalam database
 
     protected $fillable = [
         'type','title','keyword','value','description',
     ];
 
+    public $timestamps = false; 
 }

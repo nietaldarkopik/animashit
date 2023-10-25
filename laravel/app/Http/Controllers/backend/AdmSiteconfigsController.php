@@ -3,86 +3,97 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\SettingModel;
+use DB;
 use Illuminate\Http\Request;
 
 class AdmSiteconfigsController extends Controller
 {
+    protected $type = ['frontend','backend','global','page'];
+
     function __construct()
     {
-        //$this->middleware(['permission:role-list|role-create|role-edit|role-delete'], ['only' => ['index', 'store']]);
-        //$this->middleware(['permission:role-create'], ['only' => ['create', 'store']]);
-        //$this->middleware(['permission:role-edit'], ['only' => ['edit', 'update']]);
-        //$this->middleware(['permission:role-delete'], ['only' => ['destroy']]);
+        //$this->middleware(['permission:siteconfig-list|siteconfig-create|siteconfig-edit|siteconfig-delete'], ['only' => ['index', 'store']]);
+        //$this->middleware(['permission:siteconfig-create'], ['only' => ['create', 'store']]);
+        //$this->middleware(['permission:siteconfig-edit'], ['only' => ['edit', 'update']]);
+        //$this->middleware(['permission:siteconfig-delete'], ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
     {
-        $roles = \Spatie\Permission\Models\Role::orderBy('id', 'DESC')->paginate(5);
-        return view('backend.pages.roles.index', compact('roles'));
+        $siteconfigs = SettingModel::orderBy('id', 'DESC')->paginate(5);
+        return view('backend.pages.siteconfigs.index', compact('siteconfigs'));
     }
 
     public function create()
     {
-        $permission = Permission::get();
-        return view('backend.pages.roles.create', compact('permission'));
+        $types = $this->type;
+        return view('backend.pages.siteconfigs.create', compact('types'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:roles,name',
-            'permission' => 'required',
+            'keyword' => 'required|unique:settings,keyword',
+            'type' => 'required',
+            'title' => 'required',
+            'value' => 'required',
+            'description' => '',
         ]);
 
-        $role = \Spatie\Permission\Models\Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
+        $siteconfig = SettingModel::create([
+            'keyword' => $request->input('keyword'),
+            'type' => $request->input('type'),
+            'title' => $request->input('title'),
+            'value' => $request->input('value'),
+            'description' => $request->input('description'),
+        ]);
 
-        return redirect()->route('roles.index')
-            ->with('success', 'Role created successfully');
+        return redirect()->route('admin.siteconfigs.index')
+            ->with('success', 'Config created successfully');
     }
 
     public function show($id)
     {
-        $role = \Spatie\Permission\Models\Role::find($id);
-        $rolePermissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
-            ->where("role_has_permissions.role_id", $id)
-            ->get();
+        $siteconfig = SettingModel::find($id);
+        $types = SettingModel::find($id);
 
-        return view('backend.pages.roles.show', compact('role', 'rolePermissions'));
+        return view('backend.pages.siteconfigs.show', compact('siteconfig',  'types'));
     }
 
     public function edit($id)
     {
-        $role = \Spatie\Permission\Models\Role::find($id);
-        $permission = Permission::get();
-        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
-            ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
-            ->all();
-
-        return view('backend.pages.roles.edit', compact('role', 'permission', 'rolePermissions'));
+        $siteconfig = SettingModel::find($id);
+        $types = $this->type;
+        return view('backend.pages.siteconfigs.edit', compact('siteconfig', 'types'));
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'permission' => 'required',
+            'keyword' => 'required',
+            'type' => 'required',
+            'title' => 'required',
+            'value' => 'required',
+            'description' => '',
         ]);
 
-        $role = \Spatie\Permission\Models\Role::find($id);
-        $role->name = $request->input('name');
-        $role->save();
+        $siteconfig = SettingModel::find($id);
+        $siteconfig->keyword = $request->input('keyword');
+        $siteconfig->type = $request->input('type');
+        $siteconfig->title = $request->input('title');
+        $siteconfig->value = $request->input('value');
+        $siteconfig->description = $request->input('description');
+        $siteconfig->save();
 
-        $role->syncPermissions($request->input('permission'));
-
-        return redirect()->route('roles.index')
-            ->with('success', 'Role updated successfully');
+        return redirect()->route('admin.siteconfigs.index')
+            ->with('success', 'Config updated successfully');
     }
 
     public function destroy($id)
     {
-        DB::table("roles")->where('id', $id)->delete();
-        return redirect()->route('roles.index')
-            ->with('success', 'Role deleted successfully');
+        DB::table("siteconfigs")->where('id', $id)->delete();
+        return redirect()->route('admin.siteconfigs.index')
+            ->with('success', 'Config deleted successfully');
     }
 }

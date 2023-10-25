@@ -1,7 +1,10 @@
-@extends('layouts.master')
+@extends('backend.master')
 
 
 @section('content')
+<div class="content-wrapper">
+    <div class="card">
+        <div class="card-body">
     <div class="card">
         <div class="card-body">
             <div class="row">
@@ -57,6 +60,8 @@
                 </div>
             </form>
         </div>
+    </div>
+    </div>
     </div>
 
 

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use DB;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class AdmRoleController extends Controller
 {
@@ -17,7 +20,7 @@ class AdmRoleController extends Controller
 
     public function index(Request $request)
     {
-        $roles = \Spatie\Permission\Models\Role::orderBy('id', 'DESC')->paginate(5);
+        $roles = Role::orderBy('id', 'DESC')->paginate(5);
         return view('backend.pages.roles.index', compact('roles'));
     }
 
@@ -34,7 +37,7 @@ class AdmRoleController extends Controller
             'permission' => 'required',
         ]);
 
-        $role = \Spatie\Permission\Models\Role::create(['name' => $request->input('name')]);
+        $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('roles.index')
@@ -43,7 +46,7 @@ class AdmRoleController extends Controller
 
     public function show($id)
     {
-        $role = \Spatie\Permission\Models\Role::find($id);
+        $role = Role::find($id);
         $rolePermissions = Permission::join("role_has_permissions", "role_has_permissions.permission_id", "=", "permissions.id")
             ->where("role_has_permissions.role_id", $id)
             ->get();
@@ -53,7 +56,7 @@ class AdmRoleController extends Controller
 
     public function edit($id)
     {
-        $role = \Spatie\Permission\Models\Role::find($id);
+        $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
@@ -69,7 +72,7 @@ class AdmRoleController extends Controller
             'permission' => 'required',
         ]);
 
-        $role = \Spatie\Permission\Models\Role::find($id);
+        $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
 

@@ -27,3 +27,49 @@
 .table-animashit-primary{
   
 }
+
+.object-fit-fill{
+  object-fit: fill;
+}
+.object-fit-contain{
+  object-fit: contain;
+}
+.object-fit-cover{
+  object-fit: cover;
+}
+.object-fit-none{
+  object-fit: none;
+}
+.object-fit-scale-down{
+  object-fit: scale-down;
+}
+
+.object-position-top{
+  object-position: top;
+}
+.object-position-bottom{
+  object-position: bottom;
+}
+.object-position-left{
+  object-position: left;
+}
+.object-position-right{
+  object-position: right;
+}
+.object-position-center{
+  object-position: center;
+}
+
+
+.table thead th, .jsgrid .jsgrid-table thead th{
+  color: #e4e4e5 !important;
+}
+
+.table td, .jsgrid .jsgrid-table td{
+  color: #ffffff8f !important;
+}
+
+.form-control:focus option, .form-control:focus, .asColorPicker-input:focus, .dataTables_wrapper select:focus, .jsgrid .jsgrid-table .jsgrid-filter-row input:focus[type=text], .jsgrid .jsgrid-table .jsgrid-filter-row select:focus, .jsgrid .jsgrid-table .jsgrid-filter-row input:focus[type=number], .select2-container--default .select2-selection--single:focus, .select2-container--default .select2-selection--single .select2-search__field:focus, .typeahead:focus, .tt-query:focus, .tt-hint:focus {
+  border: 1px solid #fffb02;
+  color: #ffee00;
+}

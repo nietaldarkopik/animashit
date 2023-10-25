@@ -33,4 +33,10 @@ class ScheduleModel extends Model
         return $this->belongsTo(ProfileModel::class, 'customer_id');
     }
     
+    
+    public function statusSchedule()
+    {
+        return $this->belongsTo(ScheduleStatusModel::class, 'status');
+    }
+    
 }
