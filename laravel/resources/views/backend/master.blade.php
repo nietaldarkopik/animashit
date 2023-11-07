@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('backend/corona/assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/corona/assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/corona/assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/animashit/assets/fontawesome6.4.2/css/all.css') }}">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('backend/corona/assets/css/animashit.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('backend/corona/assets/images/favicon.png') }}" />
+    @yield('style')
   </head>
 
 <body>
@@ -83,5 +85,6 @@
     <!-- Custom js for this page -->
     <script src="{{ asset('backend/corona/assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
+    @yield('script')
 </body>
 </html> 

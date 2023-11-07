@@ -11,7 +11,7 @@ class GigPackageModel extends Model
     protected $table = 'gig_packages'; // Nama tabel dalam database
 
     protected $fillable = [
-        'gig_id','profile_id','sort','title','price','description','image','video',
+        'gig_id','package_id','gig_package_head_id','sort','title','price','description','image','video',
     ];
 
     public function gig()
@@ -19,8 +19,18 @@ class GigPackageModel extends Model
         return $this->belongsTo(GigModel::class, 'gig_id');
     }
 
+    public function package()
+    {
+        return $this->belongsTo(GigPackageModel::class, 'package_id');
+    }
+
     public function artist()
     {
         return $this->belongsTo(ProfileModel::class, 'profile_id');
+    }
+
+    public function head()
+    {
+        return $this->belongsTo(GigPackageHeadModel::class, 'gig_package_head_id');
     }
 }

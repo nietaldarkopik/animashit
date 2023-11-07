@@ -66,9 +66,7 @@
                                         <a class="btn btn-info" href="{{ route('admin.gigs.show', $gig->id) }}">Show</a>
                                         @can('gig-edit')
                                             <a class="btn btn-primary" href="{{ route('admin.gigs.edit', $gig->id) }}">Edit</a>
-                                            <a class="btn btn-primary"
-                                                href="{{ route('admin.gigs.edit', $gig->id) }}">Package</a>
-                                            <a class="btn btn-primary" href="{{ route('admin.gigs.edit', $gig->id) }}">Media</a>
+                                            <a class="btn btn-primary" href="{{ route('admin.gigmedias.edit', $gig->id) }}">Media</a>
                                         @endcan
 
 

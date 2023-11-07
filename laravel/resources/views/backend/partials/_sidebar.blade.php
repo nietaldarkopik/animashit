@@ -89,6 +89,24 @@
         <span class="menu-title">Gigs</span>
       </a>
     </li>
+    
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{route('admin.gigfeatures.index')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-playlist-play"></i>
+        </span>
+        <span class="menu-title">Gig Features</span>
+      </a>
+    </li>
+    
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{route('admin.gigpackages.index')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-playlist-play"></i>
+        </span>
+        <span class="menu-title">Gig Packages</span>
+      </a>
+    </li>
 
     <li class="nav-item menu-items">
       <a class="nav-link" href="{{route('admin.artists.index')}}">
@@ -96,6 +114,15 @@
           <i class="mdi mdi-playlist-play"></i>
         </span>
         <span class="menu-title">Artists</span>
+      </a>
+    </li>
+
+    <li class="nav-item menu-items">
+      <a class="nav-link" href="{{route('admin.portfolios.index')}}">
+        <span class="menu-icon">
+          <i class="mdi mdi-playlist-play"></i>
+        </span>
+        <span class="menu-title">PortFolios</span>
       </a>
     </li>
 
