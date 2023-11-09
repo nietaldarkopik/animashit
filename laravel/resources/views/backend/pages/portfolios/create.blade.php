@@ -90,9 +90,14 @@
                 <div class="card-body">
                     <strong>Media</strong>
                     <div class="row justify-content-stretch align-items-stretch g-2">
-                        <div class="col-sm-3">
+                        <div class="col-sm-3 master-form-media card-form-media">
                             <div class="card h-100 bg-light text-dark">
                                 {{-- <img class="card-img-top" src="holder.js/100x180/" alt="Title"> --}}
+                                <div class="card-header">
+                                    <button class="btn btn-sm btn-danger btn-remove-media p-2 float-end">
+                                        <i class="fas fa-trash m-0 p-0"></i>
+                                    </button>
+                                </div>
                                 <div class="card-body p-2">
                                     <div class="mb-3">
                                         <label class="form-label">Title</label>
@@ -101,12 +106,22 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Description</label>
-                                        <textarea class="form-control form-control-sm" name="media[description][]" aria-describedby="helpId" placeholder=""></textarea>
+                                        <textarea class="form-control" name="media[description][]" aria-describedby="helpId" placeholder=""></textarea>
                                     </div>
-                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Type</label>
+                                        <select class="form-control form-select form-select-lg input-media-type" name="media[type][]">
+                                            <option >Select one</option>
+                                            <option value="upload_image">Image</option>
+                                            <option value="upload_video">Video</option>
+                                            <option value="url_image">URL Image</option>
+                                            <option value="embed_video">Embed Video</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="card-body p-2">
-                                    <div class="input-group mb-3">
+                                <div class="card-body p-2 card-media-input">
+                                    <textarea rows="5" name="media" class="form-control media-input-text d-none"></textarea>
+                                    <div class="input-group mb-3 media-input-upload d-none">
                                         <label class="btn btn-lg btn-warning w-100">
                                             <i class="fas fa-upload fa-xl my-2"></i>
                                             <span class="py-2 h6">Upload</span>
@@ -117,9 +132,8 @@
                             </div>
                         </div>
                         <div class="col-sm-3">
-                            <div
-                                class="card h-100 bg-light text-dark align-items-center align-content-center justify-content-center">
-                                <a href="javascript:void(0);" class="btn btn-lg btn-warning">
+                            <div class="card h-100 bg-light text-dark align-items-center align-content-center justify-content-center">
+                                <a href="javascript:void(0);" class="btn btn-lg btn-warning btn-add-media">
                                     <i class="fas fa-plus-square" style="font-size: 50px;"></i>
                                 </a>
                             </div>
@@ -139,9 +153,48 @@
         </form>
     </div>
 @endsection
+@section('style')
+    <style>
+        .master-form-media:first-child .btn-remove-media{
+            visibility: hidden;
+        } 
+    </style>
+@endsection
 @section('script')
     <script type="text/javascript">
         $(document).ready(function() {
+
+            function setMediaType(masterForm,inputType)
+            {
+                inputType = (typeof inputType == "undefined")?$(masterForm).find(".input-media-type").val():inputType;
+
+                if(inputType == "upload_image" || inputType == "upload_video")
+                {
+                    $(masterForm).find(".media-input-upload").removeClass("d-none");
+                    $(masterForm).find(".media-input-text").addClass("d-none");
+                }else if(inputType == "url_image" || inputType == "embed_video")
+                {
+                    $(masterForm).find(".media-input-upload").addClass("d-none");
+                    $(masterForm).find(".media-input-text").removeClass("d-none");
+                }else{
+                    $(masterForm).find(".media-input-upload").addClass("d-none");
+                    $(masterForm).find(".media-input-text").addClass("d-none");
+                }
+                return masterForm;
+            }
+            $("body").on("click",".btn-add-media",function(e){
+                let masterForm = $(".master-form-media").clone().removeClass('master-form-media');
+                $(masterForm).find(":input").val("");
+                masterForm = setMediaType(masterForm);
+                $(this).parents(".col-sm-3").before(masterForm);
+            });
+
+            $("body").on("change",".input-media-type", function(e){
+                let masterForm = $(this).parents(".card-form-media");
+                let inputType = $(this).val();
+                setMediaType(masterForm,inputType);
+            });
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': "{{ csrf_token() }}"

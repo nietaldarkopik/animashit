@@ -1,0 +1,24 @@
+{
+    "name": "animashit/ytdl",
+    "description": "Extend dari YTDL",
+    "type": "library",
+    "require": {
+        "norkunas/youtube-dl-php": "^2.2"
+    },
+    "require-dev": {
+        "norkunas/youtube-dl-php": "^2.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Animashit\\Ytdl\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "existcode.co.id",
+            "email": "existcodeid@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

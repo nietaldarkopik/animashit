@@ -13,5 +13,9 @@ class PageModel extends Model
     protected $fillable = [
         'slug','title','description','status','template',
     ];
-
+    
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
 }

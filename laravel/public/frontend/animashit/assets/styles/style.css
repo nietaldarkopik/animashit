@@ -76,80 +76,105 @@
     src: url(../fonts/source-serif-pro/SourceSerif4Variable-Roman.ttf.woff2);
 }
 
-.ff-graphikbold{
+.ff-graphikbold {
     font-family: "GraphikBold";
 }
-.ff-graphikregular{
+
+.ff-graphikregular {
     font-family: "GraphikRegular";
 }
-.ff-poppins-bold{
+
+.ff-poppins-bold {
     font-family: "Poppins-Bold";
 }
-.ff-poppins-medium{
+
+.ff-poppins-medium {
     font-family: "Poppins-Medium";
 }
-.ff-poppins-regular{
+
+.ff-poppins-regular {
     font-family: "Poppins-Regular";
 }
-.ff-dmsans-bold-italic{
+
+.ff-dmsans-bold-italic {
     font-family: "DMSans-Bold-Italic";
 }
-.ff-dmsans-bold{
+
+.ff-dmsans-bold {
     font-family: "DMSans-Bold";
 }
-.ff-dmsans-regular-italic{
+
+.ff-dmsans-regular-italic {
     font-family: "DMSans-Regular-Italic";
 }
-.ff-dmsans-regular{
+
+.ff-dmsans-regular {
     font-family: "DMSans-Regular";
 }
-.ff-ibmplexmono-bold{
+
+.ff-ibmplexmono-bold {
     font-family: "IBMPlexMono-Bold";
 }
-.ff-ibmplexmono-italic{
+
+.ff-ibmplexmono-italic {
     font-family: "IBMPlexMono-Italic";
 }
-.ff-ibmplexmono-light{
+
+.ff-ibmplexmono-light {
     font-family: "IBMPlexMono-Light";
 }
-.ff-ibmplexmono-regular{
+
+.ff-ibmplexmono-regular {
     font-family: "IBMPlexMono-Regular";
 }
-.ff-sourceserif4variable-italic{
+
+.ff-sourceserif4variable-italic {
     font-family: "SourceSerif4Variable-Italic";
 }
-.ff-sourceserif4variable-roman{
+
+.ff-sourceserif4variable-roman {
     font-family: "SourceSerif4Variable-Roman";
 }
 
-.ff-caveat{
+.ff-caveat {
     font-family: 'Caveat', cursive;
 }
-.ff-delicious-handrawn{
+
+.ff-delicious-handrawn {
     font-family: 'Delicious Handrawn', cursive;
 }
+
 .ff-golos-text'{
-    font-family: 'Golos Text', sans-serif;
+ font-family: 'Golos Text',
+sans-serif;
 }
-.ff-handlee{
+
+.ff-handlee {
     font-family: 'Handlee', cursive;
 }
-.ff-indie-flower{
+
+.ff-indie-flower {
     font-family: 'Indie Flower', cursive;
 }
+
 .ff-montserrat'{
-    font-family: 'Montserrat', sans-serif;
+ font-family: 'Montserrat',
+sans-serif;
 }
-.ff-nanum-pen-script{
+
+.ff-nanum-pen-script {
     font-family: 'Nanum Pen Script', cursive;
 }
-.ff-satisfy{
+
+.ff-satisfy {
     font-family: 'Satisfy', cursive;
 }
-.ff-sriracha{
+
+.ff-sriracha {
     font-family: 'Sriracha', cursive;
 }
-.ff-sue-ellen-francisco{
+
+.ff-sue-ellen-francisco {
     font-family: 'Sue Ellen Francisco', cursive;
 }
 
@@ -167,6 +192,10 @@
     border: 1px solid #EBF0F5;
 }
 
+.anim-shadow-hover {
+    cursor: pointer;
+}
+
 .anim-shadow-hover:hover {
     box-sizing: border-box;
     background: #FFFFFF;
@@ -174,46 +203,83 @@
     box-shadow: 2px 2px 15px 2px #7f8ba6a9;
 }
 
-.container-main{
+.container-main {
     /* position: absolute; */
     position: relative;
     /* margin-top: calc(-100dh); */
     width: 100%;
     min-height: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     z-index: 999;
+}
+
+.video-container-block {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 80px);
+    /* Set the height to 100% of the viewport height */
+    overflow: hidden;
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    height: 100vh; /* Set the height to 100% of the viewport height */
-    overflow: hidden;
+    height: calc(100vh - 80px);
+    /* Set the height to 100% of the viewport height */
+    /* overflow: hidden; */
 }
 
 
-.video-container video{
+.video-container>video {
     object-fit: cover;
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
 }
+.video-container .video-foreground iframe {
+    position: absolute;
+    width: 100%;
+    height: 115vh;
+    pointer-events: none;
+    object-fit: cover;
+    top: -60px;
+    left: 0;
+}
 
-#sticky-navigation{
+
+.video-container .video-foreground {
+    background: #000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -99;
+}
+
+
+#sticky-navigation {
     position: fixed;
     position: fixed;
-    top: 50%; /* Position the element 50% from the top of the viewport */
-    right: 10px; /* Position the element 50% from the left of the viewport */
-    transform: translate(-00%, -50%); /* Center the element vertically and horizontally */
-    max-width: 150px; z-index: 999; }#sticky-navigation .list-group-item{
+    top: 50%;
+    /* Position the element 50% from the top of the viewport */
+    right: 10px;
+    /* Position the element 50% from the left of the viewport */
+    transform: translate(-00%, -50%);
+    /* Center the element vertically and horizontally */
+    max-width: 150px;
+    z-index: 999;
+}
+
+#sticky-navigation .list-group-item {
     margin-top: 10px;
     border-radius: 0;
     border: 0px;
 }
 
-.text1{
+.text1 {
     font-family: 'Montserrat';
     font-style: normal;
     line-height: 73px;
@@ -221,24 +287,60 @@
     text-shadow: 0px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-.size1{
+.size1 {
     font-size: 60px;
     line-height: 73px;
 }
 
-.zindex1{ z-index: 100; }
-.zindex2{ z-index: 200; }
-.zindex3{ z-index: 300; }
-.zindex4{ z-index: 400; }
-.zindex5{ z-index: 500; }
-.zindex6{ z-index: 600; }
-.zindex7{ z-index: 700; }
-.zindex8{ z-index: 800; }
-.zindex9{ z-index: 900; }
-.zindex10{ z-index: 1000; }
-.zindex11{ z-index: 1100; }
+.zindex1 {
+    z-index: 100;
+}
 
-.carousel-indicators [data-bs-target]{
+.zindex2 {
+    z-index: 200;
+}
+
+.zindex3 {
+    z-index: 300;
+}
+
+.zindex4 {
+    z-index: 400;
+}
+
+.zindex5 {
+    z-index: 500;
+}
+
+.zindex6 {
+    z-index: 600;
+}
+
+.zindex7 {
+    z-index: 700;
+}
+
+.zindex8 {
+    z-index: 800;
+}
+
+.zindex9 {
+    z-index: 900;
+}
+
+.zindex10 {
+    z-index: 1000;
+}
+
+.zindex11 {
+    z-index: 1100;
+}
+
+.mt-nav {
+    margin-top: 60px;
+}
+
+.carousel-indicators [data-bs-target] {
     /* border-radius: 50%; */
     max-width: 100px;
     max-height: 100px;
@@ -247,13 +349,14 @@
     width: auto;
     height: auto;
 }
-.carousel-indicators [data-bs-target] img{
+
+.carousel-indicators [data-bs-target] img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.image-avatar1{
+.image-avatar1 {
     width: 150px;
     height: 150px;
     object-fit: contain;
@@ -263,19 +366,21 @@
 
 }
 
-.anime-card1{
+.anime-card1 {
     border-radius: 0%;
     background-color: #00000081;
 }
-.anime-card1  .card-header:first-child{
+
+.anime-card1 .card-header:first-child {
     border-radius: 0%;
 }
-.anime-card1  .nav-link {
+
+.anime-card1 .nav-link {
     font-family: "GraphikRegular";
     color: #000000;
 }
 
-.anime-card1  .nav-link.active {
+.anime-card1 .nav-link.active {
     background: #ffc107;
     margin-bottom: 5px;
     font-weight: bold;
@@ -284,16 +389,193 @@
 
 .text-outline1 {
     text-shadow:
-        -1px -1px 0 #000,  /* Shadow atas kiri */
-         1px -1px 0 #000,  /* Shadow atas kanan */
-        -1px  1px 0 #000,  /* Shadow bawah kiri */
-         1px  1px 0 #000;  /* Shadow bawah kanan */
+        -3px -3px 5px #000,
+        /* Shadow atas kiri */
+        3px -3px 5px #000,
+        /* Shadow atas kanan */
+        -3px 3px 5px #000,
+        /* Shadow bawah kiri */
+        3px 3px 5px #000;
+    /* Shadow bawah kanan */
 }
 
 .text-outline2 {
     text-shadow:
-        -1px -1px 0 #ffffff,  /* Shadow atas kiri */
-         1px -1px 0 #ffffff,  /* Shadow atas kanan */
-        -1px  1px 0 #ffffff,  /* Shadow bawah kiri */
-         1px  1px 0 #ffffff;  /* Shadow bawah kanan */
+        -3px -3px 5px #ffffff,
+        /* Shadow atas kiri */
+        3px -3px 5px #ffffff,
+        /* Shadow atas kanan */
+        -3px 3px 5px #ffffff,
+        /* Shadow bawah kiri */
+        3px 3px 5px #ffffff;
+    /* Shadow bawah kanan */
+}
+
+.anime-bg-primary-trans1 {
+    background-color: #00000083;
+}
+
+.anime-bg-primary-trans2 {
+    background-color: #000000a6;
+}
+
+.anime-bg-primary-trans3 {
+    background-color: #000000cb;
+}
+
+.anime-bg-primary-trans4 {
+    background-color: #000000e7;
+}
+
+.anime-bg-primary-trans5 {
+    background-color: #000000;
+}
+
+.anime-bg-secondary-trans1 {
+    background-color: #fbff0083;
+}
+
+.anime-bg-secondary-trans2 {
+    background-color: #fbff00ab;
+}
+
+.gig-title {
+    font-family: "IBMPlexMono-Bold";
+}
+
+.table-schedule {
+    width: unset;
+    box-sizing: border-box;
+}
+
+.table-schedule .schedule-date {
+    width: 50px;
+    min-width: 50px;
+}
+
+/***
+
+Widget Component 
+
+***/
+
+/* .nav-gig-list .gig-items:hover .gig-excerpt{
+    display: inline-block;
+}
+ */
+/* 
+.nav-gig-list .gig-items:hover{
+    cursor: pointer;
+    animation: bounceIn;
+    animation: flipInX;
+    animation-duration: 2s;
+}
+*/
+
+.nav-gig-list .gig-items .gig-excerpt {
+    display: none;
+}
+
+.nav-gig-list .gig-items:hover {
+    cursor: pointer;
+}
+
+.flipster__nav__item--current .flipster__nav__child {
+    display: none !important;
+}
+
+.flipster__nav {
+    margin: 0 0 !important;
+}
+
+.flipster__nav__item.flipster__nav__item--category.flipster__nav__item--current {
+    background-color: #ffc107 !important;
+    border-radius: 10px;
+}
+
+.flipster__nav__item.flipster__nav__item--category a {
+    font-family: "DMSans-Regular";
+    font-weight: bolder;
+    color: #ffc107;
+    text-decoration: none;
+}
+
+.flipster__nav__item.flipster__nav__item--category.flipster__nav__item--current a {
+    color: #000000;
+}
+
+.portfolio-list {
+    margin-top: -20%;
+    padding: 20px;
+}
+
+.min-vh-100x {
+    min-height: calc(100vh - 80px) !important;
+}
+
+/*** animation ****/
+.animation-gradient1 {
+    background: linear-gradient(332deg, #ff6800, #ffe300);
+    background-size: 400% 400%;
+
+    -webkit-animation: AnimationName 2s ease infinite;
+    -moz-animation: AnimationName 2s ease infinite;
+    -o-animation: AnimationName 2s ease infinite;
+    animation: AnimationName 2s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0% {
+        background-position: 0% 4%
+    }
+
+    50% {
+        background-position: 100% 97%
+    }
+
+    100% {
+        background-position: 0% 4%
+    }
+}
+
+@-moz-keyframes AnimationName {
+    0% {
+        background-position: 0% 4%
+    }
+
+    50% {
+        background-position: 100% 97%
+    }
+
+    100% {
+        background-position: 0% 4%
+    }
+}
+
+@-o-keyframes AnimationName {
+    0% {
+        background-position: 0% 4%
+    }
+
+    50% {
+        background-position: 100% 97%
+    }
+
+    100% {
+        background-position: 0% 4%
+    }
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 4%
+    }
+
+    50% {
+        background-position: 100% 97%
+    }
+
+    100% {
+        background-position: 0% 4%
+    }
 }

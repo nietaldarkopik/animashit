@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Controllers\frontend;
+
+use App\Http\Controllers\Controller;
+use App\Models\homemodel;
+use App\Models\PageModel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+
+class PageController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index($page = 'home')
+    {
+        $page = PageModel::where('slug','=', $page)->get()->first();
+        $template = $page->template ?? 'home';
+        return view('frontend.templates.'.$template,compact('page'));
+    }
+
+}
