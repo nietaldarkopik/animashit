@@ -1,22 +1,22 @@
 $(function() {
     
-    $(".nav-gig-list .gig-items").on("mouseenter",function(){
+    $("body").on("mouseenter",".nav-gig-list .gig-items",function(){
         $(this).addClass("animate__flipInX");
         $(this).addClass("animate__animated");
         /* $(this).addClass("animate__delay-2s"); */
-    }).on("animationend", function(){
+    }).on("animationend", ".nav-gig-list .gig-items", function(){
         $(this).removeClass("animate__flipInX");
         $(this).removeClass("animate__animated");
     });
 
-    $(".anim-animate-heart").on("mouseenter",function(){
+    $("body").on("mouseenter",".anim-animate-heart", function(){
         $(this).addClass("zindex11");
         //$(this).addClass("animate__heartBeat");
         //$(this).addClass("animate__zoomIn");
         $(this).addClass("animate__bounce");
         $(this).addClass("animate__fast");
         $(this).addClass("animate__animated");
-    }).on("animationend", function(){
+    }).on("animationend",".anim-animate-heart", function(){
         $(this).removeClass("zindex11");
         //$(this).removeClass("animate__heartBeat");
         //$(this).removeClass("animate__zoomIn");
@@ -25,7 +25,7 @@ $(function() {
         $(this).removeClass("animate__animated");
     });
 
-    $(".portfolio-item").on("click",function(){
+    $("body").on("click", ".portfolio-item", function(){
         $(".portfolio-item").removeClass("active");
         $(this).addClass("active");
         
@@ -41,7 +41,7 @@ $(function() {
         $(this).addClass("animate__fast");
         $(this).addClass("animate__animated");
         
-    }).on("animationend", function(){
+    }).on("animationend", ".portfolio-item", function(){
             $(this).removeClass("zindex11");
             //$(this).removeClass("animate__heartBeat");
             //$(this).removeClass("animate__zoomIn");
@@ -58,10 +58,6 @@ $(function() {
             /* $(".portfolio-item").removeClass("animate__delay-4s"); */
     });
     
-    $(".card-artist-item").on("click",function(){
-        window.location.href = "gig-detail.php";
-    });
-
     var navbar_logo = $(".navbar-logo");
     var navbar_logolight = $(".navbar-logolight");
 

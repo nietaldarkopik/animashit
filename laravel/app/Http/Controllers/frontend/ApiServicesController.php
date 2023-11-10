@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\GigModel;
 use App\Models\PageModel;
 use Illuminate\Http\Request;        
 use YoutubeDl\Options;
@@ -34,7 +35,7 @@ class ApiServicesController extends Controller
     }
     public function getGigsList(Request $request)
     {
-        $data = [];
+        $data = GigModel::orderBy('sort','ASC')->get();
         $output = [
             'data' => $data,
             'status' => true,
@@ -44,7 +45,7 @@ class ApiServicesController extends Controller
     }
     public function getGigsDetail(Request $request)
     {
-        $data = [];
+        $data = GigModel::where('id',$request->id)->first();
         $output = [
             'data' => $data,
             'status' => true,
