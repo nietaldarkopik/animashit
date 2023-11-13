@@ -69,20 +69,20 @@ $(function() {
             if(top > 50)
             {
                 $("body").addClass("mt-nav");
-                $("nav.navbar").addClass("fixed-top");
+                //$("nav.navbar").addClass("sticky-top");
                 $("nav.navbar").addClass("anime-bg-primary-trans4");
                 $("nav.navbar").addClass("bg-dark");
                 $("nav.navbar").addClass("navbar-dark");
                 $("nav.navbar").addClass("text-outline1");
                 $("nav.navbar").removeClass("navbar-light");
-                $("nav.navbar").removeClass("text-outline2");
+                //$("nav.navbar").removeClass("text-outline2");
                 $(navbar_logo).hide();
                 $(navbar_logolight).show();
             }else{
                 $("body").removeClass("mt-nav");
-                $("nav.navbar").removeClass("fixed-top");
+                //$("nav.navbar").removeClass("sticky-top");
                 $("nav.navbar").addClass("navbar-light");
-                $("nav.navbar").addClass("text-outline2");
+                //$("nav.navbar").addClass("text-outline2");
                 $("nav.navbar").removeClass("bg-dark");
                 $("nav.navbar").removeClass("navbar-dark");
                 $("nav.navbar").removeClass("text-outline1");

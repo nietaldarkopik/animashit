@@ -1,14 +1,14 @@
 @extends('../frontend.master')
 @section('content')
 
-<section id="main-gigs2" class="p-0 bg-light schema-1 min-vh-100x">
+<section id="main-gigs2" class="p-0 bg-light schema-1 min-vh-100xx">
     <div class="container-fluid video-containerx position-relative p-0">
         <!-- <video class="w-100" autoplay loop muted>
-            <source src="{{ url('frontend/animashit/assets/videos/video1.mp4" type="video/mp4" class="w-100">
+            <source src="{{ url('frontend/animashit/assets/videos/video1.mp4') }}" type="video/mp4" class="w-100">
         </video> -->
-        <div class="container-fluid container-main min-vh-100x py-2">
-            <div class="row justify-content-between align-items-stretch align-self-scretch  min-vh-100x">
-                <div class="col-12 col-sm-7 col-lg-9 col-sm-8">
+        <div class="container-fluid container-main min-vh-100xx py-2">
+            <div class="row justify-content-between align-items-stretch align-self-scretch  min-vh-100xx">
+                <div class="col-12 col-sm-12 col-lg-9 col-sm-8">
                     <div class="row justify-content-start flex-column h-100x">
                         <div class="col-md-12 bg-warning">
                             <h2>ILLUSTRATION</h2>
@@ -28,7 +28,7 @@
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-12 video-container-block">
                                             <video class="w-100" autoplay loop muted>
-                                                <source src="{{ url('frontend/animashit/assets/videos/005 dtype.mp4') }}" type="video/mp4"
+                                                <source src="{{ url('frontend/animashit/assets/videos/008 Project Beyond-.mp4') }}" type="video/mp4"
                                                     class="w-50">
                                             </video>
                                             <div class="portfolio-list col-12 anime-bg-primary-trans1">
@@ -40,7 +40,7 @@
                                                             data-flip-category="Category <?php echo ($i % 2) ? '2' : (($i % 3) ? 3 : 1); ?>">
                                                             <div
                                                                 class="card text-dark anim-shadow-hoverx anim-animate-heart portfolio-itemx h-100">
-                                                                <img class="card-img object-fit-cover" src="assets/images/Yukki.png"
+                                                                <img class="card-img object-fit-cover" src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
                                                                     height="150">
                                                                 <div
                                                                     class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
@@ -62,19 +62,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-5 col-lg-3 col-sm-4 flex-column justify-content-center d-flex">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img class="rounded-0 rounded-circle image-avatar1" src="assets/images/Yukki.png"
+                <div class="col-12 col-sm-12 col-lg-3 col-sm-4 flex-column justify-content-center d-flex">
+                    <di8 class="row justify-content-center align-items-center py-3">
+                        <div class="col-4 col-md-4">
+                            <img class="rounded-0 rounded-circle image-avatar1" src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
                                 alt="Title">
                         </div>
-                        <div class="col-md-8 justify-content-center align-content-center flex-column d-flex">
+                        <div class="col-8 col-md-8 justify-content-center align-content-center flex-column d-flex">
                             <h3>Eart Malik</h3>
                             <H4>ILLUSTRATION ARTIST</H4>
                         </div>
-                    </div>
+                    </di8>
                     <div class="row">
-                        <div class="col-md-12 py-5">
+                        <div class="col-md-12">
                             <div class="card anime-card1">
                                 <div class="card-header">
                                     <ul class="nav nav-pills card-header-tabs" id="myTab" role="tablist">
@@ -195,9 +195,12 @@
     </div>
 </section>
 @endsection
+@section('style')
+<link href="{{ url('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.css') }}" rel="stylesheet" />
+@endsection
+
 @section('script')
-<link href="{{ url'node_modules/jquery.flipster/dist/jquery.flipster.min.css"') }}"" rel="stylesheet" />
-<script type="text/javascript" src="{{ url'node_modules/jquery.flipster/dist/jquery.flipster.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.js') }}"></script>
 <script type="text/javascript">
     $(".portfolio-list").flipster({
 

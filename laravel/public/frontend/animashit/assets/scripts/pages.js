@@ -325,6 +325,36 @@
         }
     };
 
+    async function getArtistsList(params, success) {
+        try {
+            let url = baseUrl + "/api/services/getArtistsList";
+            let data = await doAjax(url, params, success);
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+
+    async function getArtistsDetail(params, success) {
+        try {
+            let url = baseUrl + "/api/services/getArtistsDetail";
+            let data = await doAjax(url, params, success);
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    async function getArtistsGigsList(params, success) {
+        try {
+            let url = baseUrl + "/api/services/getArtistsGigsList";
+            let data = await doAjax(url, params, success);
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     async function getSchedulesList(params, success) {
         try {

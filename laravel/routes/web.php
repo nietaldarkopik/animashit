@@ -39,10 +39,9 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('front.home');
 Route::get('page/{Page:slug}', [PageController::class, 'index'])->name('front.home');
+Route::get('page/artist/{id}', [PageController::class, 'artistDetail'])->name('front.home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('dashboard', [AdmDashboardController::class, 'index'])->name('admin.dashboard0')->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->prefix('admservices')->group(function () {
     Route::post('/get-features', [ServicesController::class, 'gig_features'])->name('services.features');

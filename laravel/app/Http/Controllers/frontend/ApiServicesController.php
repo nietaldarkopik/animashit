@@ -5,6 +5,8 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\GigModel;
 use App\Models\PageModel;
+use App\Models\GigPackageHeadModel;
+use App\Models\ProfileModel;
 use Illuminate\Http\Request;        
 use YoutubeDl\Options;
 use YoutubeDl\YoutubeDl;
@@ -293,6 +295,26 @@ class ApiServicesController extends Controller
         ];
         return response($output,201);
     }
+    public function getArtistsList(Request $request)
+    {
+        $data = ProfileModel::where('user_type','=','4')->get();
+        $output = [
+            'data' => $data,
+            'status' => true,
+            'message' => 'Success'
+        ];
+        return response($output,201);
+    }
+    public function getArtistsDetail(Request $request)
+    {
+        $data = ProfileModel::where('id','=',$request->id)->get();
+        $output = [
+            'data' => $data,
+            'status' => true,
+            'message' => 'Success'
+        ];
+        return response($output,201);
+    }
     public function getSchedulesList(Request $request)
     {
         $data = [];
@@ -414,5 +436,34 @@ class ApiServicesController extends Controller
                 // $video->getFile(); // \SplFileInfo instance of downloaded file
             }
         }
+    }
+
+    
+    public function getArtistsGigsList(Request $request)
+    {
+        $data = GigPackageHeadModel::where('gig_id','=',$request->gig_id)->with('artist')->get();
+/* 
+        foreach($data as $i => $d)
+        {
+            $data[$i]['artist'] = $d->
+        }
+ */
+        $output = [
+            'data' => $data,
+            'status' => true,
+            'message' => 'Success'
+        ];
+        return response($output,201);
+    }
+    
+    public function getArtistsGigsDetail(Request $request)
+    {
+        $data = GigPackageHeadModel::where('id',$request->id)->first();
+        $output = [
+            'data' => $data,
+            'status' => true,
+            'message' => 'Success'
+        ];
+        return response($output,201);
     }
 }

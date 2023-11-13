@@ -8,12 +8,12 @@ include("widgets/navbar.php");
 <section id="main-banner" class="p-0 min-vh-100">
     <div class="container-fluid video-container position-relative p-0">
         <video class="w-100 h-100vh" autoplay loop muted>
-            <source src="./assets/videos/video1.mp4" type="video/mp4" class="w-100">
+            <source src="./assets/videos/video1.mp4" type="video/mp4" class="mw-100 mh-100">
         </video>
         <div class="container-fluid container-main d-flex">
             <div class="row justify-content-center align-items-center g-2 flex-row w-100">
                 <div class="col-sm-12 mx-auto text-center">
-                    <h1 class="text1 text-dark text-outline2 mb-0 pb-0 size1">WELCOME TO</h1>
+                    <h1 class="text1 text-dark text-outline2 mb-0 pb-0 size1" style="mix-blend-mode: difference;"">WELCOME TO</h1>
                     <h2 class="text1 text-dark text-outline2 mb-0 pb-0">ANIMASHIT CREATIVE STUDIO</h2>
                     <h4 class="text1 text-dark text-outline2 mb-0 pb-0">
                         Hi there !

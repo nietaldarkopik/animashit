@@ -38,6 +38,7 @@ Route::post('/services/getScheduleItemsList', [ApiServicesController::class, 'ge
 Route::post('/services/getScheduleItemTypesList', [ApiServicesController::class, 'getScheduleItemTypesList'])->name('front.services.get_schedule_item_types_list');
 Route::post('/services/getScheduleStatusList', [ApiServicesController::class, 'getScheduleStatusList'])->name('front.services.get_schedule_status_list');
 Route::post('/services/getSettingsList', [ApiServicesController::class, 'getSettingsList'])->name('front.services.get_settings_list');
+Route::post('/services/getArtistsGigsList', [ApiServicesController::class, 'getArtistsGigsList'])->name('front.services.get_settings_list');
 Route::post('/services/getYoutubeUrl', [ApiServicesController::class, 'getYoutubeUrl'])->name('front.services.get_youtube_url');
 
 Route::post('/services/getCountriesDetail', [ApiServicesController::class, 'getCountriesDetail'])->name('front.services.get_countries_detail');
