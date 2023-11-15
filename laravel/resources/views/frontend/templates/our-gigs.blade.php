@@ -3,103 +3,296 @@
     <div class="overlay overlay1"></div>
     <section id="main-container" class="min-vh-100 container-fluid">
         <div class="container-xxxl mx-auto container-main">
-            <div class="row justify-content-end align-content-end align-items-center h-100 vh-100">
-                <div class="owl-carousel owl-theme mb-5">
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
+            <div class="row justify-content-stretch align-content-around align-items-between h-100 vh-100">
+                <div class="col-12 p-0 z-1 container-xxxl">
+                    <div class="w-100 h-100 overlay-contentx justify-content-around flex-row d-flex">
+                        <div class="d-flex justify-content-between align-items-start align-content-around container-xxxl h-75 h-sm-100 h-100 h-12 overflow-y-auto flex-column flex-sm-row">
+                            <div class="col-12 col-md-6 px-5 text-justify">
+                                <span class="page-subtitle size3 ff-oswald fw-bold">Illustration</span>
+                                <span class="page-subtitle size3 ff-oswald">Gig</span>
+                                <h1 class="page-title size1 ff-oswald">Be <strong>strong</strong> traning hard</h1>
+                                <p class="page-description ff-graphikbold">
+                                    We are a team of professional illustrator and concept artist from Indonesia. Our field of expertise include making both digital and traditional illustration.
+                                </p>
+                                <p class="page-description ff-graphikbold">
+                                    
+                                    We live in Indonesia and our local time-zone is GMT+7. Pardon us if we reply your message a little bit late but we'll get to it as soon as we are online.
+                                </p>
+                                <p class="page-description ff-graphikbold">
+                                    Thank you and have a good day.
+                                </p>
+                            </div>
+                            <div class="col-12 col-md-6 px-5 pb-5 zindex10">
+                                <div class="row justify-content-start align-items-start g-1">
+                                    <div class="col-12">
+                                        <span class="page-subtitle size3 ff-oswald fw-bold">Illustration</span>
+                                        <span class="page-subtitle size3 ff-oswald">Artist</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="owlcarousel-artists owl-carousel owl-theme">
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card text-dark h-100 placeholder-glow">
+                                                <div class="placeholder">
+                                                    <img class="card-img object-fit-cover h-100"
+                                                        src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                        alt="Title">
+                                                </div>
+                                                <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                    <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                        <h4 class="card-title size5">
+                                                            <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="owlcarouselartists-nav-container position-absolute owl-nav z-3"></div>
+                                        <div class="owlcarouselartists-dot-container position-absolute owl-dots z-3"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-100 h-100">
-                            <div class="card text-start anime-card2 h-100">
-                                <img class="card-img" src="holder.js/100px180/" alt="Title">
-                                <div class="card-img-overlay card-body">
-                                    <h4 class="card-title">Title</h4>
-                                    <p class="card-text">Body</p>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
                 </div>
 
-                <div class="col-12 my-auto p-0 position-fixed z-1 container-xxxl">
-                    <div class="owlcarousel-nav-container position-relative owl-nav"></div>
-                    <div class="owlcarousel-dot-container position-fixed owl-dots"></div>
+                <div class="row fixed-bottom m-0">
+                    <div class="col-12 my-auto p-0 fixed-bottom z-1 container-xxxl">
+                        <div class="owlcarousel-nav-container position-relative owl-nav mb-5"></div>
+                    </div>
+                    <div class="col-12 px-5 m-0">
+                        <div class="owlcarousel-dot-container position-fixed owl-dots"></div>
+                        <div class="owl-carousel sticky-bottom owlcarousel-gig-list owl-theme d-none d-sm-block">
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100 h-100">
+                                <div class="card text-start anime-card2 h-100">
+                                    <img class="card-img" src="holder.js/100px180/" alt="Title">
+                                    <div class="card-img-overlay card-body">
+                                        <h4 class="card-title">Title</h4>
+                                        <p class="card-text">Body</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,7 +308,7 @@
         var defaultArtistContent = $(".master-artist").first().clone();
 
         $(document).ready(function() {
-            $(".owl-carousel").owlCarousel({
+            $(".owlcarousel-gig-list").owlCarousel({
                 items: 6,
                 merge: false,
                 loop: true,
@@ -129,6 +322,41 @@
                     '<span class="fa fa-caret-right"></span>'
                 ],
                 center: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 4
+                    },
+                    1200: {
+                        items: 6
+                    },
+                    1400: {
+                        items: 8
+                    },
+                }
+            });
+            $(".owlcarousel-artists").owlCarousel({
+                items: 6,
+                merge: false,
+                loop: 0,
+                margin: 10,
+                video: true,
+                lazyLoad: true,
+                nav: true,
+                navContainer: '.owlcarouselartists-nav-container',
+                dotsContainer: '.owlcarouselartists-dot-container',
+                navText: ['<span class="fa fa-caret-left"></span>',
+                    '<span class="fa fa-caret-right"></span>'
+                ],
+                center: false,
                 responsive: {
                     0: {
                         items: 1
