@@ -4,9 +4,9 @@
     <section id="main-container" class="min-vh-100 container-fluid">
         <div class="container-xxxl mx-auto container-main">
             <div class="row justify-content-start align-content-start align-items-start h-100 vh-100 pt-5">
-                <div class="col-12 p-0 z-1 container-xxxl pt-5 mb-5">
+                <div class="col-12 p-0 z-1 container-xxxl pt-5">
                     <div class="w-100 h-100 overlay-contentx justify-content-around flex-row d-flex">
-                        <div class="d-flex justify-content-between align-items-start align-content-around container-xxxl h-75 h-sm-100 h-100 h-12 overflow-y-auto flex-column flex-sm-row mb-5">
+                        <div class="d-flex justify-content-between align-items-start align-content-around container-xxxl h-75 h-sm-100 h-100 h-12 overflow-y-auto flex-column flex-sm-row">
                             <div class="col-12 col-md-6 px-5 text-justify">
                                 <span class="page-subtitle size3 ff-oswald fw-bold">Illustration</span>
                                 <span class="page-subtitle size3 ff-oswald">Gig</span>
@@ -22,7 +22,7 @@
                                     Thank you and have a good day.
                                 </p>
                             </div>
-                            <div class="col-12 col-md-6 px-5 pb-5 zindex10 mb-5">
+                            <div class="col-12 col-md-6 px-5 pb-5 zindex10">
                                 <div class="row justify-content-start align-items-start g-1">
                                     <div class="col-12">
                                         <span class="page-subtitle size3 ff-oswald fw-bold">Illustration</span>
@@ -57,56 +57,18 @@
                                         <div class="owlcarouselartists-dot-container position-absolutex owl-dots z-3"></div>
                                     </div>
                                 </div>
-                                <div class="row justify-content-start align-items-start g-1 mt-5 mb-5">
-                                    <div class="col-12">
-                                        <span class="page-subtitle size3 ff-oswald fw-bold">Illustration</span>
-                                        <span class="page-subtitle size3 ff-oswald">Portfolios</span>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="owlcarousel-portfolios owl-carousel owl-theme">
-                                            @for($i = 0; $i < 15; $i++)
-                                            <div class="item">
-                                                <div class="card text-dark h-100 placeholder-glow">
-                                                    <div class="placeholder">
-                                                        <img class="card-img object-fit-cover h-100"
-                                                            src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
-                                                            alt="Title">
-                                                    </div>
-                                                    <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
-                                                        <div class="anime-bg-secondary-trans1 px-1 py-1">
-                                                            <h4 class="card-title size5">
-                                                                <span class="ff-delicious-handrawn fw-bold">Art malik</span>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endfor
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="owlcarouselportfolios-nav-container position-absolutex owl-nav z-3 w-100"></div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="owlcarouselportfolios-dot-container position-absolutex owl-dots z-3"></div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="row fixed-bottom m-0 p-0 footer-owlcarousel">
-                    <div class="col-12 my-auto p-0 z-1 container-xxxlx text-center">
-                        <h3 class="owlcarousel-group-title size5 owlcarousel-toggle showed">
-                            <span class="fa fa-caret-down"></span>
-                            <span>Choose Our Gigs<span>
-                            <span class="fa fa-caret-down"></span>
-                        </h3>
+                <div class="row fixed-bottom m-0 p-0">
+                    <div class="col-12 my-auto p-0 fixed-bottom z-1 container-xxxl">
+                        <div class="owlcarousel-nav-container position-relative owl-nav mb-4"></div>
                     </div>
-                    <div class="col-12 m-0 owlcarousel-main-container d-flex justify-content-center">
-                        <div class="owlcarousel-dot-container position-fixed owl-dots d-none d-sm-block"></div>
-                        <div class="owl-carousel sticky-bottom owlcarousel-gig-list owl-theme d-nonex d-sm-block mx-5">
+                    <div class="col-12 px-5 m-0 owlcarousel-main-container d-flex justify-content-center">
+                        <div class="owlcarousel-dot-container position-fixed owl-dots"></div>
+                        <div class="owl-carousel sticky-bottom owlcarousel-gig-list owl-theme d-none d-sm-block">
                             @for($i = 0; $i < 15; $i++)
                             <div class="w-100 h-100">
                                 <div class="card text-start anime-card2 h-100">
@@ -119,9 +81,6 @@
                             </div>
                             @endfor
                         </div>
-                    </div>
-                    <div class="col-12 my-auto p-0 fixed-bottom container-xxxlx">
-                        <div class="owlcarousel-nav-container position-relative owl-nav mb-sm-4"></div>
                     </div>
                 </div>
             </div>
@@ -138,35 +97,6 @@
         var defaultArtistContent = $(".master-artist").first().clone();
 
         $(document).ready(function() {
-            $("body").on("click",".owlcarousel-toggle",function(){
-                
-                var container = $(".owlcarousel-main-container");
-                var navcontainer = $(".owlcarousel-nav-container");
-
-                //if($(container).hasClass("animate__animated") == false)
-                if($(this).hasClass("showed") === true)
-                {
-                    $(navcontainer).addClass("animate__slideOutDown").addClass("animate__animated").addClass("animate__fast");
-                    $(navcontainer).on("animationend",function(e){
-                        if($(".owlcarousel-toggle").hasClass("showed")){}else{
-                            $(this).addClass("d-none");
-                        }
-                    })
-                    $(container).addClass("animate__slideOutDown").addClass("animate__animated").addClass("animate__fast");
-                    $(container).on("animationend",function(e){
-                        if($(".owlcarousel-toggle").hasClass("showed")){}else{
-                            $(this).addClass("d-none");
-                        }
-                    })
-                    $(this).removeClass("showed");
-                }else{
-                    $(container).removeClass("animate__slideOutDown").removeClass("animate__animated").removeClass("d-none").addClass("animate__slideInUp").addClass("animate__animated");
-
-                    $(navcontainer).removeClass("animate__slideOutDown").removeClass("animate__animated").removeClass("d-none").addClass("animate__slideInUp").addClass("animate__animated");
-                    $(this).addClass("showed");
-                }
-            });
-
             $(".owlcarousel-gig-list").owlCarousel({
                 items: 6,
                 merge: false,
@@ -193,41 +123,6 @@
                     },
                     992: {
                         items: 6
-                    },
-                    1200: {
-                        items: 6
-                    },
-                    1400: {
-                        items: 8
-                    },
-                }
-            });
-            $(".owlcarousel-portfolios").owlCarousel({
-                items: 6,
-                merge: false,
-                loop: 0,
-                margin: 10,
-                video: true,
-                lazyLoad: true,
-                nav: true,
-                navContainer: '.owlcarouselportfolios-nav-container',
-                dotsContainer: '.owlcarouselportfolios-dot-container',
-                navText: ['<span class="fa fa-caret-left"></span>',
-                    '<span class="fa fa-caret-right"></span>'
-                ],
-                center: false,
-                responsive: {
-                    0: {
-                        items: 2
-                    },
-                    576: {
-                        items: 2
-                    },
-                    768: {
-                        items: 3
-                    },
-                    992: {
-                        items: 4
                     },
                     1200: {
                         items: 6

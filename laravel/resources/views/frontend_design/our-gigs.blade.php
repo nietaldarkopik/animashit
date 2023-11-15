@@ -11,7 +11,7 @@ include("widgets/navbar.php");
             <source src="./assets/videos/video1.mp4" type="video/mp4" class="w-100">
         </video>
         <div class="container-fluid container-main">
-            <div class="row justify-content-start align-items-stretch g-2 align-self-scretch  min-vh-100">
+            <div class="row justify-content-scretch align-items-start g-2 align-self-scretch  min-vh-100 mt-5my-5">
                 <div class="col-md-4 d-flex">
                     <div class="row g-2 m-2 my-auto nav-gig-list">
                         <div class="col-md-12 anime-bg-secondary-trans1 px-2 py-1 gig-items">

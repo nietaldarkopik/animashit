@@ -3,7 +3,7 @@
         'name' => 'animashit/ytdl',
         'pretty_version' => 'dev-production',
         'version' => 'dev-production',
-        'reference' => '51d57f3a6a47e2ada08c32d2287e6b88a6619183',
+        'reference' => 'ddd71eb03edddd5036ffb386b4fddd96bfcf9976',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'animashit/ytdl' => array(
             'pretty_version' => 'dev-production',
             'version' => 'dev-production',
-            'reference' => '51d57f3a6a47e2ada08c32d2287e6b88a6619183',
+            'reference' => 'ddd71eb03edddd5036ffb386b4fddd96bfcf9976',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -128,17 +128,65 @@
     }
 }
 
-@media screen and (min-width: 401) {
+@media screen and (max-width: 501px) {
+    .owlcarousel-main-container {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+@media screen and (min-width: 401px) {
     .h-sm-100 {
         width: 100% !important;
     }
 }
 
-.text-justify{
+.text-justify {
     text-align: justify;
 }
+
+.ff-caveat {
+    font-family: 'Caveat';
+}
+
+.ff-delicious-handrawn {
+    font-family: 'Delicious Handrawn';
+}
+
+.ff-golos-text {
+    font-family: 'Golos Text';
+}
+
+.ff-handlee {
+    font-family: 'Handlee';
+}
+
+.ff-indie-flower {
+    font-family: 'Indie Flower';
+}
+
+.ff-montserrat {
+    font-family: 'Montserrat';
+}
+
+.ff-nanum-pen-script {
+    font-family: 'Nanum Pen Script';
+}
+
 .ff-oswald {
-    font-family: "Oswald";
+    font-family: 'Oswald';
+}
+
+.ff-satisfy {
+    font-family: 'Satisfy';
+}
+
+.ff-sriracha {
+    font-family: 'Sriracha';
+}
+
+.ff-sue-ellen-francisco {
+    font-family: 'Sue Ellen Francisco';
 }
 
 .ff-graphikbold {
@@ -502,10 +550,21 @@ header {
 }
 
 @keyframes animecard2 {
-    0% {transform: rotate(0deg);}
-    25% {transform: rotate(90deg);}
-    50% {transform: rotate(180deg);}
-    75% {transform: rotate(270deg);}
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
 }
 
 .anime-card2 {
@@ -516,6 +575,7 @@ header {
     overflow: hidden;
     cursor: pointer;
     z-index: 5;
+    opacity: 0.5;
 }
 
 .anime-card3 {
@@ -527,23 +587,31 @@ header {
     z-index: 5;
 }
 
-.owl-item:has(~ .owl-item.active.center)  .anime-card2{
+.owl-item:has(~ .owl-item.active.center) .anime-card2 {
     transform: skewX(-15deg);
 }
-    
-.owl-item.active.center .anime-card2,.anime-card2:hover {
+
+.anime-card2:hover {
+    /* animation-name: pulse;
+    animation-duration: 2s; */
+    z-index: 10;
+    opacity: 1;
+}
+
+.owl-item.active.center .anime-card2 {
     /* animation-name: pulse;
     animation-duration: 2s; */
     z-index: 10;
     transform: skewX(0deg);
 }
 
-.anime-card2 .card-body{
-    display: none;;
+.anime-card2 .card-body {
+    display: none;
+    ;
 }
 
 .owl-item.active.center .anime-card2 .card-body,
-.anime-card2:hover .card-body{
+.anime-card2:hover .card-body {
     display: block;
     animation-name: fadeInUp;
     animation-duration: 1s;
@@ -588,7 +656,8 @@ header {
     transform: skewX(15deg);
 } */
 
-.anime-card2 .card-body,.anime-card2 > img{
+.anime-card2 .card-body,
+.anime-card2>img {
     z-index: 2;
     background-color: #ffffff;
 }
@@ -613,6 +682,104 @@ header {
     font-weight: bold;
     color: black;
 }
+
+
+/******* start animecard 4 ****/
+
+@keyframes animecard4 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    75% {
+        transform: rotate(270deg);
+    }
+}
+
+.anime-card4 {
+    margin: 35px 10px;
+    transform: skewX(5deg);
+    padding: 5px;
+    background: #f1df00;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 5;
+    opacity: 0.5;
+}
+
+.anime-card4 {
+    margin: 35px 10px;
+    padding: 5px;
+    background: #000000;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 5;
+}
+
+
+.owl-item:has(~ .owl-item.active.center) .anime-card4 {
+    transform: skewX(-5deg);
+}
+
+.anime-card4:hover {
+    /* animation-name: pulse;
+    animation-duration: 2s; */
+    z-index: 10;
+    opacity: 1;
+}
+
+.owl-item.active.center .anime-card4 {
+    /* animation-name: pulse;
+    animation-duration: 2s; */
+    z-index: 10;
+    transform: skewX(0deg);
+}
+
+.owl-item.active.center .anime-card4 .card-body,
+.anime-card4:hover .card-body {
+    display: block;
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    height: 50%;
+    margin: 5px;
+    top: unset;
+}
+
+.owl-item.active.center .anime-card4::before,
+.anime-card4:hover::before {
+    content: "";
+    background: linear-gradient(0deg, #ffd904 0%, #ff0000 50%, #000000 100%);
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    margin-left: -50%;
+    margin-top: -50%;
+    animation-name: animecard4;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    /* animation-delay: 2s; */
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    z-index: 1;
+    transform: skewX(5deg);
+}
+
+.anime-card4 .card-body,
+.anime-card4>img {
+    z-index: 2;
+    background-color: #ffffff;
+}
+
+
+/******* end animecard 4 ****/
 
 .text-outline1 {
     text-shadow:
@@ -706,6 +873,10 @@ Widget Component
 
 .nav-gig-list .gig-items .gig-excerpt {
     display: none;
+}
+
+.nav-gig-list .gig-items .gig-title {
+    font-size: 20px;
 }
 
 .nav-gig-list .gig-items:hover {
@@ -962,6 +1133,7 @@ Widget Component
     left: 0px;
     position: absolute;
 }
+
 .overlay {
     position: fixed;
     top: 0px;
@@ -977,7 +1149,7 @@ Widget Component
 
 .overlay2 {
     opacity: 0.5;
-    background-image: linear-gradient(125deg, rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0) 41%, rgb(0, 0, 0) 50%, rgb(3, 3, 3) 61%,rgb(255, 255, 255) 80%,rgb(255, 255, 255) 80%);
+    background-image: linear-gradient(125deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 41%, rgb(0, 0, 0) 50%, rgb(3, 3, 3) 61%, rgb(255, 255, 255) 80%, rgb(255, 255, 255) 80%);
 }
 
 .navbar-collapse .overlay {
@@ -989,25 +1161,65 @@ Widget Component
 /**** Owl Carousel ***/
 
 .owlcarousel-nav-container,
-.owlcarousel-dot-container{
+.owlcarousel-dot-container {
     position: fixed;
     width: 100%;
 }
-.owlcarousel-dot-container{
+
+.owlcarousel-dot-container {
     width: 100%;
     display: block;
     z-index: 999999 !important;
     bottom: 20px;
     text-align: center;
 }
+
 .owlcarousel-nav-container.owl-nav.disabled,
-.owlcarousel-dot-container.owl-dots.disabled {
+.owl-nav.disabled,
+.owlcarousel-dot-container.owl-dots.disabled,
+.owl-dots.disabled {
     display: none;
+}
+
+.owl-prev,
+.owl-next {
+    background: var(--animashit-color-secondary);
+    border-radius: 0;
+    border: 1px var(--animashit-color-primary) solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px 5px;
+    margin: 0 3px;
+}
+
+.owl-dots {
+    text-align: right;
+}
+
+.owlcarousel-dot-container.owl-dots {
+    text-align: center !important;
+}
+
+.owl-dot {
+    background: var(--animashit-color-secondary);
+    border-radius: 0;
+    border: 1px var(--animashit-color-primary) solid;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    margin: 0 3px;
+}
+
+.owl-dot.active {
+    background-color: var(--animashit-color-primary);
 }
 
 .owlcarousel-nav-container.owl-nav .owl-prev,
 .owlcarousel-nav-container.owl-nav .owl-next,
-.owlcarousel-dot-container.owl-dots .owl-dot {
+.owlcarousel-dot-container.owl-dots .owl-dot,
+.owl-prev,
+.owl-next,
+.owl-dot {
     cursor: pointer;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -1017,30 +1229,35 @@ Widget Component
 }
 
 .owlcarousel-nav-container.owl-nav span,
-.owlcarousel-nav-container.owl-nav span
-{
+.owlcarousel-nav-container.owl-nav span {
     cursor: pointer;
 }
 
 .owlcarousel-nav-container.owl-nav .owl-prev,
-.owlcarousel-nav-container.owl-nav .owl-next
-{
+.owlcarousel-nav-container.owl-nav .owl-next {
     width: 50px;
     height: 150px;
     background-color: #000 !important;
+    position: absolute;
+    margin-top: -150px !important;
 }
-.owl-carousel .owl-item{
+.owlcarousel-nav-container.owl-nav .owl-next {
+    right: 0px;
+}
+
+.owl-carousel .owl-item {
     /* width: 100% !important; */
     height: 100% !important;
 }
-.owlcarousel-nav-container.owl-nav button.owl-next
-{
+
+.owlcarousel-nav-container.owl-nav button.owl-next {
     float: right;
     background-color: #000 !important;
 }
+
 .owlcarousel-nav-container.owl-nav button.owl-prev,
 .owlcarousel-nav-container.owl-nav button.owl-next,
-.owlcarousel-dot-container.owl-dots  .owl-dot {
+.owlcarousel-dot-container.owl-dots .owl-dot {
     background: rgb(255, 196, 0);
     color: yellow;
     border: none;
@@ -1048,18 +1265,19 @@ Widget Component
     font: inherit;
     padding: 3px 15px;
 }
+
 .owlcarousel-dot-container.owl-dots .owl-dot.active {
     background-color: #000000a6;
 }
 
-.owlcarousel-subtitle{
+.owlcarousel-subtitle {
     position: relative;
     top: 0;
     -webkit-transition: all 0.2s ease 0.2s;
     -o-transition: all 0.2s ease 0.2s;
     transition: all 0.2s ease 0.2s;
     opacity: 1;
-        display: block;
+    display: block;
     font-size: 18px;
     color: #ffffff;
     text-transform: uppercase;
@@ -1068,10 +1286,10 @@ Widget Component
     margin-bottom: 18px;
     position: relative;
     mix-blend-mode: difference;
-    
+
 }
 
-.owlcarousel-title{
+.owlcarousel-title {
     position: relative;
     font-size: 80px;
     color: #ffffff;
@@ -1091,6 +1309,68 @@ Widget Component
     opacity: 1;
 }
 
-.owlcarousel-subtitle strong, .owlcarousel-title strong{
+.footer-owlcarousel::before {
+    content: "";
+    width: 100vw;
+    height: 100%;
+    margin-top: 20px;
+    position: absolute;
+    background-color: var(--animashit-color-primary-trans);
+}
+
+.owlcarousel-subtitle strong,
+.owlcarousel-title strong {
     color: #f36100;
+}
+
+.owlcarousel-group-title {
+    margin-bottom: 0px;
+    background-color: var(--animashit-color-orange-trans);
+    display: inline-block;
+    position: relative;
+    padding: 5px;
+    font-family: "Oswald";
+    font-weight: bold;
+    border: 5px var(--animashit-color-primary-trans) solid;
+    cursor: pointer;
+}
+
+.owlcarousel-group-title:hover {
+    background-color: var(--animashit-color-orange);
+}
+
+.owlcarousel-group-title::before {
+    content: "";
+    width: 50vw;
+    position: absolute;
+    background-color: var(--animashit-color-primary-trans);
+    height: 5px;
+    margin-top: 10px;
+    margin-right: -5px;
+    right: -50vw;
+}
+
+.owlcarousel-group-title::after {
+    content: "";
+    width: 50vw;
+    position: absolute;
+    background-color: var(--animashit-color-primary-trans);
+    height: 5px;
+    margin-top: 10px;
+    margin-left: -5px;
+    left: -50vw;
+}
+
+/* General Page */
+.page-title {
+    font-size: 40px !important;
+    font-family: "Oswald";
+
+}
+
+.page-description {
+    font-size: 22px !important;
+    font-family: "Caveat";
+    line-height: 24px;
+
 }

@@ -69,24 +69,24 @@ $(function() {
             if(top > 50)
             {
                 $("body").addClass("mt-nav");
-                //$("nav.navbar").addClass("sticky-top");
-                $("nav.navbar").addClass("anime-bg-primary-trans4");
-                $("nav.navbar").addClass("bg-dark");
-                $("nav.navbar").addClass("navbar-dark");
-                $("nav.navbar").addClass("text-outline1");
-                $("nav.navbar").removeClass("navbar-light");
-                //$("nav.navbar").removeClass("text-outline2");
+                //$(".main-navbar").addClass("sticky-top");
+                $(".main-navbar").addClass("anime-bg-primary-trans4");
+                $(".main-navbar").addClass("bg-dark");
+                $(".main-navbar").addClass("navbar-dark");
+                $(".main-navbar").addClass("text-outline1");
+                $(".main-navbar").removeClass("navbar-light");
+                //$(".main-navbar").removeClass("text-outline2");
                 $(navbar_logo).hide();
                 $(navbar_logolight).show();
             }else{
                 $("body").removeClass("mt-nav");
-                //$("nav.navbar").removeClass("sticky-top");
-                $("nav.navbar").addClass("navbar-light");
-                //$("nav.navbar").addClass("text-outline2");
-                $("nav.navbar").removeClass("bg-dark");
-                $("nav.navbar").removeClass("navbar-dark");
-                $("nav.navbar").removeClass("text-outline1");
-                $("nav.navbar").removeClass("anime-bg-primary-trans4");
+                //$(".main-navbar").removeClass("sticky-top");
+                $(".main-navbar").addClass("navbar-light");
+                //$(".main-navbar").addClass("text-outline2");
+                $(".main-navbar").removeClass("bg-dark");
+                $(".main-navbar").removeClass("navbar-dark");
+                $(".main-navbar").removeClass("text-outline1");
+                $(".main-navbar").removeClass("anime-bg-primary-trans4");
                 $(navbar_logo).show();
                 $(navbar_logolight).hide();
             }

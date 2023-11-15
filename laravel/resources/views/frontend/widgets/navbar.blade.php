@@ -1,7 +1,7 @@
-    <header class="container-fluid fixed-top mx-auto">
+    <header class="container-fluid fixed-top mx-auto main-navbar">
         <div class="row">
-            <div class="col-md-12">
-                <nav class="navbar navbar-expand-md px-4 zindex11 fixed-topx main-navbar container-xxxl mx-auto">
+            <div class="col-md-12 p-0">
+                <nav class="navbar navbar-expand-md px-4 zindex11 fixed-topx container-xxxl mx-auto">
                     <a class="navbar-brand" href="#">
                         <img src="{{ url('frontend/animashit/assets/images/logo.png') }}" class="navbar-logo img-fluidx"
                             height="40" style="display:none;" />
