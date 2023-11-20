@@ -1,101 +1,104 @@
 @extends('../frontend.master')
+@php
+$gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
+@endphp
 @section('content')
     <div class="overlay overlay1"></div>
+    <div class="overlay overlay3"></div>
     <section id="main-container" class="min-vh-100 container-fluid">
         <div class="container-xxxl mx-auto container-main">
             <div class="row justify-content-start align-content-start align-items-start h-100 vh-100 pt-5">
-                <div class="col-12 p-0 z-1 container-xxxl pt-5 mb-5">
+                @foreach ($gigs as $o => $item)
+                <div class="col-12 p-0 z-1 container-xxxl pt-5 mb-5 overflow-y-auto gig-container @if($o == 0) active @endif gig-container-{{$item->id}}">
                     <div class="w-100 h-100 overlay-contentx justify-content-around flex-row d-flex">
                         <div class="d-flex justify-content-between align-items-start align-content-around container-xxxl h-75 h-sm-100 h-100 h-12 overflow-y-auto flex-column flex-sm-row mb-5">
                             <div class="col-12 col-md-6 px-5 text-justify">
-                                <span class="page-subtitle size3 ff-oswald fw-bold">Illustration</span>
-                                <span class="page-subtitle size3 ff-oswald">Gig</span>
-                                <h1 class="page-title size1 ff-oswald">Be <strong>strong</strong> traning hard</h1>
+                                <h2 class="page-subtitle size3 ff-oswald"></span>
+                                <h1 class="page-title ff-oswald">
+                                    <strong>{!! $item->title !!}</strong> Gig
+                                </h1>
                                 <p class="page-description ff-graphikbold">
-                                    We are a team of professional illustrator and concept artist from Indonesia. Our field of expertise include making both digital and traditional illustration.
-                                </p>
-                                <p class="page-description ff-graphikbold">
-                                    
-                                    We live in Indonesia and our local time-zone is GMT+7. Pardon us if we reply your message a little bit late but we'll get to it as soon as we are online.
-                                </p>
-                                <p class="page-description ff-graphikbold">
-                                    Thank you and have a good day.
+                                    {!! $item->description !!}
                                 </p>
                             </div>
                             <div class="col-12 col-md-6 px-5 pb-5 zindex10 mb-5">
                                 <div class="row justify-content-start align-items-start g-1">
                                     <div class="col-12">
-                                        <span class="page-subtitle size3 ff-oswald fw-bold">Illustration</span>
+                                        <span class="page-subtitle size3 ff-oswald fw-bold">{!! $item->title !!}</span>
                                         <span class="page-subtitle size3 ff-oswald">Artist</span>
                                     </div>
                                     <div class="col-12">
                                         <div class="owlcarousel-artists owl-carousel owl-theme">
-                                            @for($i = 0; $i < 15; $i++)
+                                            @foreach($item->gigHeads as $ia => $a)
+                                            @php
+                                            $art = $a->artist;
+                                            @endphp
                                             <div class="item">
-                                                <div class="card text-dark h-100 placeholder-glow">
-                                                    <div class="placeholder">
-                                                        <img class="card-img object-fit-cover h-100"
-                                                            src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
-                                                            alt="Title">
-                                                    </div>
-                                                    <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                <div class="card text-dark h-100 card-artist">
+                                                    <img class="card-img d-none object-fit-cover d-flex h-100"
+                                                        src="{{ url($art->avatar) }}"
+                                                        alt="Title">
+                                                    <div class="card-img-overlay rounded-3 d-flex flex-column justify-content-end p-0 pb-2">
                                                         <div class="anime-bg-secondary-trans1 px-1 py-1">
                                                             <h4 class="card-title size5">
-                                                                <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                                <span class="ff-delicious-handrawn fw-bold">{{$art->nickname}}</span>
                                                             </h4>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endfor
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="owlcarouselartists-nav-container position-absolutex owl-nav z-3 w-100"></div>
+                                        <div class="owlcarouselartists-nav-container-{{$o}} position-absolutex owl-nav z-3 w-100"></div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="owlcarouselartists-dot-container position-absolutex owl-dots z-3"></div>
+                                        <div class="owlcarouselartists-dot-container-{{$o}} position-absolutex owl-dots z-3"></div>
                                     </div>
                                 </div>
                                 <div class="row justify-content-start align-items-start g-1 mt-5 mb-5">
                                     <div class="col-12">
-                                        <span class="page-subtitle size3 ff-oswald fw-bold">Illustration</span>
+                                        <span class="page-subtitle size3 ff-oswald fw-bold">{!! $item->title !!}</span>
                                         <span class="page-subtitle size3 ff-oswald">Portfolios</span>
                                     </div>
                                     <div class="col-12">
                                         <div class="owlcarousel-portfolios owl-carousel owl-theme">
-                                            @for($i = 0; $i < 15; $i++)
+                                            @foreach($item->portfolios as $ia => $a)
+                                            @php
+                                            $artist = $a->profile->where('user_type',4)->first();
+                                            $client = $a->profile->where('user_type',5)->first();
+                                            $media = $a->media->where('type','image')->first();
+                                            @endphp
                                             <div class="item">
-                                                <div class="card text-dark h-100 placeholder-glow">
-                                                    <div class="placeholder">
-                                                        <img class="card-img object-fit-cover h-100"
-                                                            src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
-                                                            alt="Title">
-                                                    </div>
+                                                <div class="card text-dark h-100 card-portfolio">
+                                                    <img class="card-img d-none object-fit-cover d-flex h-100"
+                                                        src="{{ url($media->media) }}"
+                                                        alt="Title">
                                                     <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
                                                         <div class="anime-bg-secondary-trans1 px-1 py-1">
                                                             <h4 class="card-title size5">
-                                                                <span class="ff-delicious-handrawn fw-bold">Art malik</span>
+                                                                <span class="ff-delicious-handrawn fw-bold">{{$client->nickname}}</span>
                                                             </h4>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endfor
+                                            @endforeach
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="owlcarouselportfolios-nav-container position-absolutex owl-nav z-3 w-100"></div>
+                                        <div class="owlcarouselportfolios-nav-container-{{$o}} position-absolutex owl-nav z-3 w-100"></div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="owlcarouselportfolios-dot-container position-absolutex owl-dots z-3"></div>
+                                        <div class="owlcarouselportfolios-dot-container-{{$o}} position-absolutex owl-dots z-3"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                @endforeach
                 <div class="row fixed-bottom m-0 p-0 footer-owlcarousel">
                     <div class="col-12 my-auto p-0 z-1 container-xxxlx text-center">
                         <h3 class="owlcarousel-group-title size5 owlcarousel-toggle showed">
@@ -107,29 +110,64 @@
                     <div class="col-12 m-0 owlcarousel-main-container d-flex justify-content-center">
                         <div class="owlcarousel-dot-container position-fixed owl-dots d-none d-sm-block"></div>
                         <div class="owl-carousel sticky-bottom owlcarousel-gig-list owl-theme d-nonex d-sm-block mx-5">
-                            @for($i = 0; $i < 15; $i++)
+                            @foreach ($gigs as $item)
                             <div class="w-100 h-100">
-                                <div class="card text-start anime-card2 h-100">
-                                    <img class="card-img" src="holder.js/100px120/" alt="Title">
+                                <div class="card text-start anime-card2 h-100 card-gig" data-gig_id="{{ $item->id }}">
+                                    <img class="card-img" src="{!! url($item->gigMedias[0]->media) !!}" alt="Title">
                                     <div class="card-img-overlay card-body p-1">
-                                        <h4 class="card-title my-1">Title</h4>
-                                        <p class="card-text my-1">Body</p>
+                                        <h4 class="card-title my-1 h6">{{ $item->title }}</h4>
+                                        {{-- <p class="card-text my-1">Body</p> --}}
                                     </div>
                                 </div>
                             </div>
-                            @endfor
+                            @endforeach
                         </div>
                     </div>
-                    <div class="col-12 my-auto p-0 fixed-bottom container-xxxlx">
-                        <div class="owlcarousel-nav-container position-relative owl-nav mb-sm-4"></div>
-                    </div>
+                </div>
+                <div class="col-12 my-auto p-0 fixed-bottom container-xxxl">
+                    <div class="owlcarousel-nav-container position-relative owl-nav mb-sm-4"></div>
                 </div>
             </div>
         </div>
     </section>
+    
+    <!-- Modal -->
+    <div class="modal fade anime-modal py-3" id="modalPage" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog container container-xxxl mx-auto modal-sm modal-fullscreen" role="document">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <h5 class="modal-title ff-oswald size4 fw-bold" id="modalTitleId">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                <div class="modal-body ff-dmsans-regular">
+                    <div class="container-fluid">
+                        Add rows here
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
 @endsection
 
 @section('script')
+    <script>
+        $(document).ready(function(){
+            var modalPage = document.getElementById('modalPage');
+            modalPage.addEventListener('show.bs.modal', function (event) {
+                // Button that triggered the modal
+                let button = event.relatedTarget;
+                // Extract info from data-bs-* attributes
+                let recipient = button.getAttribute('data-bs-whatever');
+
+                // Use above variables to manipulate the DOM
+            });
+        });
+    </script>
     <script>
         var baseUrl = "{{ url('/') }}";
         var currentPage = "{{ $page?->slug }}";
@@ -137,6 +175,31 @@
         var defaultGigContent = $("#our-gig-content").clone();
         var defaultArtistContent = $(".master-artist").first().clone();
 
+        $(window).on("load",function()
+        {       
+            $(".overlay3").remove();
+        });
+
+        const animateCSS = (element, animation, prefix = 'animate__') =>
+        // We create a Promise and return it
+        new Promise((resolve, reject) => {
+            const animationName = `${prefix}${animation}`;
+            const node = document.querySelector(element);
+
+            node.classList.add(`${prefix}animated`, animationName);
+
+            // When the animation ends, we clean the classes and resolve the Promise
+            function handleAnimationEnd(event) {
+            event.stopPropagation();
+            node.classList.remove(`${prefix}animated`, animationName);
+            resolve({element : node});
+            }
+
+            node.addEventListener('animationend', handleAnimationEnd, {once: true});
+        });
+        $("body").on("click",".card-artist",function(){
+            $("#modalPage").modal("show");
+        });
         $(document).ready(function() {
             $("body").on("click",".owlcarousel-toggle",function(){
                 
@@ -167,13 +230,19 @@
                 }
             });
 
-            $(".owlcarousel-gig-list").owlCarousel({
+            var owlcarouselGig = $(".owlcarousel-gig-list").owlCarousel({
                 items: 6,
                 merge: false,
-                loop: true,
+                loop: false,
                 margin: 10,
                 video: true,
                 lazyLoad: true,
+                onRefresh: function(e){
+                    $(e.target).find(".card-img").addClass("d-none").hide();
+                },
+                onRefreshed: function(e){
+                    $(e.target).find(".card-img").removeClass("d-none").show();                    
+                },
                 nav: true,
                 navContainer: '.owlcarousel-nav-container',
                 dotsContainer: '.owlcarousel-dot-container',
@@ -202,76 +271,159 @@
                     },
                 }
             });
-            $(".owlcarousel-portfolios").owlCarousel({
-                items: 6,
-                merge: false,
-                loop: 0,
-                margin: 10,
-                video: true,
-                lazyLoad: true,
-                nav: true,
-                navContainer: '.owlcarouselportfolios-nav-container',
-                dotsContainer: '.owlcarouselportfolios-dot-container',
-                navText: ['<span class="fa fa-caret-left"></span>',
-                    '<span class="fa fa-caret-right"></span>'
-                ],
-                center: false,
-                responsive: {
-                    0: {
-                        items: 2
-                    },
-                    576: {
-                        items: 2
-                    },
-                    768: {
-                        items: 3
-                    },
-                    992: {
-                        items: 4
-                    },
-                    1200: {
-                        items: 6
-                    },
-                    1400: {
-                        items: 8
-                    },
-                }
+
+            $("body").on("click",".card-gig",function(){
+                var gig_id = $(this).data("gig_id");
+                var current_container = $(".gig-container.active");
+                
+                $(".gig-container").fadeOut({
+                    duration: 1000,
+                    complete: function(){
+                        $(".gig-container").hide();
+                        var idx = $(".gig-container").index($(".gig-container-"+gig_id)[0]);
+                        console.log(idx);
+                        owlcarouselGig.trigger("to.owl.carousel",idx);
+                        $(".gig-container-"+gig_id).fadeIn({
+                            duration: 500,
+                            complete: function(){
+                                $(".gig-container.active").removeClass("active");
+                                $(".gig-container-"+gig_id).addClass("active");
+                            }
+                        })
+                    }
+                });
+
+                /* 
+                $(".gig-container")
+                    .removeClass("animate__animated")
+                    .removeClass("animate__slideInRight")
+                    .removeClass("animate__slideOutUp");
+                //$(".gig-container").fadeOut();
+                $(current_container).removeClass("active").addClass("animate__repeat-1").addClass("animate__slideOutUp").addClass("animate__animated").on("animationend",function(e){
+                    $(current_container).hide();
+                    $(".gig-container")
+                    .removeClass("animate__animated")
+                    .removeClass("animate__slideInRight")
+                    .removeClass("animate__slideOutUp");
+
+                    //$(".gig-container-"+gig_id).fadeIn();
+                    $(".gig-container-"+gig_id).show();
+                    $(".gig-container-"+gig_id).addClass("active").addClass("animate__repeat-1").addClass("animate__slideInUp").addClass("animate__animated").on("animationend",function(e){
+                        $(".gig-container-"+gig_id).removeClass("animate__slideInUp").removeClass("animate__animated");
+                        // Do something after the animation
+                    });
+                }); */
+
+                /*
+                $(".gig-container:not(.gig-container-"+gig_id+")")
+                .addClass("animate__slideOutUp")
+                .addClass("animate__animated")
+                .on("animationend",function(event){
+                    event.stopPropagation();
+                    $(".gig-container:not(.gig-container-"+gig_id+")")
+                    .addClass("d-none");
+                    $(".gig-container-"+gig_id).removeClass("animate__slideOutUp")
+                        .addClass("animate__slideInUp")
+                        .addClass("animate__animated").removeClass("d-none").on("animationend",function(event){
+                            event.stopPropagation();
+                            $(this).removeClass("animate_animated");
+                        });
+                });
+                */
             });
-            $(".owlcarousel-artists").owlCarousel({
-                items: 6,
-                merge: false,
-                loop: 0,
-                margin: 10,
-                video: true,
-                lazyLoad: true,
-                nav: true,
-                navContainer: '.owlcarouselartists-nav-container',
-                dotsContainer: '.owlcarouselartists-dot-container',
-                navText: ['<span class="fa fa-caret-left"></span>',
-                    '<span class="fa fa-caret-right"></span>'
-                ],
-                center: false,
-                responsive: {
-                    0: {
-                        items: 2
+
+            $(".owlcarousel-portfolios").each(function(i,v){
+                $(this).owlCarousel({
+                    items: 6,
+                    merge: false,
+                    loop: 0,
+                    margin: 10,
+                    video: true,
+                    lazyLoad: true,
+                    onRefresh: function(e){
+                        $(e.target).find(".card-img").addClass("d-none").hide();
                     },
-                    576: {
-                        items: 2
+                    onRefreshed: function(e){
+                        $(e.target).find(".card-img").removeClass("d-none").show();
+                        $(e.target).find(".card")
+                        .addClass("animate__animated")
+                        .addClass("animate__flipInX");
                     },
-                    768: {
-                        items: 3
-                    },
-                    992: {
-                        items: 4
-                    },
-                    1200: {
-                        items: 6
-                    },
-                    1400: {
-                        items: 8
-                    },
-                }
+                    nav: true,
+                    navContainer: '.owlcarouselportfolios-nav-container-'+i,
+                    dotsContainer: '.owlcarouselportfolios-dot-container-'+i,
+                    navText: ['<span class="fa fa-caret-left"></span>',
+                        '<span class="fa fa-caret-right"></span>'
+                    ],
+                    center: false,
+                    responsive: {
+                        0: {
+                            items: 2
+                        },
+                        576: {
+                            items: 2
+                        },
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 4
+                        },
+                        1200: {
+                            items: 4
+                        },
+                        1400: {
+                            items: 4
+                        },
+                    }
+                })
             });
+            $(".owlcarousel-artists").each(function(i,v){
+                $(this).owlCarousel({
+                    items: 6,
+                    merge: false,
+                    loop: 0,
+                    margin: 10,
+                    video: true,
+                    lazyLoad: true,
+                    onRefresh: function(e){
+                        $(e.target).find(".card-img").addClass("d-none").hide();
+                    },
+                    onRefreshed: function(e){
+                        $(e.target).find(".card-img").removeClass("d-none").show();
+                        $(e.target).find(".card")
+                        .addClass("animate__animated")
+                        .addClass("animate__flipInX");
+                    },
+                    nav: true,
+                    navContainer: '.owlcarouselartists-nav-container-'+i,
+                    dotsContainer: '.owlcarouselartists-dot-container-'+i,
+                    navText: ['<span class="fa fa-caret-left"></span>',
+                        '<span class="fa fa-caret-right"></span>'
+                    ],
+                    center: false,
+                    responsive: {
+                        0: {
+                            items: 2
+                        },
+                        576: {
+                            items: 2
+                        },
+                        768: {
+                            items: 2
+                        },
+                        992: {
+                            items: 4
+                        },
+                        1200: {
+                            items: 4
+                        },
+                        1400: {
+                            items: 4
+                        },
+                    }
+                });
+            })
         });
         $(document).ready(function() {
 
@@ -351,7 +503,7 @@
                                     <div class="col-6 col-sm-4 col-md-3 col-lg-2">
                                         <div class="card text-dark h-100 anim-shadow-hover anim-animate-heart artist-thumb" data-artist-id="` +
                             v.artist.id + `" data-gig-id="` + v.gig_id + `">
-                                            <img class="card-img object-fit-cover h-100"
+                                            <img class="card-img d-none object-fit-cover d-flex h-100"
                                                 src="{{ url('uploads/artists/') }}/` + v.artist.avatar + `"
                                                 alt="Title">
                                             <div class="card-img-overlay card-body d-flex flex-column justify-content-center p-0 pb-2">

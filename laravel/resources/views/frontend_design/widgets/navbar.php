@@ -39,9 +39,6 @@
                     <a class="nav-link ff-graphik fw-bold fs-5" href="schedules.php">Schedules</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link ff-graphik fw-bold fs-5" href="about-us.php">About Us</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link ff-graphik fw-bold fs-5" href="contact-us.php">Contact Us</a>
                 </li>
 

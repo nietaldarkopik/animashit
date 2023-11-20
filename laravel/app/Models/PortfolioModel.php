@@ -23,4 +23,14 @@ class PortfolioModel extends Model
     {
         return $this->belongsTo(GigPackageModel::class, 'gig_package_id');
     }
+
+    public function profile()
+    {
+        return $this->belongsTo(ProfileModel::class, 'artist_id');
+    }
+
+    public function media()
+    {
+        return $this->hasMany(PortfolioMediaModel::class, 'portfolio_id');
+    }
 }

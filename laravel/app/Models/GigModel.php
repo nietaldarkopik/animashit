@@ -23,4 +23,14 @@ class GigModel extends Model
     {
         return $this->hasMany(GigPackageModel::class,'gig_id');
     }
+    
+    public function gigHeads()
+    {
+        return $this->hasMany(GigPackageHeadModel::class, 'gig_id');
+    }
+    
+    public function portfolios()
+    {
+        return $this->hasMany(PortfolioModel::class, 'gig_id');
+    }
 }

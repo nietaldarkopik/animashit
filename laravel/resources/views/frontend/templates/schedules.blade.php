@@ -32,206 +32,214 @@ while ($start_date_tmp <= $end_date_tmp) {
     $start_date_tmp = date("Y-m-d", strtotime($start_date_tmp . " +1 day"));
 }
 
-function get_childs_number($arr, $deep = 1, $curr_deep = 0, $curr_output = 0)
+if(!function_exists('get_childs_number'))
 {
-    $output = (is_array($arr)) ? count($arr) : 0;
-
-    if ($deep > $curr_deep) {
-        $output = 0;
-        foreach ($arr as $i => $v) {
-            $output += get_childs_number($v, $deep, $curr_deep + 1, $output);
+    function get_childs_number($arr, $deep = 1, $curr_deep = 0, $curr_output = 0)
+    {
+        $output = (is_array($arr)) ? count($arr) : 0;
+    
+        if ($deep > $curr_deep) {
+            $output = 0;
+            foreach ($arr as $i => $v) {
+                $output += get_childs_number($v, $deep, $curr_deep + 1, $output);
+            }
         }
+        return $output;
     }
-    return $output;
 }
 @endphp
-<section id="main-banner" class="p-0 min-vh-100">
-    <div class="container-fluid video-container position-relative p-0">
-        <video class="w-100 h-100vh" autoplay loop muted>
-            <source src="./assets/videos/video1.mp4" type="video/mp4" class="w-100">
-        </video>
-        <div class="container-fluid container-main d-flex">
-            <div class="row justify-content-start align-items-center g-2 flex-row w-100">
-                <div class="col-sm-12 mx-auto text-center">
-                    <h1 class="text1">Our Schedules</h1>
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Schedule</h4>
-                        </div>
-                        <div class="card-body">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
-                                        data-bs-target="#home" type="button" role="tab" aria-controls="home"
-                                        aria-selected="true">Gantt</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
-                                        data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
-                                        aria-selected="false">List</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="messages-tab" data-bs-toggle="tab"
-                                        data-bs-target="#messages" type="button" role="tab" aria-controls="messages"
-                                        aria-selected="false">Board</button>
-                                </li>
-                            </ul>
+<div class="overlay overlay1"></div>
+<section id="main-container" class="min-vh-100 container-fluid">
+    <div class="container-xxxl container-main min-vh-100xx mx-auto">
+        <div class="row justify-content-start align-items-start align-self-start  min-vh-100 pt-5">
+            <div class="col-md-12 pt-5 text-center">
+                <h2 class="page-title">Our <strong>Schedules</strong></h2>
+                <p class="page-description size3">
+                    yowza upon so minor drat exhaust so whether gosh pfft ack zowie linear via ack
+                    dashboard usher
+                    practical drat excerpt
+                </p>
+                <div class="card bg-transparent border-0 card-schedule">
+                    <div class="card-body">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs border-0 ff-ibmplexmono-bold align-items-center justify-content-center" role="tablist">
+                            <li class="nav-item rounded-0" role="presentation">
+                                <button class="nav-link rounded-0 active" id="home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                    aria-selected="true">Table</button>
+                            </li>
+                            <li class="nav-item rounded-0" role="presentation">
+                                <button class="nav-link rounded-0" id="profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                    aria-selected="false">List</button>
+                            </li>
+                            <li class="nav-item rounded-0" role="presentation">
+                                <button class="nav-link rounded-0" id="messages-tab" data-bs-toggle="tab"
+                                    data-bs-target="#messages" type="button" role="tab" aria-controls="messages"
+                                    aria-selected="false">Board</button>
+                            </li>
+                        </ul>
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="btn-toolbar float-end my-2" role="toolbar" aria-label="Toolbar">
-                                                <div class="btn-group" role="group" aria-label="Button Group">
-                                                    <button type="button" class="btn btn-outline-primary">Dayly</button>
-                                                    <button type="button"
-                                                        class="btn btn-outline-primary">Weekly</button>
-                                                    <button type="button"
-                                                        class="btn btn-outline-primary">Monthly</button>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col-12 pt-5">
+                                        <div class="btn-toolbar ff-ibmplexmono-bold float-start my-2" role="toolbar" aria-label="Toolbar">
+                                            <div class="btn-group" role="group" aria-label="Button Group">
+                                                <button type="button" class="btn btn-warning rounded-0 me-2">Dayly</button>
+                                                <button type="button"
+                                                    class="btn btn-warning rounded-0 me-2">Weekly</button>
+                                                <button type="button"
+                                                    class="btn btn-warning rounded-0 me-2">Monthly</button>
+                                            </div>
+                                        </div>
+                                        <div class="dropdown float-end ff-ibmplexmono-bold my-2">
+                                            <button class="btn btn-secondary bg-animashit-primary rounded-0 dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                Dropdown
+                                            </button>
+                                            <div class="dropdown-menu rounded-0 p-0 bg-warning border-0" aria-labelledby="triggerId">
+                                                <div class="list-group bg-transparent px-0 py-2 border-0">
+                                                    <label class="list-group-item bg-transparent ps-1 size6 border-dark border-0  border-top-0">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        First checkbox
+                                                    </label>
+                                                    <label class="list-group-item bg-transparent ps-1 size6 border-dark border-0 ">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        Second checkbox
+                                                    </label>
+                                                    <label class="list-group-item bg-transparent ps-1 size6 border-dark border-0 ">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        Third checkbox
+                                                    </label>
+                                                    <label class="list-group-item bg-transparent ps-1 size6 border-dark border-0 ">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        Fourth checkbox
+                                                    </label>
+                                                    <label class="list-group-item bg-transparent ps-1 size6 border-dark border-0  border-bottom-0">
+                                                        <input class="form-check-input" type="checkbox" value="">
+                                                        Fifth checkbox
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        <div class="col-12">
-                                            <div class="table-responsive">
-                                                <table
-                                                    class="table table-striped table-hover table-bordered table-primary table-schedule">
-                                                    <thead class="table-dark">
-                                                        <tr>
-                                                            <th rowspan="4">#</th>
-                                                            <th rowspan="4">Clients</th>
+                                    <div class="col-12">
+                                        <div class="table-responsive">
+                                            <table
+                                                class="table ff-oswald table-schedule">
+                                                <thead>
+                                                    <tr>
+                                                        <th rowspan="4">#</th>
+                                                        <th rowspan="4">Clients</th>
+                                                        @php
+                                                        foreach ($th_year as $i => $y) {
+                                                            @endphp
+                                                            <th
+                                                                colspan="@php echo get_childs_number($th_year[$i], 2); @endphp">
+                                                                @php echo $i; @endphp
+                                                            </th>
                                                             @php
-                                                            foreach ($th_year as $i => $y) {
+                                                        }
+                                                        @endphp
+                                                    </tr>
+                                                    <tr>
+                                                        @php
+                                                        foreach ($th_year as $i => $y) {
+                                                            foreach ($y as $i2 => $m) {
                                                                 @endphp
-                                                                <th
-                                                                    colspan="@php echo get_childs_number($th_year[$i], 2); @endphp">
-                                                                    @php echo $i; @endphp
+                                                                <th colspan="@php echo get_childs_number($y[$i2], 1); @endphp">
+                                                                    @php echo $i2; @endphp
                                                                 </th>
                                                                 @php
                                                             }
-                                                            @endphp
-                                                        </tr>
-                                                        <tr>
-                                                            @php
-                                                            foreach ($th_year as $i => $y) {
-                                                                foreach ($y as $i2 => $m) {
+                                                        }
+                                                        @endphp
+                                                    </tr>
+                                                    <!-- <tr>
+                                                        @php
+                                                        foreach ($th_year as $i => $y) {
+                                                            foreach ($y as $i2 => $m) {
+                                                                foreach ($m as $i3 => $w) {
                                                                     @endphp
-                                                                    <th colspan="@php echo get_childs_number($y[$i2], 1); @endphp">
-                                                                        @php echo $i2; @endphp
+                                                                    <th colspan="@php echo get_childs_number($m[$i3], 0); @endphp">
+                                                                        w
+                                                                        @php echo $i3; @endphp
                                                                     </th>
                                                                     @php
                                                                 }
                                                             }
-                                                            @endphp
-                                                        </tr>
-                                                        <!-- <tr>
-                                                            @php
-                                                            foreach ($th_year as $i => $y) {
-                                                                foreach ($y as $i2 => $m) {
-                                                                    foreach ($m as $i3 => $w) {
+                                                        }
+                                                        @endphp
+                                                    </tr> -->
+                                                    <tr>
+                                                        @php
+                                                        foreach ($th_year as $i => $y) {
+                                                            foreach ($y as $i2 => $m) {
+                                                                foreach ($m as $i3 => $w) {
+                                                                    foreach ($w as $i3 => $d) {
                                                                         @endphp
-                                                                        <th colspan="@php echo get_childs_number($m[$i3], 0); @endphp">
-                                                                            w
-                                                                            @php echo $i3; @endphp
+                                                                        <th class="schedule-date">
+                                                                            @php echo $d['date']; @endphp<br />
+                                                                            @php echo substr($d['day_name'], 0, 3); @endphp
                                                                         </th>
                                                                         @php
                                                                     }
                                                                 }
                                                             }
-                                                            @endphp
-                                                        </tr> -->
-                                                        <tr>
-                                                            @php
-                                                            foreach ($th_year as $i => $y) {
-                                                                foreach ($y as $i2 => $m) {
-                                                                    foreach ($m as $i3 => $w) {
-                                                                        foreach ($w as $i3 => $d) {
-                                                                            @endphp
-                                                                            <th class="schedule-date">
-                                                                                @php echo $d['date']; @endphp<br />
-                                                                                @php echo substr($d['day_name'], 0, 3); @endphp
-                                                                            </th>
-                                                                            @php
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                            @endphp
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody class="table-group-divider">
-                                                        <tr class="table-primary">
-                                                            <td>
-                                                                <span class="fa fa-caret-right"></span>
-                                                            </td>
-                                                            <td class="text-nowrap">
-                                                                <span class="fa fa-caret-right"></span>
-                                                                Waiting List
-                                                            </td>
-                                                            @php
-                                                            for ($i = 0; $i < get_childs_number($th_year, 3); $i++) {
-                                                                @endphp
-                                                                <td class="schedule-date">&nbsp;</td>
-                                                            @php } @endphp
-                                                        </tr>
-                                                        <tr class="table-primary">
-                                                            <td>
-                                                                <span class="fa fa-caret-right"></span>
-                                                            </td>
-                                                            <td class="text-nowrap">
-                                                                <span class="fa fa-caret-right"></span>
-                                                                Waiting List
-                                                            </td>
-                                                            @php
-                                                            for ($i = 0; $i < get_childs_number($th_year, 3); $i++) {
-                                                                @endphp
-                                                                <td class="schedule-date">&nbsp;</td>
-                                                            @php } @endphp
-                                                        </tr>
-                                                        <tr class="table-primary">
-                                                            <td>
-                                                                <span class="fa fa-caret-right"></span>
-                                                            </td>
-                                                            <td class="text-nowrap">
-                                                                <span class="fa fa-caret-right"></span>
-                                                                In Progress
-                                                            </td>
-                                                            @php
-                                                            for ($i = 0; $i < get_childs_number($th_year, 3); $i++) {
-                                                                @endphp
-                                                                <td class="schedule-date">&nbsp;</td>
-                                                            @php } @endphp
-                                                        </tr>
-                                                        <tr class="table-primary">
-                                                            <td>
-                                                                <span class="fa fa-caret-right"></span>
-                                                            </td>
-                                                            <td class="text-nowrap">
-                                                                <span class="fa fa-caret-right"></span>
-                                                                Completed
-                                                            </td>
-                                                            @php
-                                                            for ($i = 0; $i < get_childs_number($th_year, 3); $i++) {
-                                                                @endphp
-                                                                <td class="schedule-date">&nbsp;</td>
-                                                            @php } @endphp
-                                                        </tr>
-                                                    </tbody>
-                                                    <tfoot>
+                                                        }
+                                                        @endphp
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="table-group-divider">
+                                                    @php
+                                                        $gigs = \App\Models\GigModel::all();
+                                                        $status = \App\Models\ScheduleStatusModel::all();
+                                                        $no = 1;
+                                                    @endphp
+                                                    @foreach($gigs as $i => $g)
+                                                    <tr class="tr-gigs">
+                                                        <td class="text-start">
+                                                            <strong>{{ $no++ }}</strong>
+                                                        </td>
+                                                        <td class="text-nowrap text-start">
+                                                            <span class="fa fa-caret-right"></span>
+                                                            <strong>{{ $g->title }}</strong>
+                                                        </td>
+                                                        @for ($i = 0; $i < get_childs_number($th_year, 3); $i++)
+                                                            <td class="schedule-date">&nbsp;</td>
+                                                        @endfor
+                                                    </tr>
+                                                    @foreach($status as $i2 => $s)
+                                                    <tr class="tr-tasks">
+                                                        <td class="text-start">
+                                                            <strong>{{ $no }}.{{ $i2 }}</strong>
+                                                        </td>
+                                                        <td class="text-nowrap text-start">
+                                                            <span class="fa fa-caret-right"></span>
+                                                            {{ $s->title }}
+                                                        </td>
+                                                        @for ($i = 0; $i < get_childs_number($th_year, 3); $i++)
+                                                            <td class="schedule-date">&nbsp;</td>
+                                                        @endfor
+                                                    </tr>
+                                                    @endforeach
+                                                    @endforeach
+                                                </tbody>
+                                                <tfoot>
 
-                                                    </tfoot>
-                                                </table>
-                                            </div>
+                                                </tfoot>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    profile </div>
-                                <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-                                    messages </div>
                             </div>
+                            <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                profile </div>
+                            <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+                                messages </div>
                         </div>
                     </div>
                 </div>

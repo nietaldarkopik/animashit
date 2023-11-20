@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\homemodel;
 use App\Models\PageModel;
 use App\Models\ProfileModel;
+use App\Models\GigModel;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 

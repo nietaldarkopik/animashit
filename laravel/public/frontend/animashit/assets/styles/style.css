@@ -1,17 +1,24 @@
 :root {
     --animashit-color-primary: #1f2029;
     --animashit-color-secondary: #eccc18;
-    --animashit-color-warning: #fff202;
-    --animashit-color-danger: #ec4218;
-    --animashit-color-orange: #e2a516;
-    --animashit-color-muted: #bdbdbd6;
+    --animashit-color-warning: rgb(255, 242, 3);
+    --animashit-color-danger: rgb(237, 66, 23);
+    --animashit-color-orange: rgb(227, 166, 23);
+    --animashit-color-muted: #cccccc;
 
-    --animashit-color-primary-trans: #1f2029cc;
-    --animashit-color-secondary-trans: #eccc18cc;
-    --animashit-color-warning-trans: #ece118cc;
-    --animashit-color-danger-trans: #ec4218cc;
-    --animashit-color-orange-trans: #e2a516cc;
-    --animashit-color-muted-trans: #bdbdbdcc;
+    --animashit-color-primary-trans: rgba(31, 32, 41, 0.8);
+    --animashit-color-secondary-trans: rgba(237, 205, 23, 0.8);
+    --animashit-color-warning-trans: rgba(237, 226, 23, 0.8);
+    --animashit-color-danger-trans: rgba(236, 66, 24, 0.8);
+    --animashit-color-orange-trans: rgba(227, 166, 23, 0.8);
+    --animashit-color-muted-trans: rgba(204, 204, 204, 0.8);
+    
+    --animashit-color-linear1: linear-gradient(119deg, rgba(237,224,74,1) 0%, rgba(245,240,244,1) 80%, rgba(233,234,236,1) 100%, rgba(3,4,6,1) 100%, rgba(1,2,4,1) 100%);;
+    --animashit-color-linear2: linear-gradient(125deg, rgb(189 84 255) 0%, rgb(255 253 253) 100%);
+}
+
+body{
+    overflow-x: hidden;
 }
 
 /* width */
@@ -149,6 +156,10 @@
     font-family: 'Caveat';
 }
 
+.ff-roboto {
+    font-family: 'Roboto';
+}
+
 .ff-delicious-handrawn {
     font-family: 'Delicious Handrawn';
 }
@@ -257,9 +268,8 @@
     font-family: 'Delicious Handrawn', cursive;
 }
 
-.ff-golos-text'{
- font-family: 'Golos Text',
-sans-serif;
+.ff-golos-text{
+ font-family: 'Golos Text',sans-serif;
 }
 
 .ff-handlee {
@@ -270,7 +280,7 @@ sans-serif;
     font-family: 'Indie Flower', cursive;
 }
 
-.ff-montserrat'{
+.ff-montserrat{
  font-family: 'Montserrat',
 sans-serif;
 }
@@ -441,38 +451,38 @@ header {
 }
 
 .size1 {
-    font-size: 60px;
-    line-height: 73px;
+    font-size: 60px !important;
+    line-height: 73px !important;
 }
 
 .size2 {
-    font-size: 50px;
-    line-height: 55px;
+    font-size: 50px !important;
+    line-height: 55px !important;
 }
 
 .size3 {
-    font-size: 40px;
-    line-height: 45px;
+    font-size: 40px !important;
+    line-height: 45px !important;
 }
 
 .size4 {
-    font-size: 30px;
-    line-height: 35px;
+    font-size: 30px !important;
+    line-height: 35px !important;
 }
 
 .size5 {
-    font-size: 20px;
-    line-height: 25px;
+    font-size: 20px !important;
+    line-height: 25px !important;
 }
 
 .size6 {
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 12px !important;
+    line-height: 15px !important;
 }
 
 .size7 {
-    font-size: 8px;
-    line-height: 12px;
+    font-size: 8px !important;
+    line-height: 12px !important;
 }
 
 .zindex1 {
@@ -837,21 +847,11 @@ header {
     font-family: "IBMPlexMono-Bold";
 }
 
-.table-schedule {
-    width: unset;
-    box-sizing: border-box;
-}
-
-.table-schedule .schedule-date {
-    width: 50px;
-    min-width: 50px;
-}
-
-/***
+/*
 
 Widget Component 
 
-***/
+*/
 
 /* .nav-gig-list .gig-items:hover .gig-excerpt{
     display: inline-block;
@@ -1152,6 +1152,15 @@ Widget Component
     background-image: linear-gradient(125deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 41%, rgb(0, 0, 0) 50%, rgb(3, 3, 3) 61%, rgb(255, 255, 255) 80%, rgb(255, 255, 255) 80%);
 }
 
+.overlay3 {
+    opacity: 1;
+    background-image: var(--animashit-color-linear2);
+    position: fixed;
+    top: 0;
+    bottom: 0px;
+    z-index: 9999;
+}
+
 .navbar-collapse .overlay {
     background-image: linear-gradient(89deg, #54068f 0%, #791bb483 100%);
 }
@@ -1369,8 +1378,129 @@ Widget Component
 }
 
 .page-description {
-    font-size: 22px !important;
-    font-family: "Caveat";
+    font-size: 22px;
+    font-family: "Oswald";
     line-height: 24px;
 
 }
+
+.mix-blend-difference{
+    mix-blend-mode: difference;
+    color: rgb(255, 255, 255);
+}
+
+.text-stroke{
+    -webkit-text-stroke: rgb(255, 255, 255) 1px;
+}
+
+.text-stroke-dark{
+    -webkit-text-stroke: rgb(0, 0, 0) 1px;
+}
+
+.text-shadow-light{
+    text-shadow: var(--animashit-color-orange) 5px 5px;
+}
+
+
+
+/*** Our Schedule Page ***/
+    .table-schedule {
+        width: unset;
+        box-sizing: border-box;
+    }
+
+    .table-schedule thead{
+        background-color: transparent !important;
+    }
+
+    .table-schedule .schedule-date {
+        width: 50px;
+        min-width: 50px;
+    }
+
+    .table-schedule thead th{
+        background-color: #ffffff;
+    }
+
+    .table-schedule .tr-gigs td{
+        background-color: transparent;
+    }
+
+    .table-schedule .tr-tasks:nth-child(odd) td{
+        background-color: var(--bs-light);
+    }
+
+    .table-schedule .tr-tasks:nth-child(even) td{
+        background-color: var(--bs-white);
+    }
+
+    .table-schedule,.table-schedule tbody, .table-schedule tr, .table-schedule td, .table-schedule th{
+        border: 1px red solid !important;
+        border-width: 5px !important;
+        border-color: #ffffff !important;
+    }
+
+    .card-schedule .nav .nav-link{
+        border: none;
+        color: var(--bs-dark)
+    }
+    .card-schedule .nav .nav-link:hover{
+
+        background-color: var(--bs-dark);
+        color: var(--bs-light)
+    }
+
+    .card-schedule .nav .nav-link.active{
+        background-color: var(--bs-dark);
+        color: var(--bs-light)
+    }
+
+    .card-portfolio,.card-artist{
+        cursor:pointer;
+    }
+    .card-portfolio:hover,.card-artist:hover{
+        animation: flipInY;
+        animation-duration: 1s;
+        animation-delay: 200ms;
+    }
+
+    .gig-container{
+        margin-top: 100px !important;
+        margin-bottom: 100px !important;
+        display: none;
+        position: absolute;
+        min-height: 100vh;
+        min-width: 100vw;
+        top: 0px;
+        left: 0px;
+        overflow: auto hidden !important;
+    }
+
+    .gig-container.active{
+        display: block !important;
+    }
+
+    .gig-container .card-img{
+        min-height: 300px !important;
+        /* display: none !important; */
+    }
+
+    .gig-container .owl-loaded .owl-item .card-img{
+        /* display: block !important; */
+    }
+
+    .owlcarousel-gig-list .card-img{
+        min-height: 200px !important;
+        max-height: 80px !important;
+        object-fit: cover;
+    }
+
+    .anime-modal .modal-dialog .modal-content{
+        background-color: var(--dark);
+        background-image: var(--animashit-color-linear1);
+        color: var(--bs-dark);
+    }
+    .anime-modal .modal-header,.anime-modal .modal-footer{
+        border: none;
+    }
+/*** END Our Schedule Page ***/
