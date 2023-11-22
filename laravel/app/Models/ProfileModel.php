@@ -19,4 +19,8 @@ class ProfileModel extends Model
         return $this->belongsTo(User::class,'user_id');
     }
 
+    public function packages()
+    {
+        return $this->hasMany(GigPackageHeadModel::class,"profile_id");
+    }
 }

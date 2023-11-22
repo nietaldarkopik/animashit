@@ -140,6 +140,9 @@ body{
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
+    .carousel-modal{
+        position: relative !important;
+    }
 }
 
 @media screen and (min-width: 401px) {
@@ -539,7 +542,7 @@ header {
     max-height: 100px;
     list-style-type: none;
     text-indent: 0;
-    width: auto;
+    min-width: 70px;
     height: auto;
 }
 
@@ -553,9 +556,7 @@ header {
     width: 150px;
     height: 150px;
     object-fit: contain;
-    border: 2px #f8d300ea solid;
     padding: 5px;
-    background-color: #f8d300ea;
 
 }
 
@@ -693,6 +694,9 @@ header {
     color: black;
 }
 
+.card-package-price{
+
+}
 
 /******* start animecard 4 ****/
 
@@ -1490,11 +1494,17 @@ Widget Component
     }
 
     .owlcarousel-gig-list .card-img{
-        min-height: 200px !important;
+        /* min-height: 200px !important; */
         max-height: 80px !important;
         object-fit: cover;
     }
-
+    .our-artist-list .owl-item img{
+        height: 350px !important;
+        object-fit: cover !important;
+        -object-fit: cover !important;
+        object-position: top !important;
+        -o-object-position: top !important;
+    }
     .anime-modal .modal-dialog .modal-content{
         background-color: var(--dark);
         background-image: var(--animashit-color-linear1);

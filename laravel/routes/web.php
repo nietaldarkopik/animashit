@@ -26,6 +26,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\frontend\PageModalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,7 +40,12 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('front.home');
 Route::get('page/{Page:slug}', [PageController::class, 'index'])->name('front.home');
-Route::get('page/artist/{id}', [PageController::class, 'artistDetail'])->name('front.home');
+Route::get('page/artist/{id}', [PageController::class, 'artistDetail'])->name('front.artist.detail');
+
+Route::get('modal/artist-detail/{id}/{gig_id?}', [PageModalController::class, 'artistDetail'])->name('modal.artist.detail');
+Route::get('modal/artist-portfolios/{id}/{gig_id?}', [PageModalController::class, 'artistPortfolios'])->name('modal.artist.portfolios');
+Route::get('modal/portfolio-detail/{id}', [PageModalController::class, 'portfolioDetail'])->name('modal.portfolio.detail');
+
 
 Route::get('dashboard', [AdmDashboardController::class, 'index'])->name('admin.dashboard0')->middleware(['auth', 'verified'])->name('dashboard');
 

@@ -29,6 +29,11 @@ class PortfolioModel extends Model
         return $this->belongsTo(ProfileModel::class, 'artist_id');
     }
 
+    public function client()
+    {
+        return $this->belongsTo(ProfileModel::class, 'customer_id');
+    }
+
     public function media()
     {
         return $this->hasMany(PortfolioMediaModel::class, 'portfolio_id');

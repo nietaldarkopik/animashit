@@ -10,8 +10,8 @@
             <div class="row justify-content-between align-items-stretch align-self-scretch  min-vh-100xx">
                 <div class="col-12 col-sm-12 col-lg-9 col-sm-8">
                     <div class="row justify-content-start flex-column h-100x">
-                        <div class="col-md-12 bg-warning">
-                            <h2>ILLUSTRATION</h2>
+                        <div class="col-md-12 bg-warning placeholder-glow">
+                            <h2><span class="placeholder">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class="placeholder">&nbsp;&nbsp;&nbsp;</span></h2>
                             <p>
                                 yowza upon so minor drat exhaust so whether gosh pfft ack zowie linear via ack
                                 dashboard
@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-lg-3 col-sm-4 flex-column justify-content-center d-flex">
-                    <di8 class="row justify-content-center align-items-center py-3">
+                    <div class="row justify-content-center align-items-center py-3">
                         <div class="col-4 col-md-4">
                             <img class="rounded-0 rounded-circle image-avatar1" src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
                                 alt="Title">
@@ -72,7 +72,7 @@
                             <h3>Eart Malik</h3>
                             <H4>ILLUSTRATION ARTIST</H4>
                         </div>
-                    </di8>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card anime-card1">

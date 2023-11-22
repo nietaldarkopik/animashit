@@ -21,7 +21,7 @@ class GigPackageModel extends Model
 
     public function package()
     {
-        return $this->belongsTo(GigPackageModel::class, 'package_id');
+        return $this->belongsTo(PackageModel::class, 'package_id');
     }
 
     public function artist()
@@ -32,5 +32,10 @@ class GigPackageModel extends Model
     public function head()
     {
         return $this->belongsTo(GigPackageHeadModel::class, 'gig_package_head_id');
+    }
+
+    public function features()
+    {
+        return $this->hasMany(GigPackageFeatureModel::class, 'gig_package_id');
     }
 }

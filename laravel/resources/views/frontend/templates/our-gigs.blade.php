@@ -1,6 +1,6 @@
 @extends('../frontend.master')
 @php
-$gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
+    $gigs = \App\Models\GigModel::orderBy('sort', 'ASC')->get();
 @endphp
 @section('content')
     <div class="overlay overlay1"></div>
@@ -9,117 +9,132 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
         <div class="container-xxxl mx-auto container-main">
             <div class="row justify-content-start align-content-start align-items-start h-100 vh-100 pt-5">
                 @foreach ($gigs as $o => $item)
-                <div class="col-12 p-0 z-1 container-xxxl pt-5 mb-5 overflow-y-auto gig-container @if($o == 0) active @endif gig-container-{{$item->id}}">
-                    <div class="w-100 h-100 overlay-contentx justify-content-around flex-row d-flex">
-                        <div class="d-flex justify-content-between align-items-start align-content-around container-xxxl h-75 h-sm-100 h-100 h-12 overflow-y-auto flex-column flex-sm-row mb-5">
-                            <div class="col-12 col-md-6 px-5 text-justify">
-                                <h2 class="page-subtitle size3 ff-oswald"></span>
-                                <h1 class="page-title ff-oswald">
-                                    <strong>{!! $item->title !!}</strong> Gig
-                                </h1>
-                                <p class="page-description ff-graphikbold">
-                                    {!! $item->description !!}
-                                </p>
-                            </div>
-                            <div class="col-12 col-md-6 px-5 pb-5 zindex10 mb-5">
-                                <div class="row justify-content-start align-items-start g-1">
-                                    <div class="col-12">
-                                        <span class="page-subtitle size3 ff-oswald fw-bold">{!! $item->title !!}</span>
-                                        <span class="page-subtitle size3 ff-oswald">Artist</span>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="owlcarousel-artists owl-carousel owl-theme">
-                                            @foreach($item->gigHeads as $ia => $a)
-                                            @php
-                                            $art = $a->artist;
-                                            @endphp
-                                            <div class="item">
-                                                <div class="card text-dark h-100 card-artist">
-                                                    <img class="card-img d-none object-fit-cover d-flex h-100"
-                                                        src="{{ url($art->avatar) }}"
-                                                        alt="Title">
-                                                    <div class="card-img-overlay rounded-3 d-flex flex-column justify-content-end p-0 pb-2">
-                                                        <div class="anime-bg-secondary-trans1 px-1 py-1">
-                                                            <h4 class="card-title size5">
-                                                                <span class="ff-delicious-handrawn fw-bold">{{$art->nickname}}</span>
-                                                            </h4>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="owlcarouselartists-nav-container-{{$o}} position-absolutex owl-nav z-3 w-100"></div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="owlcarouselartists-dot-container-{{$o}} position-absolutex owl-dots z-3"></div>
-                                    </div>
+                    <div
+                        class="col-12 p-0 z-1 container-xxxl pt-5 mb-5 overflow-y-auto gig-container @if ($o == 0) active @endif gig-container-{{ $item->id }}">
+                        <div class="w-100 h-100 overlay-contentx justify-content-around flex-row d-flex">
+                            <div
+                                class="d-flex justify-content-between align-items-start align-content-around container-xxxl h-75 h-sm-100 h-100 h-12 overflow-y-auto flex-column flex-sm-row mb-5">
+                                <div class="col-12 col-md-6 px-5 text-justify">
+                                    <h2 class="page-subtitle size3 ff-oswald"></span>
+                                        <h1 class="page-title ff-oswald">
+                                            <strong>{!! $item->title !!}</strong> Gig
+                                        </h1>
+                                        <p class="page-description ff-graphikbold">
+                                            {!! $item->description !!}
+                                        </p>
                                 </div>
-                                <div class="row justify-content-start align-items-start g-1 mt-5 mb-5">
-                                    <div class="col-12">
-                                        <span class="page-subtitle size3 ff-oswald fw-bold">{!! $item->title !!}</span>
-                                        <span class="page-subtitle size3 ff-oswald">Portfolios</span>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="owlcarousel-portfolios owl-carousel owl-theme">
-                                            @foreach($item->portfolios as $ia => $a)
-                                            @php
-                                            $artist = $a->profile->where('user_type',4)->first();
-                                            $client = $a->profile->where('user_type',5)->first();
-                                            $media = $a->media->where('type','image')->first();
-                                            @endphp
-                                            <div class="item">
-                                                <div class="card text-dark h-100 card-portfolio">
-                                                    <img class="card-img d-none object-fit-cover d-flex h-100"
-                                                        src="{{ url($media->media) }}"
-                                                        alt="Title">
-                                                    <div class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
-                                                        <div class="anime-bg-secondary-trans1 px-1 py-1">
-                                                            <h4 class="card-title size5">
-                                                                <span class="ff-delicious-handrawn fw-bold">{{$client->nickname}}</span>
-                                                            </h4>
+                                <div class="col-12 col-md-6 px-5 pb-5 zindex10 mb-5">
+                                    <div class="row justify-content-start align-items-start g-1">
+                                        <div class="col-12">
+                                            <span
+                                                class="page-subtitle size3 ff-oswald fw-bold">{!! $item->title !!}</span>
+                                            <span class="page-subtitle size3 ff-oswald">Artist</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="owlcarousel-artists owl-carousel owl-theme">
+                                                @foreach ($item->gigHeads as $ia => $a)
+                                                    @php
+                                                        $art = $a->artist;
+                                                    @endphp
+                                                    <div class="item">
+                                                        <div class="card text-dark h-100 card-artist" data-id="{{ $art->id }}" data-gig_id="{{ $item->id }}">
+                                                            <img class="card-img d-none object-fit-cover d-flex h-100"
+                                                                src="{{ url($art->avatar) }}" alt="Title">
+                                                            <div
+                                                                class="card-img-overlay rounded-3 d-flex flex-column justify-content-end p-0 pb-2">
+                                                                <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                                    <h4 class="card-title size5">
+                                                                        <span
+                                                                            class="ff-delicious-handrawn fw-bold">{{ $art->nickname }}</span>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                @endforeach
                                             </div>
-                                            @endforeach
+                                        </div>
+                                        <div class="col-6">
+                                            <div
+                                                class="owlcarouselartists-nav-container-{{ $o }} position-absolutex owl-nav z-3 w-100">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div
+                                                class="owlcarouselartists-dot-container-{{ $o }} position-absolutex owl-dots z-3">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="owlcarouselportfolios-nav-container-{{$o}} position-absolutex owl-nav z-3 w-100"></div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="owlcarouselportfolios-dot-container-{{$o}} position-absolutex owl-dots z-3"></div>
+                                    <div class="row justify-content-start align-items-start g-1 mt-5 mb-5">
+                                        <div class="col-12">
+                                            <span
+                                                class="page-subtitle size3 ff-oswald fw-bold">{!! $item->title !!}</span>
+                                            <span class="page-subtitle size3 ff-oswald">Portfolios</span>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="owlcarousel-portfolios owl-carousel owl-theme">
+                                                @foreach ($item->portfolios as $ia => $a)
+                                                    @php
+                                                        $artist = $a->profile->where('user_type', 4)->first();
+                                                        $client = $a->profile->where('user_type', 5)->first();
+                                                        $media = $a->media->where('type', 'image')->first();
+                                                    @endphp
+                                                    <div class="item">
+                                                        <div class="card text-dark h-100 card-portfolio" data-id="{{ $a->id }}" data-gig_id="{{ $item->gig_id }}">
+                                                            <img class="card-img d-none object-fit-cover d-flex h-100"
+                                                                src="{{ url($media->media) }}" alt="Title">
+                                                            <div
+                                                                class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
+                                                                <div class="anime-bg-secondary-trans1 px-1 py-1">
+                                                                    <h4 class="card-title size5">
+                                                                        <span
+                                                                            class="ff-delicious-handrawn fw-bold">{{ $client->nickname }}</span>
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div
+                                                class="owlcarouselportfolios-nav-container-{{ $o }} position-absolutex owl-nav z-3 w-100">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div
+                                                class="owlcarouselportfolios-dot-container-{{ $o }} position-absolutex owl-dots z-3">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endforeach
                 <div class="row fixed-bottom m-0 p-0 footer-owlcarousel">
                     <div class="col-12 my-auto p-0 z-1 container-xxxlx text-center">
                         <h3 class="owlcarousel-group-title size5 owlcarousel-toggle showed">
                             <span class="fa fa-caret-down"></span>
                             <span>Choose Our Gigs<span>
-                            <span class="fa fa-caret-down"></span>
+                                    <span class="fa fa-caret-down"></span>
                         </h3>
                     </div>
                     <div class="col-12 m-0 owlcarousel-main-container d-flex justify-content-center">
                         <div class="owlcarousel-dot-container position-fixed owl-dots d-none d-sm-block"></div>
                         <div class="owl-carousel sticky-bottom owlcarousel-gig-list owl-theme d-nonex d-sm-block mx-5">
                             @foreach ($gigs as $item)
-                            <div class="w-100 h-100">
-                                <div class="card text-start anime-card2 h-100 card-gig" data-gig_id="{{ $item->id }}">
-                                    <img class="card-img" src="{!! url($item->gigMedias[0]->media) !!}" alt="Title">
-                                    <div class="card-img-overlay card-body p-1">
-                                        <h4 class="card-title my-1 h6">{{ $item->title }}</h4>
-                                        {{-- <p class="card-text my-1">Body</p> --}}
+                                <div class="w-100 h-100">
+                                    <div class="card text-start anime-card2 h-100 card-gig"
+                                        data-gig_id="{{ $item->id }}">
+                                        <img class="card-img" src="{!! url($item->gigMedias[0]->media) !!}" alt="Title">
+                                        <div class="card-img-overlay card-body p-1">
+                                            <h4 class="card-title my-1 h6">{{ $item->title }}</h4>
+                                            {{-- <p class="card-text my-1">Body</p> --}}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                         </div>
                     </div>
@@ -130,42 +145,41 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
             </div>
         </div>
     </section>
-    
-    <!-- Modal -->
-    <div class="modal fade anime-modal py-3" id="modalPage" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-        <div class="modal-dialog container container-xxxl mx-auto modal-sm modal-fullscreen" role="document">
-            <div class="modal-content">
-                    <div class="modal-header">
-                            <h5 class="modal-title ff-oswald size4 fw-bold" id="modalTitleId">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                <div class="modal-body ff-dmsans-regular">
-                    <div class="container-fluid">
-                        Add rows here
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+
+    <!-- Modal Portfolio Detail-->
+    <div class="modal fade anime-modal p-0" id="modalPagePortfolio" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+        aria-hidden="true">
+        <div class="modal-dialog container-fluid mx-auto modal-sm modal-fullscreen p-0" role="document">
+            <div class="modal-content m-0 p-0">
+                <div class="modal-body ff-dmsans-regular m-0 p-0">
                 </div>
             </div>
         </div>
     </div>
-    
-    
+    <!-- Modal Artist Detail-->
+    <div class="modal fade anime-modal p-0" id="modalPage" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+    aria-hidden="true">
+    <div class="modal-dialog container-fluid mx-auto modal-sm modal-fullscreen p-0" role="document">
+        <div class="modal-content m-0 p-0">
+            <div class="modal-body ff-dmsans-regular m-0 p-0">
+
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             var modalPage = document.getElementById('modalPage');
-            modalPage.addEventListener('show.bs.modal', function (event) {
-                // Button that triggered the modal
+            modalPage.addEventListener('show.bs.modal', function(event) {
                 let button = event.relatedTarget;
-                // Extract info from data-bs-* attributes
                 let recipient = button.getAttribute('data-bs-whatever');
-
-                // Use above variables to manipulate the DOM
             });
+
+            //$("#modalPage").modal("show");
         });
     </script>
     <script>
@@ -175,57 +189,99 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
         var defaultGigContent = $("#our-gig-content").clone();
         var defaultArtistContent = $(".master-artist").first().clone();
 
-        $(window).on("load",function()
-        {       
+        $(window).on("load", function() {
             $(".overlay3").remove();
         });
 
         const animateCSS = (element, animation, prefix = 'animate__') =>
-        // We create a Promise and return it
-        new Promise((resolve, reject) => {
-            const animationName = `${prefix}${animation}`;
-            const node = document.querySelector(element);
+            // We create a Promise and return it
+            new Promise((resolve, reject) => {
+                const animationName = `${prefix}${animation}`;
+                const node = document.querySelector(element);
 
-            node.classList.add(`${prefix}animated`, animationName);
+                node.classList.add(`${prefix}animated`, animationName);
 
-            // When the animation ends, we clean the classes and resolve the Promise
-            function handleAnimationEnd(event) {
-            event.stopPropagation();
-            node.classList.remove(`${prefix}animated`, animationName);
-            resolve({element : node});
-            }
+                // When the animation ends, we clean the classes and resolve the Promise
+                function handleAnimationEnd(event) {
+                    event.stopPropagation();
+                    node.classList.remove(`${prefix}animated`, animationName);
+                    resolve({
+                        element: node
+                    });
+                }
 
-            node.addEventListener('animationend', handleAnimationEnd, {once: true});
-        });
-        $("body").on("click",".card-artist",function(){
+                node.addEventListener('animationend', handleAnimationEnd, {
+                    once: true
+                });
+            });
+        $("body").on("click", ".card-artist", function() {
+            var id = $(this).data("id");
+            var gig_id = $(this).data("gig_id");
+            var url = "{{ route("modal.artist.detail",["gig_id" => "__xx__","id" => "__yy__"])}}";
+            url = url.replace('__xx__',gig_id);
+            url = url.replace('__yy__',id);
+
+            $("#modalPage .modal-body").html("");
             $("#modalPage").modal("show");
+            $.ajax({
+                url: url,
+                data: "",
+                dataType: "html",
+                type: "get",
+                success: function(msg)
+                {
+                    $("#modalPage .modal-body").html(msg);
+                }
+            })
+        });
+        $("body").on("click", ".card-portfolio", function() {
+            var id = $(this).data("id");
+            var gig_id = $(this).data("gig_id");
+            var url = "{{ route("modal.portfolio.detail",["id" => "__yy__"])}}";
+            url = url.replace('__yy__',id);
+
+            $("#modalPagePortfolio .modal-body").html("");
+            $("#modalPagePortfolio").modal("show");
+            $.ajax({
+                url: url,
+                data: "",
+                dataType: "html",
+                type: "get",
+                success: function(msg)
+                {
+                    $("#modalPagePortfolio .modal-body").html(msg);
+                }
+            })
         });
         $(document).ready(function() {
-            $("body").on("click",".owlcarousel-toggle",function(){
-                
+            $("body").on("click", ".owlcarousel-toggle", function() {
+
                 var container = $(".owlcarousel-main-container");
                 var navcontainer = $(".owlcarousel-nav-container");
 
                 //if($(container).hasClass("animate__animated") == false)
-                if($(this).hasClass("showed") === true)
-                {
-                    $(navcontainer).addClass("animate__slideOutDown").addClass("animate__animated").addClass("animate__fast");
-                    $(navcontainer).on("animationend",function(e){
-                        if($(".owlcarousel-toggle").hasClass("showed")){}else{
+                if ($(this).hasClass("showed") === true) {
+                    $(navcontainer).addClass("animate__slideOutDown").addClass("animate__animated")
+                        .addClass("animate__fast");
+                    $(navcontainer).on("animationend", function(e) {
+                        if ($(".owlcarousel-toggle").hasClass("showed")) {} else {
                             $(this).addClass("d-none");
                         }
                     })
-                    $(container).addClass("animate__slideOutDown").addClass("animate__animated").addClass("animate__fast");
-                    $(container).on("animationend",function(e){
-                        if($(".owlcarousel-toggle").hasClass("showed")){}else{
+                    $(container).addClass("animate__slideOutDown").addClass("animate__animated").addClass(
+                        "animate__fast");
+                    $(container).on("animationend", function(e) {
+                        if ($(".owlcarousel-toggle").hasClass("showed")) {} else {
                             $(this).addClass("d-none");
                         }
                     })
                     $(this).removeClass("showed");
-                }else{
-                    $(container).removeClass("animate__slideOutDown").removeClass("animate__animated").removeClass("d-none").addClass("animate__slideInUp").addClass("animate__animated");
+                } else {
+                    $(container).removeClass("animate__slideOutDown").removeClass("animate__animated")
+                        .removeClass("d-none").addClass("animate__slideInUp").addClass("animate__animated");
 
-                    $(navcontainer).removeClass("animate__slideOutDown").removeClass("animate__animated").removeClass("d-none").addClass("animate__slideInUp").addClass("animate__animated");
+                    $(navcontainer).removeClass("animate__slideOutDown").removeClass("animate__animated")
+                        .removeClass("d-none").addClass("animate__slideInUp").addClass("animate__animated");
                     $(this).addClass("showed");
                 }
             });
@@ -237,11 +293,11 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
                 margin: 10,
                 video: true,
                 lazyLoad: true,
-                onRefresh: function(e){
+                onRefresh: function(e) {
                     $(e.target).find(".card-img").addClass("d-none").hide();
                 },
-                onRefreshed: function(e){
-                    $(e.target).find(".card-img").removeClass("d-none").show();                    
+                onRefreshed: function(e) {
+                    $(e.target).find(".card-img").removeClass("d-none").show();
                 },
                 nav: true,
                 navContainer: '.owlcarousel-nav-container',
@@ -258,36 +314,36 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
                         items: 2
                     },
                     768: {
-                        items: 3
+                        items: 4
                     },
                     992: {
                         items: 6
                     },
                     1200: {
-                        items: 6
+                        items: 10
                     },
                     1400: {
-                        items: 8
+                        items: 10
                     },
                 }
             });
 
-            $("body").on("click",".card-gig",function(){
+            $("body").on("click", ".card-gig", function() {
                 var gig_id = $(this).data("gig_id");
                 var current_container = $(".gig-container.active");
-                
+
                 $(".gig-container").fadeOut({
                     duration: 1000,
-                    complete: function(){
+                    complete: function() {
                         $(".gig-container").hide();
-                        var idx = $(".gig-container").index($(".gig-container-"+gig_id)[0]);
+                        var idx = $(".gig-container").index($(".gig-container-" + gig_id)[0]);
                         console.log(idx);
-                        owlcarouselGig.trigger("to.owl.carousel",idx);
-                        $(".gig-container-"+gig_id).fadeIn({
+                        owlcarouselGig.trigger("to.owl.carousel", idx);
+                        $(".gig-container-" + gig_id).fadeIn({
                             duration: 500,
-                            complete: function(){
+                            complete: function() {
                                 $(".gig-container.active").removeClass("active");
-                                $(".gig-container-"+gig_id).addClass("active");
+                                $(".gig-container-" + gig_id).addClass("active");
                             }
                         })
                     }
@@ -332,7 +388,7 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
                 */
             });
 
-            $(".owlcarousel-portfolios").each(function(i,v){
+            $(".owlcarousel-portfolios").each(function(i, v) {
                 $(this).owlCarousel({
                     items: 6,
                     merge: false,
@@ -340,18 +396,18 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
                     margin: 10,
                     video: true,
                     lazyLoad: true,
-                    onRefresh: function(e){
+                    onRefresh: function(e) {
                         $(e.target).find(".card-img").addClass("d-none").hide();
                     },
-                    onRefreshed: function(e){
+                    onRefreshed: function(e) {
                         $(e.target).find(".card-img").removeClass("d-none").show();
                         $(e.target).find(".card")
-                        .addClass("animate__animated")
-                        .addClass("animate__flipInX");
+                            .addClass("animate__animated")
+                            .addClass("animate__flipInX");
                     },
                     nav: true,
-                    navContainer: '.owlcarouselportfolios-nav-container-'+i,
-                    dotsContainer: '.owlcarouselportfolios-dot-container-'+i,
+                    navContainer: '.owlcarouselportfolios-nav-container-' + i,
+                    dotsContainer: '.owlcarouselportfolios-dot-container-' + i,
                     navText: ['<span class="fa fa-caret-left"></span>',
                         '<span class="fa fa-caret-right"></span>'
                     ],
@@ -378,7 +434,7 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
                     }
                 })
             });
-            $(".owlcarousel-artists").each(function(i,v){
+            $(".owlcarousel-artists").each(function(i, v) {
                 $(this).owlCarousel({
                     items: 6,
                     merge: false,
@@ -386,18 +442,18 @@ $gigs = \App\Models\GigModel::orderBy('sort','ASC')->get();
                     margin: 10,
                     video: true,
                     lazyLoad: true,
-                    onRefresh: function(e){
+                    onRefresh: function(e) {
                         $(e.target).find(".card-img").addClass("d-none").hide();
                     },
-                    onRefreshed: function(e){
+                    onRefreshed: function(e) {
                         $(e.target).find(".card-img").removeClass("d-none").show();
                         $(e.target).find(".card")
-                        .addClass("animate__animated")
-                        .addClass("animate__flipInX");
+                            .addClass("animate__animated")
+                            .addClass("animate__flipInX");
                     },
                     nav: true,
-                    navContainer: '.owlcarouselartists-nav-container-'+i,
-                    dotsContainer: '.owlcarouselartists-dot-container-'+i,
+                    navContainer: '.owlcarouselartists-nav-container-' + i,
+                    dotsContainer: '.owlcarouselartists-dot-container-' + i,
                     navText: ['<span class="fa fa-caret-left"></span>',
                         '<span class="fa fa-caret-right"></span>'
                     ],

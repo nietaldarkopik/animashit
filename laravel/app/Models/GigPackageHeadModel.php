@@ -21,7 +21,7 @@ class GigPackageHeadModel extends Model
 
     public function packages()
     {
-        return $this->hasMany(GigPackageModel::class, 'package_id');
+        return $this->hasMany(GigPackageModel::class, 'gig_package_head_id');
     }
 
     public function artist()
