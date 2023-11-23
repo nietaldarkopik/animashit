@@ -47,6 +47,9 @@ if(!function_exists('get_childs_number'))
         return $output;
     }
 }
+
+$gigs = App\Models\GigModel::get();
+
 @endphp
 <div class="overlay overlay1"></div>
 <section id="main-container" class="min-vh-100 container-fluid">
@@ -237,9 +240,32 @@ if(!function_exists('get_childs_number'))
                                 </div>
                             </div>
                             <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                profile </div>
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                    @foreach($gigs as $i => $g)
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-heading{{$i}}">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$i}}" aria-expanded="true" aria-controls="flush-collapse{{$i}}"  data-bs-parent="#flush-collapse{{$i}}">
+                                                {{ $g->title }}
+                                            </button>
+                                            </h2>
+                                            <div id="flush-collapse{{$i}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$i}}" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">
+                                                    <div class="card text-start">
+                                                      <img class="card-img-top" src="holder.js/100px180/" alt="Title">
+                                                      <div class="card-body">
+                                                        <h4 class="card-title">Title</h4>
+                                                        <p class="card-text">Body</p>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                             <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-                                messages </div>
+                            
+                            </div>
                         </div>
                     </div>
                 </div>
