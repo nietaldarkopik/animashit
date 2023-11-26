@@ -19,6 +19,11 @@ class ScheduleItemModel extends Model
         return $this->belongsTo(ScheduleModel::class, 'schedule_id');
     }
 
+    public function statusSchedule()
+    {
+        return $this->belongsTo(ScheduleStatusModel::class, 'status');
+    }
+
     public function scheduleType()
     {
         return $this->belongsTo(ScheduleItemTypeModel::class, 'schedule_item_type_id');

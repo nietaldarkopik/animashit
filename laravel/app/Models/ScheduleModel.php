@@ -39,4 +39,9 @@ class ScheduleModel extends Model
         return $this->belongsTo(ScheduleStatusModel::class, 'status');
     }
     
+    public function scheduleItems()
+    {
+        return $this->hasMany(ScheduleItemModel::class, 'schedule_id');
+    }
+    
 }

@@ -12,18 +12,25 @@
     --animashit-color-danger-trans: rgba(236, 66, 24, 0.8);
     --animashit-color-orange-trans: rgba(227, 166, 23, 0.8);
     --animashit-color-muted-trans: rgba(204, 204, 204, 0.8);
-    
-    --animashit-color-linear1: linear-gradient(119deg, rgba(237,224,74,1) 0%, rgba(245,240,244,1) 80%, rgba(233,234,236,1) 100%, rgba(3,4,6,1) 100%, rgba(1,2,4,1) 100%);;
+
+    --animashit-color-linear1: linear-gradient(119deg, rgba(237, 224, 74, 1) 0%, rgba(245, 240, 244, 1) 80%, rgba(233, 234, 236, 1) 100%, rgba(3, 4, 6, 1) 100%, rgba(1, 2, 4, 1) 100%);
     --animashit-color-linear2: linear-gradient(125deg, rgb(189 84 255) 0%, rgb(255 253 253) 100%);
+    --animashit-color-linear3: linear-gradient(125deg, rgb(255 0 0 / 40%) 0%, rgb(255 0 0 / 40%) 20%, rgb(80 5 147 / 40%) 40%, rgb(28 0 53 / 40%) 60%, rgb(28 0 53 / 40%) 80%, rgb(189 186 57 / 40%) 100%, rgb(189 186 57 / 40%) 120%);
+    --animashit-color-linear4: linear-gradient(125deg, rgb(255 0 0) 0%, rgb(255 0 0) 20%, rgb(80 5 147) 40%, rgb(28 0 53) 60%, rgb(28 0 53) 80%, rgb(189 186 57) 100%, rgb(189 186 57) 120%);
+    --animashit-color-linear5: linear-gradient(119deg, rgba(237, 224, 74, 1) 0%, rgba(245, 240, 244, 1) 80%, rgba(233, 234, 236, 1) 100%, rgba(3, 4, 6, 1) 100%, rgba(1, 2, 4, 1) 100%);
+    --animashit-color-linear6: linear-gradient(0deg, rgba(142,133,0,1) 13%, rgba(255,246,154,1) 96%);
+    --animashit-color-linear7: linear-gradient(0deg, rgba(0,0,0,1) 13%, rgba(74,73,63,1) 96%);
+
 }
 
-body{
+body {
     overflow-x: hidden;
 }
 
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
+    height: 5px;
 }
 
 /* Track */
@@ -41,7 +48,7 @@ body{
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #ffffff;
+    background: rgb(199, 70, 19);
 }
 
 /* ::-webkit-scrollbar the scrollbar. */
@@ -140,7 +147,8 @@ body{
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
-    .carousel-modal{
+
+    .carousel-modal {
         position: relative !important;
     }
 }
@@ -271,8 +279,8 @@ body{
     font-family: 'Delicious Handrawn', cursive;
 }
 
-.ff-golos-text{
- font-family: 'Golos Text',sans-serif;
+.ff-golos-text {
+    font-family: 'Golos Text', sans-serif;
 }
 
 .ff-handlee {
@@ -283,9 +291,9 @@ body{
     font-family: 'Indie Flower', cursive;
 }
 
-.ff-montserrat{
- font-family: 'Montserrat',
-sans-serif;
+.ff-montserrat {
+    font-family: 'Montserrat',
+        sans-serif;
 }
 
 .ff-nanum-pen-script {
@@ -694,9 +702,7 @@ header {
     color: black;
 }
 
-.card-package-price{
-
-}
+.card-package-price {}
 
 /******* start animecard 4 ****/
 
@@ -1148,7 +1154,7 @@ Widget Component
 
 .overlay1 {
     opacity: 0.5;
-    background-image: linear-gradient(125deg, rgb(255 0 0 / 40%) 0%, rgb(255 0 0 / 40%) 20%, rgb(80 5 147 / 40%) 40%, rgb(28 0 53 / 40%) 60%, rgb(28 0 53 / 40%) 80%, rgb(189 186 57 / 40%) 100%, rgb(189 186 57 / 40%) 120%);
+    background-image: var(--animashit-color-linear3);
 }
 
 .overlay2 {
@@ -1254,6 +1260,7 @@ Widget Component
     position: absolute;
     margin-top: -150px !important;
 }
+
 .owlcarousel-nav-container.owl-nav .owl-next {
     right: 0px;
 }
@@ -1388,129 +1395,240 @@ Widget Component
 
 }
 
-.mix-blend-difference{
+.mix-blend-difference {
     mix-blend-mode: difference;
     color: rgb(255, 255, 255);
 }
 
-.text-stroke{
+.text-stroke {
     -webkit-text-stroke: rgb(255, 255, 255) 1px;
 }
 
-.text-stroke-dark{
+.text-stroke-dark {
     -webkit-text-stroke: rgb(0, 0, 0) 1px;
 }
 
-.text-shadow-light{
+.text-shadow-light {
     text-shadow: var(--animashit-color-orange) 5px 5px;
 }
 
 
 
 /*** Our Schedule Page ***/
-    .table-schedule {
-        width: unset;
-        box-sizing: border-box;
+.table-schedule {
+    width: unset;
+    box-sizing: border-box;
+}
+
+.table-schedule thead {
+    background-color: transparent !important;
+}
+
+.table-schedule .schedule-date {
+    /* width: 50px; */
+    /* min-width: 50px; */
+}
+
+.table-schedule thead th {
+    background-color: #ffffff;
+}
+
+.table-schedule .tr-gigs td {
+    background-color: transparent;
+}
+
+.table-schedule .tr-tasks:nth-child(odd) td {
+    background-color: var(--bs-light);
+}
+
+.table-schedule .tr-tasks:nth-child(even) td {
+    background-color: var(--bs-gray-200);
+}
+
+.table-schedule,
+.table-schedule tbody,
+.table-schedule tr,
+.table-schedule td,
+.table-schedule th {
+    border: 1px red solid !important;
+    border-width: 5px !important;
+    border-color: #ffffff !important;
+}
+
+.card-schedule .nav .nav-link {
+    border: none;
+    color: var(--bs-dark)
+}
+
+.card-schedule .nav .nav-link:hover {
+
+    background-color: var(--bs-dark);
+    color: var(--bs-light)
+}
+
+.card-schedule .nav .nav-link.active {
+    background-color: var(--bs-dark);
+    color: var(--bs-light)
+}
+
+.card-portfolio,
+.card-artist {
+    cursor: pointer;
+}
+
+.card-portfolio:hover,
+.card-artist:hover {
+    animation: flipInY;
+    animation-duration: 1s;
+    animation-delay: 200ms;
+}
+
+.gig-container {
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
+    display: none;
+    position: absolute;
+    min-height: 100vh;
+    min-width: 100vw;
+    top: 0px;
+    left: 0px;
+    overflow: auto hidden !important;
+}
+
+.gig-container.active {
+    display: block !important;
+}
+
+.gig-container .card-img {
+    min-height: 300px !important;
+    /* display: none !important; */
+}
+
+.gig-container .owl-loaded .owl-item .card-img {
+    /* display: block !important; */
+}
+
+.owlcarousel-gig-list .card-img {
+    /* min-height: 200px !important; */
+    max-height: 80px !important;
+    object-fit: cover;
+}
+
+.our-artist-list .owl-item img {
+    height: 350px !important;
+    object-fit: cover !important;
+    -object-fit: cover !important;
+    object-position: top !important;
+    -o-object-position: top !important;
+}
+
+.anime-modal .modal-dialog .modal-content {
+    background-color: var(--dark);
+    background-image: var(--animashit-color-linear1);
+    color: var(--bs-dark);
+}
+
+.anime-modal .modal-header,
+.anime-modal .modal-footer {
+    border: none;
+}
+
+
+@media screen and (min-width: 500px) {
+    table.table-schedule {
+        display: inline-block;
+        max-width: 100% !important;
+        overflow: hidden;
     }
 
-    .table-schedule thead{
-        background-color: transparent !important;
+    table.table-schedule th,
+    table.table-schedule td {
+        /* border: 1px red solid !important; */
+        padding: 0px !important;
     }
 
-    .table-schedule .schedule-date {
-        width: 50px;
-        min-width: 50px;
+    table.table-schedule thead {
+        display: block;
     }
 
-    .table-schedule thead th{
-        background-color: #ffffff;
+    table.table-schedule tbody {
+        margin-left: -5px !important;
+        margin-right: -5px !important;
+        display: block;
+        height: 40vh;
+        overflow: auto;
     }
 
-    .table-schedule .tr-gigs td{
-        background-color: transparent;
+    table.table-schedule .long {
+        width: 280px;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 
-    .table-schedule .tr-tasks:nth-child(odd) td{
-        background-color: var(--bs-light);
+    table.table-schedule .medium {
+        width: 140px;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 
-    .table-schedule .tr-tasks:nth-child(even) td{
-        background-color: var(--bs-white);
+    table.table-schedule .short {
+        width: 70px;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 
-    .table-schedule,.table-schedule tbody, .table-schedule tr, .table-schedule td, .table-schedule th{
-        border: 1px red solid !important;
-        border-width: 5px !important;
-        border-color: #ffffff !important;
+    table.table-schedule .tiny {
+        width: 35px;
+        display: block;
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
 
-    .card-schedule .nav .nav-link{
-        border: none;
-        color: var(--bs-dark)
-    }
-    .card-schedule .nav .nav-link:hover{
-
-        background-color: var(--bs-dark);
-        color: var(--bs-light)
+    table.table-schedule .tr-gigs {
+        position: sticky;
+        top: 0px;
+        background-image: var(--animashit-color-linear5);
+        background-attachment: fixed;
+        z-index: 999;
     }
 
-    .card-schedule .nav .nav-link.active{
-        background-color: var(--bs-dark);
-        color: var(--bs-light)
+    table.table-schedule {
+        border-collapse: separate;
+        border-spacing: 0;
+        border-top: 1px solid grey;
     }
 
-    .card-portfolio,.card-artist{
-        cursor:pointer;
+    table.table-schedule th {
+        background-image: var(--animashit-color-linear3) !important;
+        background-size: 100% 100vh;
+        background-position: center center;
     }
-    .card-portfolio:hover,.card-artist:hover{
-        animation: flipInY;
-        animation-duration: 1s;
-        animation-delay: 200ms;
+    table.table-schedule .table-left {
+        background-color: var(--bs-light) !important;
+        /* background-image: var(--animashit-color-linear1) !important; */
+        border-color: var(--bs-light) !important;
+        z-index: 9;
+        position: relative;
     }
 
-    .gig-container{
-        margin-top: 100px !important;
-        margin-bottom: 100px !important;
-        display: none;
-        position: absolute;
-        min-height: 100vh;
-        min-width: 100vw;
+    /* table.table-schedule .schedule-year,
+    table.table-schedule .schedule-month{                
+        position: -webkit-sticky;
+        position: sticky;
         top: 0px;
         left: 0px;
-        overflow: auto hidden !important;
+    } */
+
+    table.table-schedule thead {
+        /* position: sticky;
+        top: 0;
+        /* Don't forget this, required for the stickiness
+        box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4); */
     }
 
-    .gig-container.active{
-        display: block !important;
-    }
+}
 
-    .gig-container .card-img{
-        min-height: 300px !important;
-        /* display: none !important; */
-    }
-
-    .gig-container .owl-loaded .owl-item .card-img{
-        /* display: block !important; */
-    }
-
-    .owlcarousel-gig-list .card-img{
-        /* min-height: 200px !important; */
-        max-height: 80px !important;
-        object-fit: cover;
-    }
-    .our-artist-list .owl-item img{
-        height: 350px !important;
-        object-fit: cover !important;
-        -object-fit: cover !important;
-        object-position: top !important;
-        -o-object-position: top !important;
-    }
-    .anime-modal .modal-dialog .modal-content{
-        background-color: var(--dark);
-        background-image: var(--animashit-color-linear1);
-        color: var(--bs-dark);
-    }
-    .anime-modal .modal-header,.anime-modal .modal-footer{
-        border: none;
-    }
 /*** END Our Schedule Page ***/
