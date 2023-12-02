@@ -62,7 +62,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-4">
-                                    <img class="img-thumbnail" src="{{ asset('uploads/customers/'.$order->customer->avatar)}}" width="100"/>
+                                    <img class="img-thumbnail" src="{{ url('uploads/customers/'.$order->customer->avatar)}}" width="100"/>
                                 </div>
                                 <div class="col-8">
                                     <div class="row">
@@ -156,7 +156,7 @@
                         <div class="card-body">
                             <div class="row d-flex">
                                 <div class="col-4 ">
-                                    <img class="img-fluid" src="{{ asset('uploads/artists/'.$order->gigPackage->artist->avatar)}}" width="100"/>
+                                    <img class="img-fluid" src="{{ url('uploads/artists/'.$order->gigPackage->artist->avatar)}}" width="100"/>
                                 </div>
                                 <div class="col-8 ">
                                     <div class="row">

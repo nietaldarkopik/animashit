@@ -23,7 +23,7 @@
             </div>
             <div class="col-4">
                 <div class="card mh-100">
-                    <img class="card-img-top w-100 object-fit-cover object-position-center" src="{{ asset('uploads/customers/' . $profile->avatar) }}" alt="Card image cap" style="max-height: 400px;">
+                    <img class="card-img-top w-100 object-fit-cover object-position-center" src="{{ url('uploads/customers/' . $profile->avatar) }}" alt="Card image cap" style="max-height: 400px;">
                     <div class="card-body">
                         <h4 class="card-title">{{ $profile->name }}</h4>
                         <p class="card-text">{{ $profile->nickname }}</p>

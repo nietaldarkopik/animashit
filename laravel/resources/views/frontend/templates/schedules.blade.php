@@ -89,16 +89,16 @@ $daily_size = 35;
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane active" id="timeline-schedule" role="tabpanel" aria-labelledby="timeline-schedule-tab">
+                            <div class="tab-pane py-3 active" id="timeline-schedule" role="tabpanel" aria-labelledby="timeline-schedule-tab">
                                 <div class="row">
-                                    <div class="col-12 pt-5">
-                                        {{-- <div class="btn-toolbar ff-ibmplexmono-bold float-start my-2" role="toolbar" aria-label="Toolbar">
+                                    {{-- <div class="col-12 pt-5">
+                                        <div class="btn-toolbar ff-ibmplexmono-bold float-start my-2" role="toolbar" aria-label="Toolbar">
                                             <div class="btn-group" role="group" aria-label="Button Group">
                                                 <button type="button" class="btn btn-daily btn-warning rounded-0 me-2">Dayly</button>
                                                 <button type="button" class="btn btn-weekly btn-warning rounded-0 me-2">Weekly</button>
                                                 <button type="button" class="btn btn-monthly btn-warning rounded-0 me-2">Monthly</button>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                         <div class="dropdown float-end ff-ibmplexmono-bold my-2">
                                             <button class="btn btn-secondary bg-animashit-primary rounded-0 dropdown-toggle" type="button" id="triggerId" data-bs-toggle="dropdown" aria-haspopup="true" data-bs-auto-close="outside"
                                                     aria-expanded="false">
@@ -131,7 +131,7 @@ $daily_size = 35;
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-12">
                                         <div class="table-responsive">
@@ -339,22 +339,22 @@ $daily_size = 35;
                                                                                         @php
                                                                                             $scheduleItems = (isset($schedule_item_list[$s->id]))?$schedule_item_list[$s->id]:[];
                                                                                         @endphp
-                                                                                            @if(isset($scheduleItems[$d['fulldate']]))
-                                                                                                @foreach($scheduleItems[$d['fulldate']] as $isch => $sch)
-                                                                                                @php
-                                                                                                    $start = new DateTime($sch->start_date);
-                                                                                                    $end = new DateTime($sch->end_date);
-                                                                                                    $duration = $end->diff($start);
-                                                                                                @endphp
-                                                                                                <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ ((floor($duration->days) * $weekly_size) + (floor($duration->days)*10) - 10) }}px; position: absolute; left: 0px; z-index: 2; top: 0px; border: 1px {{ $s->statusSchedule?->bg }} solid; height: 25px;">
-                                                                                                    <div class="progress-bar py-1 overflow-visible text-dark progress-bar-striped progress-bar-animated size6 ff-sriracha overflow-visible text-dark d-flex flex-row" style="width: 100%; background-color: {{ $s->statusSchedule?->bg }}; color: {{ $s->statusSchedule?->color }};">
-                                                                                                        <span class="bg-secondary text-light px-2 rounded-2 mx-2">{{ $sch->schedule->artist->nickname  }}</span> 
-                                                                                                        <span class="bg-secondary text-light px-2 rounded-2 mx-2">{{ $sch->statusSchedule->title }}</span>
-                                                                                                        {{-- {{$sch->start_date . '-' . $sch->end_date}} --}}
-                                                                                                    </div>
+                                                                                        @if(isset($scheduleItems[$d['fulldate']]))
+                                                                                            @foreach($scheduleItems[$d['fulldate']] as $isch => $sch)
+                                                                                            @php
+                                                                                                $start = new DateTime($sch->start_date);
+                                                                                                $end = new DateTime($sch->end_date);
+                                                                                                $duration = $end->diff($start);
+                                                                                            @endphp
+                                                                                            <div class="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: {{ ((floor($duration->days) * $weekly_size) + (floor($duration->days)*10) - 10) }}px; position: absolute; left: 0px; z-index: 2; top: 0px; border: 1px {{ $s->statusSchedule?->bg }} solid; height: 25px;">
+                                                                                                <div class="progress-bar py-1 overflow-visible text-dark progress-bar-striped progress-bar-animated size6 ff-sriracha overflow-visible text-dark d-flex flex-row" style="width: 100%; background-color: {{ $s->statusSchedule?->bg }}; color: {{ $s->statusSchedule?->color }};">
+                                                                                                    <span class="bg-secondary text-light px-2 rounded-2 mx-2">{{ $sch->schedule->artist->nickname  }}</span> 
+                                                                                                    <span class="bg-secondary text-light px-2 rounded-2 mx-2">{{ $sch->statusSchedule->title }}</span>
+                                                                                                    {{-- {{$sch->start_date . '-' . $sch->end_date}} --}}
                                                                                                 </div>
-                                                                                                @endforeach
-                                                                                            @endif
+                                                                                            </div>
+                                                                                            @endforeach
+                                                                                        @endif
                                                                                     @endforeach
                                                                                 </td>
                                                                             @endif
@@ -410,7 +410,7 @@ $daily_size = 35;
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane py-2" id="board-schedule" role="tabpanel" aria-labelledby="board-schedule-tab">
+                            <div class="tab-pane py-3" id="board-schedule" role="tabpanel" aria-labelledby="board-schedule-tab">
                                 <div class="row justify-content-start flex-nowrap align-items-start g-1">
                                     @foreach($schedule_status as $i => $st)
                                     <div class="col">
@@ -421,50 +421,32 @@ $daily_size = 35;
                                             <div class="card-body py-1">
                                                 <div class="accordion accordion-flush" id="accordianScheduleBoard{{ $st->id }}">
                                                     @foreach($gigs as $ig => $g)
+                                                        @php
+                                                            $schedule_board = \App\Models\ScheduleModel::where('gig_id',$g->id)->get();
+                                                        @endphp
                                                         <div class="accordion-item">
                                                             <h2 class="accordion-header ff-oswald" id="flush-heading{{$st->id}}-{{ $g->id }}">
-                                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$st->id}}-{{ $g->id }}" aria-expanded="true" aria-controls="flush-collapse{{$st->id}}-{{ $g->id }}">
+                                                                <button href="javascript:void(0);" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$st->id}}-{{ $g->id }}" aria-expanded="true" aria-controls="flush-collapse{{$st->id}}-{{ $g->id }}">
                                                                     {{$g->title}}
+                                                                    <span class="mx-3 badge text-bg-info">{{ $schedule_board->count() }}</span>
                                                                 </button>
                                                             </h2>
                                                             <div id="flush-collapse{{$st->id}}-{{ $g->id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{$st->id}}-{{ $g->id }}" data-bs-parent="#accordianScheduleBoard{{ $st->id }}">
                                                                 <div class="accordion-body p-1">
+                                                                    @foreach($schedule_board as $isc => $sc)
                                                                     <div class="card rounded-3 mt-2 bg-primary-subtle">
                                                                         <div class="card-header ff-ibmplexmono-bold">
-                                                                            Gula Atur Sendiri
+                                                                            {{ $sc->customer->nickname }}
                                                                         </div>
                                                                         <div class="card-body p-1">
-                                                                            <h4 class="card-title ff-caveat m-0">Title</h4>
-                                                                            <p class="card-text bg-secondary-subtle ff-dmsans-regular size6"><i class="fas fa-calendar-alt"></i> Dec, 23 2023</p>
+                                                                            <h4 class="card-title ff-caveat m-0">{{ $sc->artist->nickname }}</h4>
+                                                                            <p class="card-text text-bg-secondary ff-dmsans-regular size6 rounded-3 py-1">
+                                                                                <i class="fas fa-calendar-alt"></i> 
+                                                                                {{ date('F j, Y', strtotime($sc->start_date)) . ' - ' . date('F j, Y', strtotime($sc->end_date)) }}
+                                                                            </p>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="card rounded-3 mt-2 bg-secondary-subtle">
-                                                                        <div class="card-header ff-ibmplexmono-bold">
-                                                                            Gula Atur Sendiri
-                                                                        </div>
-                                                                        <div class="card-body p-1">
-                                                                            <h4 class="card-title ff-caveat m-0">Title</h4>
-                                                                            <p class="card-text bg-secondary-subtle ff-dmsans-regular size6"><i class="fas fa-calendar-alt"></i> Dec, 23 2023</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="card rounded-3 mt-2 bg-success-subtle">
-                                                                        <div class="card-header ff-ibmplexmono-bold">
-                                                                            Gula Atur Sendiri
-                                                                        </div>
-                                                                        <div class="card-body p-1">
-                                                                            <h4 class="card-title ff-caveat m-0">Title</h4>
-                                                                            <p class="card-text bg-secondary-subtle ff-dmsans-regular size6"><i class="fas fa-calendar-alt"></i> Dec, 23 2023</p>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="card rounded-3 mt-2 bg-warning-subtle">
-                                                                        <div class="card-header ff-ibmplexmono-bold">
-                                                                            Gula Atur Sendiri
-                                                                        </div>
-                                                                        <div class="card-body p-1">
-                                                                            <h4 class="card-title ff-caveat m-0">Title</h4>
-                                                                            <p class="card-text bg-secondary-subtle ff-dmsans-regular size6"><i class="fas fa-calendar-alt"></i> Dec, 23 2023</p>
-                                                                        </div>
-                                                                    </div>
+                                                                    @endforeach
                                                                 </div>
                                                             </div>
                                                         </div>

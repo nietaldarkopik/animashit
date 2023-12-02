@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
+use App\Models\OrderModel;
 
 class AdmDashboardController extends Controller
 {
@@ -19,7 +20,11 @@ class AdmDashboardController extends Controller
     public function index(Request $request)
     {
         $roles = Role::orderBy('id', 'DESC')->paginate(5);
-        return view('backend.pages.dashboard.index', compact('roles'));
+        $open_project = OrderModel::where('id','!=',3)->get();
+        $done_project = OrderModel::where('id',3)->get();
+        $open_value = OrderModel::where('id','!=',3)->sum('price');
+        $paid_value = OrderModel::where('id',3)->sum('price');
+        return view('backend.pages.dashboard.index', compact('open_project','done_project','open_value','paid_value'));
     }
 
     public function create()

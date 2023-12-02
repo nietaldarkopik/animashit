@@ -75,20 +75,20 @@
                                             <div class="owlcarousel-portfolios owl-carousel owl-theme">
                                                 @foreach ($item->portfolios as $ia => $a)
                                                     @php
-                                                        $artist = $a->profile->where('user_type', 4)->first();
-                                                        $client = $a->profile->where('user_type', 5)->first();
+                                                        $artist = (isset($a->profile))?$a->profile->where('user_type', 4)->first():[];
+                                                        $client = (isset($a->profile))?$a->profile->where('user_type', 5)->first():[];
                                                         $media = $a->media->where('type', 'image')->first();
                                                     @endphp
                                                     <div class="item">
                                                         <div class="card text-dark h-100 card-portfolio" data-id="{{ $a->id }}" data-gig_id="{{ $item->gig_id }}">
                                                             <img class="card-img d-none object-fit-cover d-flex h-100"
-                                                                src="{{ url($media->media) }}" alt="Title">
+                                                                src="{{ (isset($media->media)?url($media->media):'') }}" alt="Title">
                                                             <div
                                                                 class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
                                                                 <div class="anime-bg-secondary-trans1 px-1 py-1">
                                                                     <h4 class="card-title size5">
                                                                         <span
-                                                                            class="ff-delicious-handrawn fw-bold">{{ $client->nickname }}</span>
+                                                                            class="ff-delicious-handrawn fw-bold">{{ $client->nickname ?? ''}}</span>
                                                                     </h4>
                                                                 </div>
                                                             </div>
@@ -504,7 +504,7 @@
                         resolve('Animation ended');
                     });
                 });
-
+            /* 
             let mainMenu = getPagesList([], function(msg) {
                 let output = $("<div/>");
                 let data = msg.data;
@@ -523,7 +523,7 @@
                 });
                 $("#mainmenu").html($(output).html());
             });
-
+            */
             let mainGig = getGigsList([], function(msg) {
                 let output = $("<div/>");
                 let data = msg.data;

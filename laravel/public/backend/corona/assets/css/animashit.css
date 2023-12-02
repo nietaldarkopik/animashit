@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Delicious+Handrawn&family=Golos+Text:wght@400;500;600;700;800;900&family=Handlee&family=Indie+Flower&family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nanum+Pen+Script&family=Oswald:wght@200;600&family=Satisfy&family=Sriracha&family=Sue+Ellen+Francisco&display=swap');
+
 :root {
   --animashit-primary: #cd1817;
   --animashit-secondary: #f6e84e;
@@ -98,4 +100,84 @@
 
 textarea.form-control{
   height: unset;
+}
+
+
+
+
+
+@font-face {
+  font-family: "GraphikBold";
+  src: url(../../../../frontend/animashit/assets/fonts/GraphikBold.otf);
+}
+
+@font-face {
+  font-family: "GraphikRegular";
+  src: url(../../../../frontend/animashit/assets/fonts/GraphikRegular.otf );
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url(../../../../frontend/animashit/assets/fonts/Poppins-Bold.ttf );
+}
+
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url(../../../../frontend/animashit/assets/fonts/Poppins-Medium.ttf );
+}
+
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url(../../../../frontend/animashit/assets/fonts/Poppins-Regular.ttf);
+}
+
+
+@font-face {
+  font-family: "DMSans-Bold-Italic";
+  src: url(../../../../frontend/animashit/assets/fonts/dm-sans/DMSans-Bold-Italic.woff2);
+}
+
+@font-face {
+  font-family: "DMSans-Bold";
+  src: url(../../../../frontend/animashit/assets/fonts/dm-sans/DMSans-Bold.woff2);
+}
+
+@font-face {
+  font-family: "DMSans-Regular-Italic";
+  src: url(../../../../frontend/animashit/assets/fonts/dm-sans/DMSans-Regular-Italic.woff2);
+}
+
+@font-face {
+  font-family: "DMSans-Regular";
+  src: url(../../../../frontend/animashit/assets/fonts/dm-sans/DMSans-Regular.woff2);
+}
+
+@font-face {
+  font-family: "IBMPlexMono-Bold";
+  src: url(../../../../frontend/animashit/assets/fonts/ibm-plex-mono/IBMPlexMono-Bold.woff2);
+}
+
+@font-face {
+  font-family: "IBMPlexMono-Italic";
+  src: url(../../../../frontend/animashit/assets/fonts/ibm-plex-mono/IBMPlexMono-Italic.woff2);
+}
+
+@font-face {
+  font-family: "IBMPlexMono-Light";
+  src: url(../../../../frontend/animashit/assets/fonts/ibm-plex-mono/IBMPlexMono-Light.woff2);
+}
+
+@font-face {
+  font-family: "IBMPlexMono-Regular";
+  src: url(../../../../frontend/animashit/assets/fonts/ibm-plex-mono/IBMPlexMono-Regular.woff2);
+}
+
+@font-face {
+  font-family: "SourceSerif4Variable-Italic";
+  src: url(../../../../frontend/animashit/assets/fonts/source-serif-pro/SourceSerif4Variable-Italic.ttf.woff2);
+}
+
+@font-face {
+  font-family: "SourceSerif4Variable-Roman";
+  src: url(../../../../frontend/animashit/assets/fonts/source-serif-pro/SourceSerif4Variable-Roman.ttf.woff2);
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\ContactModel;
 use App\Models\homemodel;
 use App\Models\PageModel;
 use App\Models\ProfileModel;
@@ -30,4 +31,36 @@ class PageController extends Controller
         return view('frontend.templates.'.$template);
     }
 
+    public function thankContact()
+    {
+        $page = PageModel::where('slug','=', 'thanks-contact')->get()->first();
+        return view('frontend.templates.contact-thanks',compact('page'));
+    }
+
+    public function sendContact(Request $request)
+    {
+        
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'country' => 'required|numeric',
+            'subject' => 'required',
+            'message' => 'required',
+            'g-recaptcha-response' => 'recaptcha',
+
+        ]);
+
+        $save = new ContactModel;
+
+        $save->name = $request->name;
+        $save->email = $request->email;
+        $save->country = $request->country;
+        $save->subject = $request->subject;
+        $save->message = $request->message;
+
+        $save->save();
+
+        return redirect('thanks-contact')->with('status', 'Recaptcha has been validated form');
+
+    }
 }

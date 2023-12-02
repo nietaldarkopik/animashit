@@ -40,7 +40,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Description:</strong>
-                                <textarea name="description" class="form-control" rows="10"></textarea>
+                                <textarea name="description" class="form-control richtext" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use App\Models\GigModel;
 use App\Models\GigPackageModel;
+use App\Models\PortfolioMediaModel;
 use App\Models\PortfolioModel;
 use App\Models\ProfileModel;
 use Illuminate\Http\Request;
@@ -32,17 +33,31 @@ class AdmPortfoliosController extends Controller
         $packages = GigModel::all();
         $gigpackages = GigPackageModel::all();
         $customers = ProfileModel::where('user_type','=',5)->get();
-        return view('backend.pages.portfolios.create',compact('gigs','packages','gigpackages','customers'));
+        $artists = ProfileModel::where('user_type','=',4)->get();
+        return view('backend.pages.portfolios.create',compact('gigs','packages','gigpackages','customers','artists'));
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|unique:portfolios,title'
+            'title' => 'required',
+            'gig_id' => 'required',
+            'gig_package_id' => 'required',
+            'customer_id' => 'required',
         ]);
+    
+        $data = [];
+        $data['gig_id'] = $request->input('gig_id');
+        $data['gig_package_id'] = $request->input('gig_package_id');
+        $data['customer_id'] = $request->input('customer_id');
+        $data['title'] = $request->input('title');
+        $data['description'] = $request->input('description');
 
-        $portfolio = PortfolioModel::create(['title' => $request->input('title'),'description' => $request->input('description')]);
+        $portfolio = PortfolioModel::create($data);
+        $new_medias = new PortfolioMediaModel;
 
+        $new_medias->uploadMedia($portfolio->id, $request->input('media'),$request->file('media'));
+        
         return redirect()->route('admin.portfolios.index')
             ->with('success', 'Portfolio created successfully');
     }
@@ -50,15 +65,26 @@ class AdmPortfoliosController extends Controller
     public function show(PortfolioModel $portfolioModel)
     {
         $portfolio = $portfolioModel;
+        $gigs = GigModel::all();
+        $packages = GigModel::all();
+        $gigpackages = GigPackageModel::all();
+        $customers = ProfileModel::where('user_type','=',5)->get();
+        $artists = ProfileModel::where('user_type','=',4)->get();
+        $featureList  = []; 
 
-        return view('backend.pages.portfolios.show', compact('portfolio'));
+        return view('backend.pages.portfolios.show', compact('portfolio','gigs','packages','gigpackages','customers','artists','featureList'));
     }
 
-    public function edit(PortfolioModel $portfolioModel)
+    public function edit(PortfolioModel $portfolio)
     {
-        $portfolio = $portfolioModel;
-
-        return view('backend.pages.portfolios.edit', compact('portfolio'));
+        $gigs = GigModel::all();
+        $packages = GigModel::all();
+        $gigpackages = GigPackageModel::all();
+        $customers = ProfileModel::where('user_type','=',5)->get();
+        $artists = ProfileModel::where('user_type','=',4)->get();
+        $featureList  = []; 
+        $extraFeatureList  = []; 
+        return view('backend.pages.portfolios.edit', compact('portfolio','gigs','packages','gigpackages','customers','artists','featureList','extraFeatureList'));
     }
 
     public function update(Request $request, PortfolioModel $portfolioModel)

@@ -17,6 +17,8 @@
     "dependencies": {
         "animate.css": "^4.1.1",
         "jquery": "^3.7.1",
-        "jquery.flipster": "^1.1.5"
+        "jquery.cookie": "^1.4.1",
+        "jquery.flipster": "^1.1.5",
+        "summernote": "^0.8.20"
     }
 }

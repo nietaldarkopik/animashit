@@ -5,6 +5,7 @@
     --animashit-color-danger: rgb(237, 66, 23);
     --animashit-color-orange: rgb(227, 166, 23);
     --animashit-color-muted: #cccccc;
+    --animashit-color-light: #e2dfdf;
 
     --animashit-color-primary-trans: rgba(31, 32, 41, 0.8);
     --animashit-color-secondary-trans: rgba(237, 205, 23, 0.8);
@@ -12,6 +13,7 @@
     --animashit-color-danger-trans: rgba(236, 66, 24, 0.8);
     --animashit-color-orange-trans: rgba(227, 166, 23, 0.8);
     --animashit-color-muted-trans: rgba(204, 204, 204, 0.8);
+    --animashit-color-light-trans: rgba(227, 222, 222, 0.557);
 
     --animashit-color-linear1: linear-gradient(119deg, rgba(237, 224, 74, 1) 0%, rgba(245, 240, 244, 1) 80%, rgba(233, 234, 236, 1) 100%, rgba(3, 4, 6, 1) 100%, rgba(1, 2, 4, 1) 100%);
     --animashit-color-linear2: linear-gradient(125deg, rgb(189 84 255) 0%, rgb(255 253 253) 100%);
@@ -1040,6 +1042,10 @@ Widget Component
 
 .bg-animashit-muted-trans {
     background-color: var(--animashit-color-muted-trans);
+}
+
+.bg-animashit-light-trans {
+    background-color: var(--animashit-color-light-trans);
 }
 
 .border-animashit-primary {

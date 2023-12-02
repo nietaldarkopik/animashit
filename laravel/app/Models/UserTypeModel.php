@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserTypeModel extends Model
 {
     use HasFactory;
+
+    
+    protected $table = 'roles'; // Nama tabel dalam database
 }

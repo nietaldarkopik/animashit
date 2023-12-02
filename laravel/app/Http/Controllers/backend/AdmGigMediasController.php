@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\GigModel;
+use App\Models\GigMediaModel;
 use DB;
 use Illuminate\Http\Request;
 
@@ -19,24 +20,25 @@ class AdmGigMediasController extends Controller
 
     public function index(Request $request)
     {
-        $gigpackages = GigModel::orderBy('id', 'DESC')->paginate(5);
-        return view('backend.pages.gigpackages.index', compact('gigpackages'));
+        $gigs = GigModel::all();
+        $gigmedias = GigMediaModel::orderBy('id', 'DESC')->paginate(10);
+        return view('backend.pages.gigmedias.index', compact('gigs','gigmedias'));
     }
 
     public function create()
     {
-        return view('backend.pages.gigpackages.create');
+        return view('backend.pages.gigmedias.create');
     }
 
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|unique:gigpackages,title'
+            'title' => 'required|unique:gigmedias,title'
         ]);
 
         $gig = GigModel::create(['title' => $request->input('title'),'description' => $request->input('description')]);
 
-        return redirect()->route('admin.gigpackages.index')
+        return redirect()->route('admin.gigmedias.index')
             ->with('success', 'Gig created successfully');
     }
 
@@ -44,14 +46,14 @@ class AdmGigMediasController extends Controller
     {
         $gig = GigModel::find($id);
 
-        return view('backend.pages.gigpackages.show', compact('gig'));
+        return view('backend.pages.gigmedias.show', compact('gig'));
     }
 
     public function edit($id)
     {
         $gig = GigModel::find($id);
 
-        return view('backend.pages.gigpackages.edit', compact('gig'));
+        return view('backend.pages.gigmedias.edit', compact('gig'));
     }
 
     public function update(Request $request, $id)
@@ -65,14 +67,14 @@ class AdmGigMediasController extends Controller
         $gig->description = $request->input('description');
         $gig->save();
 
-        return redirect()->route('admin.gigpackages.index')
+        return redirect()->route('admin.gigmedias.index')
             ->with('success', 'Gig updated successfully');
     }
 
     public function destroy($id)
     {
-        DB::table("gigpackages")->where('id', $id)->delete();
-        return redirect()->route('admin.gigpackages.index')
+        DB::table("gigmedias")->where('id', $id)->delete();
+        return redirect()->route('admin.gigmedias.index')
             ->with('success', 'Gig deleted successfully');
     }
 }

@@ -10,7 +10,7 @@
                     <div class="card-body py-0 px-0 px-sm-3">
                         <div class="row align-items-center"> 
                             <div class="col-4 col-sm-3 col-xl-2">
-                                <img src="{{ asset('backend/corona/assets/images/dashboard/Group126@2x.png') }}"
+                                <img src="{{ url('backend/corona/assets/images/dashboard/Group126@2x.png') }}"
                                     class="gradient-corona-img img-fluid" alt="">
                             </div>
                             <div class="col-5 col-sm-7 col-xl-8 p-0">
@@ -68,7 +68,7 @@
                             <tr>
                                 <td class="text-light">{{ $no }}</td>
                                 <td class="text-light">
-                                    <img src="{{ asset('uploads/artists/' . $artist->avatar) }}" alt="Avatar" style="height: 100px; width: 100px; object-fit: fill;">
+                                    <img src="{{ url('uploads/artists/' . $artist->avatar) }}" alt="Avatar" style="height: 100px; width: 100px; object-fit: fill;">
                                 </td>
                                 <td class="text-light">
                                     <h6 class="preview-subject">{{ $artist->name }}</h6>

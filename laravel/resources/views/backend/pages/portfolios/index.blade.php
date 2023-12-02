@@ -10,7 +10,7 @@
                     <div class="card-body py-0 px-0 px-sm-3">
                         <div class="row align-items-center"> 
                             <div class="col-4 col-sm-3 col-xl-2">
-                                <img src="{{ asset('backend/corona/assets/images/dashboard/Group126@2x.png') }}"
+                                <img src="{{ url('backend/corona/assets/images/dashboard/Group126@2x.png') }}"
                                     class="gradient-corona-img img-fluid" alt="">
                             </div>
                             <div class="col-5 col-sm-7 col-xl-8 p-0">
@@ -49,7 +49,7 @@
                         <p>{{ $message }}</p>
                     </div>
                 @endif
-
+                <div class="table-responsive">
                 <table class="table table-hover table-animashit">
                     <thead>
                         <tr>
@@ -65,16 +65,15 @@
                         @foreach ($portfolios as $key => $portfolio)
                             <tr>
                                 <td>{{ $portfolio->gig?->title }}</td>
-                                <td>{{ $portfolio->gigpackage?->package }}</td>
-                                <td>{{ $portfolio->artist?->nickname }}</td>
-                                <td>{{ $portfolio->customer?->nickname }}</td>
-                                <td>{{ $portfolio->gigpackage?->package }}</td>
+                                <td>{{ $portfolio->gigpackage?->package->title }}</td>
+                                <td>{{ $portfolio->profile?->nickname }}</td>
+                                <td>{{ $portfolio->client?->nickname }}</td>
+                                <td>${{ $portfolio->gigpackage?->price }}</td>
                                 <td>
                                     <form action="{{ route('admin.portfolios.destroy', $portfolio->id) }}" method="POST">
                                         <a class="btn btn-info" href="{{ route('admin.portfolios.show', $portfolio->id) }}">Show</a>
                                         @can('gig-edit')
                                             <a class="btn btn-primary" href="{{ route('admin.portfolios.edit', $portfolio->id) }}">Edit</a>
-                                            <a class="btn btn-primary" href="{{ route('admin.portfolio.package', $portfolio->id) }}">Portfolio</a>
                                         @endcan
 
 
@@ -89,7 +88,7 @@
                         @endforeach
                     </tbody>
                 </table>
-
+                </div>
                 {!! $portfolios->render() !!}
             </div>
         </div>

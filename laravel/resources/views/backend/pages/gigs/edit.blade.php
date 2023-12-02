@@ -43,7 +43,7 @@
                         <div class="col-xs-12 mb-3">
                             <div class="form-group">
                                 <strong>Description:</strong>
-                                <textarea name="description" class="form-control" placeholder="Description" rows="10">{{ $gig->description }}</textarea>
+                                <textarea name="description" class="form-control richtext" placeholder="Description" rows="10">{{ $gig->description }}</textarea>
                             </div>
                         </div>
                         <div class="col-xs-12 mb-3 text-center">

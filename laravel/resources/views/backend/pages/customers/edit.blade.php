@@ -128,7 +128,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-3">
                             <div class="form-group">
                                 <strong>Avatar:</strong>
-                                <img src="{{ asset('uploads/customers/' . $profile->avatar) }}" alt="Avatar" class="img-thumbnail">
+                                <img src="{{ url('uploads/customers/' . $profile->avatar) }}" alt="Avatar" class="img-thumbnail">
                                 <input type="file" name="avatar" class="form-control text-light" placeholder="Avatar">
                             </div>
                         </div>

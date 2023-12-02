@@ -29,7 +29,7 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.portfolios.store') }}" method="POST">
+        <form action="{{ route('admin.portfolios.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('post')
             <div class="card border-yellow">
@@ -40,7 +40,7 @@
                                 <div class="col-xs-12 col-sm-4 col-md-4">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Gig</label>
-                                        <select class="form-control form-select form-select-sm" name="head[gig_id]"
+                                        <select class="form-control form-select form-select-sm" name="gig_id"
                                             id="input-gig_id">
                                             <option selected value="0">Select one</option>
                                             @foreach ($gigs as $i => $gig)
@@ -52,7 +52,7 @@
                                 <div class="col-xs-12 col-sm-4 col-md-4">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Package</label>
-                                        <select class="form-control form-select form-select-sm" name="head[gig_package_id]"
+                                        <select class="form-control form-select form-select-sm" name="gig_package_id"
                                             id="input-gig_package_id">
                                             <option selected value="0">Select one</option>
                                             @foreach ($gigpackages as $i => $gigpackage)
@@ -66,8 +66,8 @@
                                 <div class="col-xs-12 col-sm-4 col-md-4">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Customer</label>
-                                        <select class="form-control form-select form-select-sm" name="head[gig_package_id]"
-                                            id="input-gig_package_id">
+                                        <select class="form-control form-select form-select-sm" name="customer_id"
+                                            id="input-customer_id">
                                             <option selected value="0">Select one</option>
                                             @foreach ($customers as $i => $customer)
                                                 <option value="{{ $customer->id }}">{{ $customer->nickname }}</option>
@@ -77,8 +77,14 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="mb-3">
+                                        <label for="" class="form-label">Title</label>
+                                        <input class="form-control bg-animashit-dark text-light" name="title">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="mb-3">
                                         <label for="" class="form-label">Description</label>
-                                        <textarea rows="5" class="w-100 bg-animashit-dark text-light" name="head[description]"></textarea>
+                                        <textarea rows="5" class="w-100 bg-animashit-dark text-light" name="description"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +100,7 @@
                             <div class="card h-100 bg-light text-dark">
                                 {{-- <img class="card-img-top" src="holder.js/100x180/" alt="Title"> --}}
                                 <div class="card-header">
-                                    <button class="btn btn-sm btn-danger btn-remove-media p-2 float-end">
+                                    <button class="btn btn-sm btn-danger btn-remove-media p-2 float-end" type="button">
                                         <i class="fas fa-trash m-0 p-0"></i>
                                     </button>
                                 </div>
@@ -120,12 +126,12 @@
                                     </div>
                                 </div>
                                 <div class="card-body p-2 card-media-input">
-                                    <textarea rows="5" name="media" class="form-control media-input-text d-none"></textarea>
+                                    <textarea rows="5" name="media[media][]" class="form-control media-input-text d-none"></textarea>
                                     <div class="input-group mb-3 media-input-upload d-none">
                                         <label class="btn btn-lg btn-warning w-100">
                                             <i class="fas fa-upload fa-xl my-2"></i>
-                                            <span class="py-2 h6">Upload</span>
-                                            <input type="file" class="form-control d-none">
+                                            <span class="py-2 h6">Choose File</span>
+                                            <input type="file" name="media[media_file][]" class="form-control d-none">
                                         </label>
                                     </div>
                                 </div>
@@ -187,6 +193,9 @@
                 $(masterForm).find(":input").val("");
                 masterForm = setMediaType(masterForm);
                 $(this).parents(".col-sm-3").before(masterForm);
+            });
+            $("body").on("click",".btn-remove-media",function(e){
+                $(this).closest(".col-sm-3").remove();
             });
 
             $("body").on("change",".input-media-type", function(e){
