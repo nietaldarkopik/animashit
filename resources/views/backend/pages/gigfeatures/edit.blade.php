@@ -37,10 +37,30 @@
                             <div class="form-group">
                                 <strong>Gig:</strong>
                                 <select class="form-select form-control" name="gig_id">
-                                    <option selected>Select one</option>
+                                    <option value="">Select one</option>
                                     @foreach ($gigs as $i => $gig)
                                         <option value={{ $gig->id }} @selected($gigfeature->gig_id == $gig->id)>{{ $gig->title }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Type:</strong>
+                                <select class="form-select form-control" name="type">
+                                    <option value="">Select one</option>
+                                    <option value="default" @selected($gigfeature->type == 'default')>Default</option>
+                                    <option value="extra" @selected($gigfeature->type == 'extra')>Extra Feature</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Input Type:</strong>
+                                <select class="form-select form-control" name="input_type">
+                                    <option value="">Select one</option>
+                                    <option value="text" @selected($gigfeature->input_type == "text")>Text</option>
+                                    <option value="checkbox" @selected($gigfeature->input_type == "checkbox")>Checkbox</option>
                                 </select>
                             </div>
                         </div>
@@ -52,14 +72,20 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Sorting:</strong>
-                                <input type="number" name="sort" value="{{ $gigfeature->sort }}"  class="form-control" placeholder="Sort Order Listing">
+                                <strong>Description:</strong>
+                                <textarea name="description" class="form-control" rows="10">{{ $gigfeature->description }}</textarea>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Description:</strong>
-                                <textarea name="description" class="form-control" rows="10">{{ $gigfeature->description }}</textarea>
+                                <strong>Unit:</strong>
+                                <input type="text" name="unit" value="{{ $gigfeature->unit }}" class="form-control" placeholder="Unit">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Sorting:</strong>
+                                <input type="number" name="sort" value="{{ $gigfeature->sort }}" class="form-control" placeholder="Sort Order Listing">
                             </div>
                         </div>
                         <div class="col-xs-12 mb-3 text-center">

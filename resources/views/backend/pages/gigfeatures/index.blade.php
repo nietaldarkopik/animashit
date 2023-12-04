@@ -4,39 +4,14 @@
     <div class="content-wrapper">
         <div class="card border-yellow">
             <div class="card-body">
-                {{-- <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-                <div class="card corona-gradient-card">
-                    <div class="card-body py-0 px-0 px-sm-3">
-                        <div class="row align-items-center"> 
-                            <div class="col-4 col-sm-3 col-xl-2">
-                                <img src="{{ url('backend/corona/assets/images/dashboard/Group126@2x.png') }}"
-                                    class="gradient-corona-img img-fluid" alt="">
-                            </div>
-                            <div class="col-5 col-sm-7 col-xl-8 p-0">
-                                <h4 class="mb-1 mb-sm-0">Want even more features?</h4>
-                                <p class="mb-0 font-weight-normal d-none d-sm-block">Check out our Pro version with 5 unique
-                                    layouts!</p>
-                            </div>
-                            <div class="col-3 col-sm-2 col-xl-2 ps-0 text-center">
-                                <span>
-                                    <a href="https://www.bootstrapdash.com/gig/corona-admin-template/" target="_blank"
-                                        class="btn btn-outline-light
-        btn-rounded get-started-btn">Upgrade to PRO</a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
                 <div class="row">
-                    <div class="col-lg-12 margin-tb mb-4">
+                    <div class="col-lg-12">
                         <div class="pull-left">
                             <h2>Gig Feature Management
                                 <div class="float-end">
                                     @can('gig-create')
-                                        <a class="btn btn-success" href="{{ route('admin.gigfeatures.create') }}"> Create New Gig Feature</a>
+                                        <a class="btn btn-success" href="{{ route('admin.gigfeatures.create') }}"> Create New Gig
+                                            Feature</a>
                                     @endcan
                                 </div>
                             </h2>
@@ -49,12 +24,50 @@
                         <p>{{ $message }}</p>
                     </div>
                 @endif
+            </div>
+            <div class="card-body">
+                <form class="d-flex" action="{{ route('admin.gigfeatures.post') }}" method="post">
+                    @csrf
+                    <div class="col-12 col-md-6 col-lg-4 ms-auto">
+                        <div class="form-inline">
+                            <div class="input-group">
+                                <label class="input-group-text bg-light" for="input-gig_id">Choose Gig</label>
+                                <select class="form-select" id="input-gig_id" name="filter[gig_id]">
+                                    <option value="">All Gigs ...</option>
+                                    @foreach ($gigs as $i => $g)
+                                        <option value="{{ $g->id }}" @selected(isset($post_filter) and isset($post_filter['gig_id']) and $post_filter['gig_id'] == $g->id)>
+                                            {{ $g->title }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="form-select" id="input-type" name="filter[type]">
+                                    <option value="">All Type ...</option>
+                                    <option value="default" @selected(isset($post_filter) and isset($post_filter['type']) and $post_filter['type'] == "default")>
+                                        Default
+                                    </option>
+                                    <option value="extra" @selected(isset($post_filter) and isset($post_filter['type']) and $post_filter['type'] == "extra")>
+                                        Extra Feature
+                                    </option>
+                                </select>
+                                <input type="text" name="filter[keyword]" value="{{ $post_filter['keyword'] ?? ''}}" class="border-light" placeholder="Keyword Feature" aria-describedby="helpId">
+                                <div class="d-grid gap-2">
+                                    <button type="submit" name="do_action" value="do_filter" class="btn btn-primary">Filter</button>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" name="do_action" value="do_reset" class="btn btn-warning">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body table-responsive">
 
                 <table class="table table-hover table-animashit">
                     <thead>
                         <tr>
                             <th>Gig</th>
                             <th>Feature</th>
+                            <th>Type</th>
                             <th width="280px">Action</th>
                         </tr>
                     </thead>
@@ -63,11 +76,14 @@
                             <tr>
                                 <td>{{ $feature->gig->title }}</td>
                                 <td>{{ $feature->title }}</td>
+                                <td>{{ $feature->type }}</td>
                                 <td>
                                     <form action="{{ route('admin.gigfeatures.destroy', $feature->id) }}" method="POST">
-                                        <a class="btn btn-info" href="{{ route('admin.gigfeatures.show', $feature->id) }}">Show</a>
+                                        <a class="btn btn-info"
+                                            href="{{ route('admin.gigfeatures.show', $feature->id) }}">Show</a>
                                         @can('gig-edit')
-                                            <a class="btn btn-primary" href="{{ route('admin.gigfeatures.edit', $feature->id) }}">Edit</a>
+                                            <a class="btn btn-primary"
+                                                href="{{ route('admin.gigfeatures.edit', $feature->id) }}">Edit</a>
                                         @endcan
 
 
@@ -83,6 +99,8 @@
                     </tbody>
                 </table>
 
+            </div>
+            <div class="card-body">
                 {!! $features->render() !!}
             </div>
         </div>

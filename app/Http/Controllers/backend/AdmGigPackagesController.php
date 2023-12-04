@@ -27,11 +27,40 @@ class AdmGigPackagesController extends Controller
 
     public function index(Request $request)
     {
-        $gigs = GigModel::all();
-        $artists = ProfileModel::where('user_type','=', 4);
-        $gigpackages = GigPackageHeadModel::orderBy('gig_id', 'ASC')->paginate(5);
+        $do_action = $request->input('do_action');
+        $do_reset = $request->input('do_reset');
+        if($do_action == 'do_filter')
+        {
+            $post_filter = $request->input('filter');
+            $request->session()->put('filter_gigfeature',$post_filter);
+        }
+        if($do_action == 'do_reset')
+        {
+            $post_filter = $request->input('filter');
+            $request->session()->put('filter_gigfeature',[]);
+        }
+        
+        $post_filter = $request->session()->get('filter_gigfeature');
+        
+        $gigpackages = GigPackageHeadModel::when($do_action, function($query) use ($post_filter){
+            if(isset($post_filter['gig_id']) and !empty($post_filter['gig_id']))
+            {
+                $query->where('gig_id',$post_filter['gig_id']);
+            }
+            if(isset($post_filter['profile_id']) and !empty($post_filter['profile_id']))
+            {
+                $query->where('profile_id',$post_filter['profile_id']);
+            }
+            
+            return $query;
+        })->orderBy('gig_id', 'ASC')->paginate(20);
 
-        return view('backend.pages.gigpackages.index', compact('gigs','gigpackages','artists'));
+        $gigs = GigModel::orderBy('id', 'DESC')->get();
+        $artists = ProfileModel::where('user_type','=', 4)->get();
+        $customers = ProfileModel::where('user_type','=', 5)->get();
+        $packages = PackageModel::orderBy('sort','asc')->get();
+
+        return view('backend.pages.gigpackages.index', compact('gigs','gigpackages','artists','post_filter','customers','packages'));
     }
 
     public function create()
@@ -103,7 +132,7 @@ class AdmGigPackagesController extends Controller
         }
 
         return redirect()->route('admin.gigpackages.index')
-            ->with('success', 'Gig created successfully');
+            ->with('success', 'Gig Package created successfully');
     }
 
     public function show($id)
@@ -311,13 +340,13 @@ class AdmGigPackagesController extends Controller
         //dd($queries);
 
         return redirect()->route('admin.gigpackages.index')
-            ->with('success', 'Gig updated successfully');
+            ->with('success', 'Gig Package updated successfully');
     }
 
     public function destroy($id)
     {
         DB::table("gig_package_head")->where('id', $id)->delete();
         return redirect()->route('admin.gigpackages.index')
-            ->with('success', 'Gig deleted successfully');
+            ->with('success', 'Gig Package deleted successfully');
     }
 }

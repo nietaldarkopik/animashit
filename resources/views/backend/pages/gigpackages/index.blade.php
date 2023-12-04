@@ -4,32 +4,6 @@
     <div class="content-wrapper">
         <div class="card border-yellow">
             <div class="card-body">
-                {{-- <div class="row">
-            <div class="col-12 grid-margin stretch-card">
-                <div class="card corona-gradient-card">
-                    <div class="card-body py-0 px-0 px-sm-3">
-                        <div class="row align-items-center"> 
-                            <div class="col-4 col-sm-3 col-xl-2">
-                                <img src="{{ url('backend/corona/assets/images/dashboard/Group126@2x.png') }}"
-                                    class="gradient-corona-img img-fluid" alt="">
-                            </div>
-                            <div class="col-5 col-sm-7 col-xl-8 p-0">
-                                <h4 class="mb-1 mb-sm-0">Want even more features?</h4>
-                                <p class="mb-0 font-weight-normal d-none d-sm-block">Check out our Pro version with 5 unique
-                                    layouts!</p>
-                            </div>
-                            <div class="col-3 col-sm-2 col-xl-2 ps-0 text-center">
-                                <span>
-                                    <a href="https://www.bootstrapdash.com/gig/corona-admin-template/" target="_blank"
-                                        class="btn btn-outline-light
-        btn-rounded get-started-btn">Upgrade to PRO</a>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
                 <div class="row">
                     <div class="col-lg-12 margin-tb mb-4">
                         <div class="pull-left">
@@ -43,19 +17,53 @@
                         </div>
                     </div>
                 </div>
-
+                
                 @if ($message = Session::get('success'))
-                    <div class="alert alert-success">
-                        <p>{{ $message }}</p>
-                    </div>
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
                 @endif
-
+            </div>
+            
+            <div class="card-body">
+                <form class="d-flex" action="{{ route('admin.gigpackages.post') }}" method="post">
+                    @csrf
+                    <div class="col-12 col-md-6 col-lg-4 ms-auto">
+                        <div class="form-inline">
+                            <div class="input-group">
+                                <label class="input-group-text bg-light" for="input-gig_id">Choose Gig</label>
+                                <select class="form-select" id="input-gig_id" name="filter[gig_id]">
+                                    <option value="">All Gigs ...</option>
+                                    @foreach ($gigs as $i => $g)
+                                        <option value="{{ $g->id }}" @selected(isset($post_filter) and isset($post_filter['gig_id']) and $post_filter['gig_id'] == $g->id)>
+                                            {{ $g->title }}</option>
+                                    @endforeach
+                                </select>
+                                <select class="form-select" id="input-profile_id" name="filter[profile_id]">
+                                    <option value="">All Artist ...</option>
+                                    @foreach ($artists as $i => $g)
+                                        <option value="{{ $g->id }}" @selected(isset($post_filter) and isset($post_filter['profile_id']) and $post_filter['profile_id'] == $g->id)>
+                                            {{ $g->nickname }}</option>
+                                    @endforeach
+                                </select>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" name="do_action" value="do_filter" class="btn btn-primary">Filter</button>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" name="do_action" value="do_reset" class="btn btn-warning">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body table-responsive">
                 <table class="table table-hover table-animashit">
                     <thead>
                         <tr>
                             <th>Gig</th>
                             <th>Artist</th>
-                            <th width="280px">Action</th>
+                            <th width="380px">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -64,26 +72,35 @@
                                 <td>{{ $gigpackage->gig?->title }}</td>
                                 <td>{{ $gigpackage->artist?->nickname }}</td>
                                 <td>
-                                    <form action="{{ route('admin.gigpackages.destroy', $gigpackage->id) }}" method="POST">
-                                        <a class="btn btn-info" href="{{ route('admin.gigpackages.show', $gigpackage->id) }}">Show</a>
-                                        @can('gig-edit')
-                                            <a class="btn btn-primary" href="{{ route('admin.gigpackages.edit', $gigpackage->id) }}">Edit</a>
-                                            <a class="btn btn-primary" href="{{ route('admin.portfolio.package', $gigpackage->id) }}">Portfolio</a>
-                                        @endcan
-
-
+                                    <a class="btn btn-info" href="{{ route('admin.gigpackages.show', $gigpackage->id) }}">Show</a>
+                                    @can('admin.portfolios.index')
+                                    <form action="{{ route('admin.portfolios.post') }}" method="POST" class="d-inline">
                                         @csrf
-                                        @method('DELETE')
-                                        @can('gig-delete')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        @endcan
+                                        <input type="hidden" name="gig_package_id" value="{{ $gigpackage->id}}" />
+                                        <button name="do_action" value="do_filter" class="btn btn-primary">Portfolio</button>
                                     </form>
+                                    @endcan
+                                            
+                                    @can('admin.gigpackages.edit')
+                                        <a class="btn btn-primary" href="{{ route('admin.gigpackages.edit', $gigpackage->id) }}">Edit</a>
+                                    @endcan
+                                        
+                                        
+                                    @can('admin.gigpackages.destroy')
+                                        @method('DELETE')
+                                        <form action="{{ route('admin.gigpackages.destroy', $gigpackage->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
 
+            <div class="card-body">
                 {!! $gigpackages->render() !!}
             </div>
         </div>

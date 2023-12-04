@@ -9,6 +9,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,18 +23,49 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach ($this->permissions as $permission) {
-            Permission::create(['name' => $permission]);
+        // Get the routes
+        $routes = \Illuminate\Support\Facades\Route::getRoutes();
+        
+        // Convert the routes to an array
+        $routeArray = [];
+        
+        foreach ($routes as $route) {
+            $routeArray[] = [
+                'uri' => $route->uri(),
+                'methods' => $route->methods(),
+                'name' => $route->getName(),
+                'action' => $route->getAction(),
+                // Add more information if needed
+            ];
+        }
+        
+        foreach(Permission::all() as $permission)
+        {
+            $permission->delete();
         }
 
-        // Create admin User and assign the role to him.
-        $user = User::create([
-            'name' => 'Admin istrator',
-            'email' => 'nietaldarkopik@gmail.com',
-            'password' => Hash::make('adaajaada'),
-        ]);
+        foreach ($routeArray as $permission) {
+            if(isset($permission['name']) and !empty($permission['name']))
+            {
+                if(Count(Permission::where('name',$permission['name'])->get()) == 0)
+                {
+                    Permission::create(['name' => $permission['name']]);
+                }
+            }
+        }
+        
+        //foreach ($this->permissions as $permission) {
+        //    Permission::create(['name' => $permission]);
+        //}
 
-        $role = Role::create(['name' => 'Admin']);
+        // Create admin User and assign the role to him.
+        $user = User::firstOrCreate(
+            ['email' => 'nietaldarkopik@gmail.com'],
+            ['name' => 'Admin istrator',
+            'password' => Hash::make('adaajaada'),]
+        );
+
+        $role = Role::firstOrCreate(['name' => 'Admin']);
 
         $permissions = Permission::pluck('id', 'id')->all();
 

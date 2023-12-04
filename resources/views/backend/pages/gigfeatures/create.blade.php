@@ -44,20 +44,46 @@
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
+                                <strong>Type:</strong>
+                                <select class="form-select form-control" name="type">
+                                    <option selected>Select one</option>
+                                    <option value="default">Default</option>
+                                    <option value="extra">Extra Feature</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Input Type:</strong>
+                                <select class="form-select form-control" name="input_type">
+                                    <option selected>Select one</option>
+                                    <option value="text">Text</option>
+                                    <option value="checkbox">Checkbox</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
                                 <strong>Title:</strong>
                                 <input type="text" name="title" class="form-control" placeholder="Title">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Sorting:</strong>
-                                <input type="number" name="sort" class="form-control" placeholder="Sort Order Listing">
+                                <strong>Description:</strong>
+                                <textarea name="description" class="form-control" rows="10"></textarea>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Description:</strong>
-                                <textarea name="description" class="form-control" rows="10"></textarea>
+                                <strong>Unit:</strong>
+                                <input type="text" name="unit" class="form-control" placeholder="Unit">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Sorting:</strong>
+                                <input type="number" name="sort" class="form-control" placeholder="Sort Order Listing">
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

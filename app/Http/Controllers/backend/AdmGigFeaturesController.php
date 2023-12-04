@@ -21,9 +21,38 @@ class AdmGigFeaturesController extends Controller
 
     public function index(Request $request)
     {
+        $do_action = $request->input('do_action');
+        $do_reset = $request->input('do_reset');
+        if($do_action == 'do_filter')
+        {
+            $post_filter = $request->input('filter');
+            $request->session()->put('filter_gigfeature',$post_filter);
+        }
+        if($do_action == 'do_reset')
+        {
+            $post_filter = $request->input('filter');
+            $request->session()->put('filter_gigfeature',[]);
+        }
+        
+        $post_filter = $request->session()->get('filter_gigfeature');
+        
         $gigs = GigModel::orderBy('id', 'DESC')->get();
-        $features = GigFeatureModel::orderBy('gig_id', 'ASC')->orderBy('sort','ASC')->paginate(20);
-        return view('backend.pages.gigfeatures.index', compact('gigs', 'features'));
+        $features = GigFeatureModel::when($do_action, function($query) use ($post_filter){
+            if(isset($post_filter['gig_id']) and !empty($post_filter['gig_id']))
+            {
+                $query->where('gig_id',$post_filter['gig_id']);
+            }
+            if(isset($post_filter['type']) and !empty($post_filter['type']))
+            {
+                $query->where('type',$post_filter['type']);
+            }
+            if(isset($post_filter['keyword']) and !empty($post_filter['keyword']))
+            {
+                $query->where('title','like','%'.$post_filter['keyword'].'%');
+            }
+            return $query;
+        })->orderBy('gig_id', 'ASC')->orderBy('sort','ASC')->paginate(20);
+        return view('backend.pages.gigfeatures.index', compact('gigs', 'features','post_filter'));
     }
 
     public function create()

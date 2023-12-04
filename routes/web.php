@@ -69,6 +69,10 @@ Route::middleware('auth')->prefix('admshit')->group(function () {
     Route::get('profile/password/{id?}', [AdmPortfoliosController::class, 'byPackage'])->name('admin.account.password');
     Route::get('gigmedias/bygig/{id?}', [AdmGigMediasController::class,'byGig'])->name('admin.gigmedias.bygig');
     Route::post('gigmedias/bygig', [AdmGigMediasController::class,'byGig'])->name('admin.gigmedias.bygigpost');
+    Route::post('gigfeatures/index', [AdmGigFeaturesController::class,'index'])->name('admin.gigfeatures.post');
+    Route::post('gigpackages/index', [AdmGigPackagesController::class,'index'])->name('admin.gigpackages.post');
+    Route::post('portfolios', [AdmPortfoliosController::class, 'index'])->name('admin.portfolios.post');
+
     Route::resource('roles', AdmRoleController::class, ['as' => 'admin']);
     Route::resource('users', AdmUserController::class, ['as' => 'admin']);
     Route::resource('gigs', AdmGigsController::class, ['as' => 'admin']);

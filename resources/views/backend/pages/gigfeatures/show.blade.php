@@ -34,6 +34,28 @@
                         </div>
                     </div>
                     
+                    
+                    <div class="col-xs-12 mb-3">
+                        <div class="form-group">
+                            <strong>Type:</strong>
+                            {{ $gigfeature->type }}
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-12 mb-3">
+                        <div class="form-group">
+                            <strong>Description:</strong>
+                            {{ $gigfeature->description }}
+                        </div>
+                    </div>
+                    
+                    <div class="col-xs-12 mb-3">
+                        <div class="form-group">
+                            <strong>Input Type:</strong>
+                            {{ $gigfeature->input_type }}
+                        </div>
+                    </div>
+                    
                     <div class="col-xs-12 mb-3">
                         <div class="form-group">
                             <strong>Sort:</strong>
@@ -43,15 +65,8 @@
                     
                     <div class="col-xs-12 mb-3">
                         <div class="form-group">
-                            <strong>Price:</strong>
-                            {{ $gigfeature->price }}
-                        </div>
-                    </div>
-                    
-                    <div class="col-xs-12 mb-3">
-                        <div class="form-group">
-                            <strong>Description:</strong>
-                            {{ $gigfeature->description }}
+                            <strong>Unit:</strong>
+                            {{ $gigfeature->unit }}
                         </div>
                     </div>
                 </div>

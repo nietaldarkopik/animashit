@@ -22,9 +22,45 @@ class AdmPortfoliosController extends Controller
 
     public function index(Request $request)
     {
+        $do_action = $request->input('do_action');
+        $do_reset = $request->input('do_reset');
+        if($do_action == 'do_filter')
+        {
+            $post_filter = $request->input('filter');
+            $request->session()->put('filter_gigfeature',$post_filter);
+        }
+        if($do_action == 'do_reset')
+        {
+            $post_filter = $request->input('filter');
+            $request->session()->put('filter_gigfeature',[]);
+        }
+        
+        $post_filter = $request->session()->get('filter_gigfeature');
+        
+        $gigs = GigModel::orderBy('id', 'DESC')->get();
+        $portfolios = PortfolioModel::when($do_action, function($query) use ($post_filter){
+            if(isset($post_filter['gig_id']) and !empty($post_filter['gig_id']))
+            {
+                $query->where('gig_id',$post_filter['gig_id']);
+            }
+            if(isset($post_filter['gig_package_id']) and !empty($post_filter['gig_package_id']))
+            {
+                $query->where('gig_package_id',$post_filter['gig_package_id']);
+            }
+            if(isset($post_filter['keyword']) and !empty($post_filter['keyword']))
+            {
+                $query->where('title','like','%'.$post_filter['keyword'].'%');
+            }
+            return $query;
+        })->orderBy('gig_id', 'ASC')->paginate(20);
+
         $gigs = GigModel::all();
-        $portfolios = PortfolioModel::orderBy('id', 'DESC')->paginate(5);
-        return view('backend.pages.portfolios.index', compact('portfolios','gigs'));
+        $artists = ProfileModel::where('user_type','=', 4)->get();
+        $customers = ProfileModel::where('user_type','=', 5)->get();
+        $gig_packages = GigPackageModel::orderBy('gig_id','asc')->orderBy('package_id','asc')->orderBy('gig_package_head_id','asc')->get();
+        $packages = PackageModel::orderBy('sort','asc')->get();
+
+        return view('backend.pages.portfolios.index', compact('portfolios','gigs','customers','gig_packages','packages'));
     }
 
     public function create()

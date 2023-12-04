@@ -11,7 +11,7 @@ class GigFeatureModel extends Model
     protected $table = 'gig_features'; // Nama tabel dalam database
 
     protected $fillable = [
-        'gig_id','sort','title','price','description',
+        'gig_id','sort','title','price','description','type','unit','input_type'
     ];
 
     public function gig()
