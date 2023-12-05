@@ -108,7 +108,7 @@
             function generateCard(gig_id)
             {
                 var output = '';
-                var url = "{{ url('') }}";
+                var url = "{{ url('uploads/artists') }}";
                 dataGigs.forEach(a => {
                     if(gig_id == a.packages[0].gig.id || gig_id == '')
                     {

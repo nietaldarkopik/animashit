@@ -9,7 +9,7 @@
                         <div class="pull-left">
                             <h2>Gig Media Management
                                 <div class="float-end">
-                                    {{-- @can('gig-create') --}}
+                                    {{-- @can('admin.gigs.create') --}}
                                     {{-- <a class="btn btn-success btn-add-media" href="{{ route('admin.gigmedias.create') }}"> Add Media</a> --}}
                                     <a class="btn btn-success btn-add-media" href="#"> Add Media</a>
                                     {{-- @endcan --}}
@@ -97,7 +97,7 @@
                                                 @csrf
                                                 <a class="btn btn-info" target="_blank" href="{{ url(htmlspecialchars($gigmedia->media)) }}">Show</a>
                                                 @method('DELETE')
-                                                {{-- @can('gig-delete') --}}
+                                                {{-- @can('admin.gigs.destroy') --}}
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                                 {{-- @endcan --}}
                                             </form>

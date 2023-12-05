@@ -38,7 +38,7 @@
                         <div class="pull-left">
                             <h2>Role Management
                                 <div class="float-end">
-                                    @can('role-create')
+                                    @can('admin.roles.create')
                                         <a class="btn btn-success" href="{{ route('admin.roles.create') }}"> Create New Role</a>
                                     @endcan
                                 </div>
@@ -67,7 +67,7 @@
                                 <td>
                                     <form action="{{ route('admin.roles.destroy', $role->id) }}" method="POST">
                                         <a class="btn btn-info" href="{{ route('admin.roles.show', $role->id) }}">Show</a>
-                                        @can('role-edit')
+                                        @can('admin.roles.edit')
                                             <a class="btn btn-primary"
                                                 href="{{ route('admin.roles.edit', $role->id) }}">Edit</a>
                                         @endcan
@@ -75,7 +75,7 @@
 
                                         @csrf
                                         @method('DELETE')
-                                        @can('product-delete')
+                                        @can('admin.products.destroy')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         @endcan
                                     </form>

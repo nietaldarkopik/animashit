@@ -35,7 +35,7 @@
                         <div class="pull-left">
                             <h2>Page Management
                                 <div class="float-end">
-                                    @can('page-create')
+                                    @can('admin.pages.create')
                                         <a class="btn btn-success" href="{{ route('admin.pages.create') }}"> Create New
                                             Page</a>
                                     @endcan
@@ -85,14 +85,14 @@
                                     <form action="{{ route('admin.pages.destroy', $page->id) }}" method="POST">
                                         <a class="btn btn-info"
                                             href="{{ route('admin.pages.show', $page->id) }}">Show</a>
-                                        @can('page-edit')
+                                        @can('admin.pages.edit')
                                             <a class="btn btn-primary"
                                                 href="{{ route('admin.pages.edit', $page->id) }}">Edit</a>
                                         @endcan
 
                                         @csrf
                                         @method('DELETE')
-                                        @can('page-delete')
+                                        @can('admin.pages.destroy')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         @endcan
                                     </form>

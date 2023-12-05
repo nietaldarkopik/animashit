@@ -18,7 +18,7 @@
                             <div class="card anime-card1 bg-animashit-primary-trans">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{ url($artist->avatar) }}"
+                                        <img src="{{ url('uploads/artists/'.$artist->avatar) }}"
                                             class="img-fluid w-100 h-100 object-fit-cover"
                                             alt="Card title">
                                     </div>
@@ -63,7 +63,7 @@
                             <div class="card anime-card1 bg-animashit-primary-trans">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{ url($client->avatar) }}"
+                                        <img src="{{ url('uploads/clients/'.$client->avatar) }}"
                                             class="img-fluid w-100 h-100 object-fit-cover"
                                             alt="Card title">
                                     </div>
@@ -285,7 +285,7 @@
                         @foreach ($medias as $ip => $p)
                         <div
                             class="carousel-item @if ($ip == 0) active @endif">
-                            @if($p->type == 'image')
+                            {{-- @if($p->type == 'image')
                             <img src="{{ url($p->media) }}"
                                 class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill"
                                 alt="First slide">
@@ -293,7 +293,8 @@
                             <video class="vw-100 vh-100 object-fit-cover" autoplay muted loop>
                                 <source src="{{ url($p->media) }}" type="video/mp4"/>
                             </video>
-                            @endif
+                            @endif --}}
+                            {!! ($p->showDisplay($p->id)) !!}
                             <div class="carousel-caption d-none d-md-block">
                                 <h3>{{ $p->title }}</h3>
                                 <p>{{ $p->description }}</p>

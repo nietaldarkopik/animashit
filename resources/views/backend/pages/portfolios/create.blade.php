@@ -84,7 +84,7 @@
                                 <div class="col-xs-12 col-sm-12 col-md-12">
                                     <div class="mb-3">
                                         <label for="" class="form-label">Description</label>
-                                        <textarea rows="5" class="w-100 bg-animashit-dark text-light" name="description"></textarea>
+                                        <textarea rows="5" class="w-100 bg-animashit-dark text-light richtext" name="description"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
                                         <label class="btn btn-lg btn-warning w-100">
                                             <i class="fas fa-upload fa-xl my-2"></i>
                                             <span class="py-2 h6">Choose File</span>
-                                            <input type="file" name="media[media_file][]" class="form-control d-none">
+                                            <input type="file" name="media_file[]" class="form-control d-none">
                                         </label>
                                     </div>
                                 </div>

@@ -37,21 +37,21 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Slug:</strong>
-                                <input type="text" name="slug" value="{{ $page->slug }}" class="form-control text-light" placeholder="Slug">
+                                <input type="text" name="slug" value="{{ $page->slug }}" class="form-control" placeholder="Slug">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Title:</strong>
-                                <input type="text" name="title" value="{{ $page->title }}" class="form-control text-light" placeholder="Title">
+                                <input type="text" name="title" value="{{ $page->title }}" class="form-control" placeholder="Title">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <label class="form-label">Status:</label>
-                                <select class="form-select form-control text-light" name="status" value="{{ $page->status }}" id="input-status">
+                                <select class="form-select form-control" name="status" value="{{ $page->status }}" id="input-status">
                                     <option value="draft">Choose Status...</option>
                                     @foreach($status as $i => $r)
                                     <option value="{{ $r }}" @selected($r == $page->status)>{{ $r }}</option>
@@ -63,7 +63,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Template:</strong>
-                                <select class="form-select form-control text-light" name="template" value="{{ $page->template }}" id="input-template">
+                                <select class="form-select form-control" name="template" value="{{ $page->template }}" id="input-template">
                                     <option value="default">Choose Template ...</option>
                                     @foreach($templates as $i => $r)
                                     <option value="{{ $r }}" @selected($r == $page->template )>{{$r}}</option>
@@ -75,7 +75,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Description:</strong>
-                                <textarea name="description" class="form-control text-light" placeholder="Description" rows="20" style="min-height: 450px;">{{ $page->description }}</textarea>
+                                <textarea name="description" class="form-control" placeholder="Description" rows="20" style="min-height: 450px;">{{ $page->description }}</textarea>
                             </div>
                         </div>
 

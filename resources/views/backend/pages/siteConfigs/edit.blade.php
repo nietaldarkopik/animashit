@@ -38,7 +38,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Type:</strong>
-                                    <select class="form-select form-control text-light" name="type">
+                                    <select class="form-select form-control" name="type">
                                         <option selected>Choose Type...</option>
                                         @foreach ($types as $i => $t)
                                             <option value="{{ $t }}" @if($siteconfig->type == $t) selected="selected" @endif>{{ $t }}</option>

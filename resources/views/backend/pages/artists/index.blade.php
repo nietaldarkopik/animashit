@@ -35,7 +35,7 @@
                         <div class="pull-left">
                             <h2>Artist Management
                                 <div class="float-end">
-                                    @can('artist-create')
+                                    @can('admin.artists.create')
                                         <a class="btn btn-success" href="{{ route('admin.artists.create') }}"> Create New
                                             Artist</a>
                                     @endcan
@@ -78,7 +78,7 @@
                                     <form action="{{ route('admin.artists.destroy', $artist->id) }}" method="POST">
                                         <a class="btn btn-info"
                                             href="{{ route('admin.artists.show', $artist->id) }}">Show</a>
-                                        @can('artist-edit')
+                                        @can('admin.artists.edit')
                                             <a class="btn btn-primary"
                                                 href="{{ route('admin.artists.edit', $artist->id) }}">Edit</a>
                                             <a class="btn btn-primary"
@@ -89,7 +89,7 @@
 
                                         @csrf
                                         @method('DELETE')
-                                        @can('artist-delete')
+                                        @can('admin.artists.destroy')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         @endcan
                                     </form>

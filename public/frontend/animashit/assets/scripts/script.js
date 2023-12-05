@@ -63,9 +63,9 @@ $(function() {
 
     function switchNavbarColor(top)
     {
-        let mql = window.matchMedia("(min-width: 600px)");
-        if(mql.matches)
-        {
+        //let mql = window.matchMedia("(min-width: 100px)");
+        //if(mql.matches)
+        //{
             if(top > 50)
             {
                 $("body").addClass("mt-nav");
@@ -90,7 +90,7 @@ $(function() {
                 $(navbar_logo).show();
                 $(navbar_logolight).hide();
             }
-        }
+        //}
     }
 
     let top = window.scrollY;

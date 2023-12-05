@@ -5,7 +5,7 @@
         <div class="card border-yellow">
             <div class="card-body">
                 <div class="row">
-                    <div class="col-lg-12 margin-tb mb-4">
+                    <div class="col-lg-12">
                         <div class="pull-left">
                             <h2>Portfolio Management
                                 <div class="float-end">
@@ -26,9 +26,9 @@
             </div>
             
             <div class="card-body">
-                <form class="d-flex" action="{{ route('admin.gigfeatures.post') }}" method="post">
+                <form class="d-flex" action="{{ route('admin.portfolios.filter') }}" method="post">
                     @csrf
-                    <div class="col-12 col-md-9 ms-auto">
+                    <div class="col-12 col-lg-12 ms-auto">
                         <div class="form-inline">
                             <div class="input-group">
                                 <label class="input-group-text bg-light" for="input-gig_id">Choose Gig</label>
@@ -39,18 +39,11 @@
                                             {{ $g->title }}</option>
                                     @endforeach
                                 </select>
-                                <select class="form-select" id="input-gig_package_id" name="filter[gig_package_id]">
-                                    <option value="">All Packages ...</option>
-                                    @foreach ($gig_packages as $i => $g)
-                                        <option value="{{ $g->id }}" @selected(isset($post_filter) and isset($post_filter['gig_package_id']) and $post_filter['gig_package_id'] == $g->id)>
-                                            {{ $g->title }}</option>
-                                    @endforeach
-                                </select>
                                 <select class="form-select" id="input-artist_id" name="filter[artist_id]">
                                     <option value="">All Artist ...</option>
-                                    @foreach ($gigs as $i => $g)
+                                    @foreach ($artists as $i => $g)
                                         <option value="{{ $g->id }}" @selected(isset($post_filter) and isset($post_filter['artist_id']) and $post_filter['artist_id'] == $g->id)>
-                                            {{ $g->title }}</option>
+                                            {{ $g->nickname }}</option>
                                     @endforeach
                                 </select>
                                 <select class="form-select" id="input-cusstomer_id" name="filter[cusstomer_id]">
@@ -61,10 +54,10 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <select class="form-select" id="input-gig_id" name="filter[gig_id]">
+                                <select class="form-select" id="input-status" name="filter[status]">
                                     <option value="">All Status ...</option>
-                                    <option value="publish">Publish</option>
-                                    <option value="private">Private</option>
+                                    <option value="publish" @selected(isset($post_filter) and isset($post_filter['status']) and $post_filter['status'] == 'publish')>Publish</option>
+                                    <option value="private" @selected(isset($post_filter) and isset($post_filter['status']) and $post_filter['status'] == 'private')>Private</option>
                                 </select>
                                 <div class="d-grid gap-2">
                                     <button type="submit" name="do_action" value="do_filter" class="btn btn-primary">Filter</button>
@@ -82,7 +75,6 @@
                     <thead>
                         <tr>
                             <th>Gig</th>
-                            <th>Package</th>
                             <th>Artist</th>
                             <th>Customer</th>
                             <th>Price</th>
@@ -92,8 +84,12 @@
                     <tbody>
                         @foreach ($portfolios as $key => $portfolio)
                             <tr>
-                                <td>{{ $portfolio->gig?->title }}</td>
-                                <td>{{ $portfolio->gigpackage?->package->title }}</td>
+                                <td>
+                                    <h5>
+                                        {{ $portfolio->gig?->title }}<br/>
+                                        <small>{{ $portfolio->gigpackage?->package->title }}</small>
+                                    </h5>
+                                </td>
                                 <td>{{ $portfolio->profile?->nickname }}</td>
                                 <td>{{ $portfolio->client?->nickname }}</td>
                                 <td>${{ $portfolio->gigpackage?->price }}</td>

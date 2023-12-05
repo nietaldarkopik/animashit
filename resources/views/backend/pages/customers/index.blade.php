@@ -35,7 +35,7 @@
                         <div class="pull-left">
                             <h2>Customer Management
                                 <div class="float-end">
-                                    @can('customer-create')
+                                    @can('admin.customers.create')
                                         <a class="btn btn-success" href="{{ route('admin.customers.create') }}"> Create New
                                             Customer</a>
                                     @endcan
@@ -78,7 +78,7 @@
                                     <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="POST">
                                         <a class="btn btn-info"
                                             href="{{ route('admin.customers.show', $customer->id) }}">Show</a>
-                                        @can('customer-edit')
+                                        @can('admin.customers.edit')
                                             <a class="btn btn-primary"
                                                 href="{{ route('admin.customers.edit', $customer->id) }}">Edit</a>
                                             <a class="btn btn-primary"
@@ -87,7 +87,7 @@
 
                                         @csrf
                                         @method('DELETE')
-                                        @can('customer-delete')
+                                        @can('admin.customers.destroy')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         @endcan
                                     </form>

@@ -35,21 +35,21 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Slug:</strong>
-                                <input type="text" name="slug" class="form-control text-light" placeholder="Slug">
+                                <input type="text" name="slug" class="form-control" placeholder="Slug">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Title:</strong>
-                                <input type="text" name="title" class="form-control text-light" placeholder="Title">
+                                <input type="text" name="title" class="form-control" placeholder="Title">
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <label class="form-label">Status:</label>
-                                <select class="form-select form-control text-light" name="status" id="input-status">
+                                <select class="form-select form-control" name="status" id="input-status">
                                     <option value="draft">Choose Status...</option>
                                     @foreach($status as $i => $r)
                                     <option value="{{ $r }}">{{ $r }}</option>
@@ -61,7 +61,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Template:</strong>
-                                <select class="form-select form-control text-light" name="template" id="input-template">
+                                <select class="form-select form-control" name="template" id="input-template">
                                     <option value="default">Choose Template ...</option>
                                     @foreach($templates as $i => $r)
                                     <option value="{{ $r }}">{{$r}}</option>
@@ -73,7 +73,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Description:</strong>
-                                <textarea name="description" class="form-control text-light" placeholder="Description" rows="20" style="min-height: 450px;"></textarea>
+                                <textarea name="description" class="form-control" placeholder="Description" rows="20" style="min-height: 450px;"></textarea>
                             </div>
                         </div>
 

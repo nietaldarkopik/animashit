@@ -35,21 +35,21 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Name:</strong>
-                                <input type="text" name="name" class="form-control text-light" placeholder="Name">
+                                <input type="text" name="name" class="form-control" placeholder="Name">
                             </div>
                         </div>
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Nickname:</strong>
-                                <input type="text" name="nickname" class="form-control text-light" placeholder="Nickname">
+                                <input type="text" name="nickname" class="form-control" placeholder="Nickname">
                             </div>
                         </div>
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Country:</strong>
-                                <select class="form-select form-control text-light" name="country" id="input-country">
+                                <select class="form-select form-control" name="country" id="input-country">
                                     <option value="0" selected>Choose Country ...</option>
                                     @foreach($countries as $i => $r)
                                     <option value="">{{$r->name}}</option>
@@ -61,49 +61,49 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Email:</strong>
-                                <input type="text" name="email" class="form-control text-light" placeholder="Email">
+                                <input type="text" name="email" class="form-control" placeholder="Email">
                             </div>
                         </div>
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Phone:</strong>
-                                <input type="text" name="phone" class="form-control text-light" placeholder="Phone">
+                                <input type="text" name="phone" class="form-control" placeholder="Phone">
                             </div>
                         </div>
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Twitter:</strong>
-                                <input type="text" name="twitter" class="form-control text-light" placeholder="Twitter">
+                                <input type="text" name="twitter" class="form-control" placeholder="Twitter">
                             </div>
                         </div>
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Ig:</strong>
-                                <input type="text" name="ig" class="form-control text-light" placeholder="Ig">
+                                <input type="text" name="ig" class="form-control" placeholder="Ig">
                             </div>
                         </div>
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Facebook:</strong>
-                                <input type="text" name="facebook" class="form-control text-light" placeholder="Facebook">
+                                <input type="text" name="facebook" class="form-control" placeholder="Facebook">
                             </div>
                         </div>
                         
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Youtube:</strong>
-                                <input type="text" name="youtube" class="form-control text-light" placeholder="Youtube">
+                                <input type="text" name="youtube" class="form-control" placeholder="Youtube">
                             </div>
                         </div>
                         {{-- 
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>User Type:</strong>
-                                <select class="form-select form-control text-light" name="user_type" id="input-user_type">
+                                <select class="form-select form-control" name="user_type" id="input-user_type">
                                     <option selected>Select one</option>
                                     @foreach($roles as $i => $r)
                                     <option value="">{{$r->name}}</option>
@@ -115,7 +115,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>User:</strong>
-                                <select class="form-select form-control text-light" name="user_id" id="input-user_id">
+                                <select class="form-select form-control" name="user_id" id="input-user_id">
                                     <option value="0" selected>No User</option>
                                     @foreach($users as $i => $r)
                                     <option value="">{{$r->name}}</option>
@@ -127,7 +127,7 @@
                         <div class="col-xs-12 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <strong>Avatar:</strong>
-                                <input type="file" name="avatar" class="form-control text-light" placeholder="Avatar">
+                                <input type="file" name="avatar" class="form-control" placeholder="Avatar">
                             </div>
                         </div>
                         

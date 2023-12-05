@@ -19,7 +19,7 @@
                                                 <div class="card anime-card1 bg-animashit-primary-trans">
                                                     <div class="row g-0">
                                                         <div class="col-md-4">
-                                                            <img src="{{ url($artist->avatar) }}"
+                                                            <img src="{{ url('uploads/artists/'.$artist->avatar) }}"
                                                                 class="img-fluid w-100 h-100 object-fit-cover"
                                                                 alt="Card title">
                                                         </div>
@@ -230,7 +230,7 @@
                                                     data-bs-slide-to="{{ $ip }}"
                                                     class="@if ($ip == 0) active @endif"
                                                     aria-current="true" aria-label="First slide">
-                                                    <img src="{{ url($p->media[0]->media) }}" />
+                                                    @if(isset($p->media[0])) <img src="{!! url('uploads/portfolios/'.$p->media[0]->media ?? '') !!}" /> @endif
                                                 </li>
                                             @endforeach
                                         </ol>
@@ -257,9 +257,13 @@
                                         @foreach ($porfolios as $ip => $p)
                                             <div
                                                 class="carousel-item @if ($ip == 0) active @endif">
-                                                <img src="{{ url($p->media[0]->media) }}"
-                                                    class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill"
+                                                @php
+                                                    $m = $p->media->first();
+                                                @endphp
+                                                @if(!empty($m))
+                                                    <img src="{{ url('uploads/portfolios/'.$m->media) }}" class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill"
                                                     alt="First slide">
+                                                @endif
                                                 <div class="carousel-caption d-none d-md-block">
                                                     <h3>{{ $p->title }}</h3>
                                                     <p>{{ $p->description }}</p>

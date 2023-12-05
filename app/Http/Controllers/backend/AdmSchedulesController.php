@@ -15,10 +15,10 @@ class AdmSchedulesController extends Controller
 {
     function __construct()
     {
-        $this->middleware(['permission:schedule-list|schedule-create|schedule-edit|schedule-delete'], ['only' => ['index', 'store']]);
-        $this->middleware(['permission:schedule-create'], ['only' => ['create', 'store']]);
-        $this->middleware(['permission:schedule-edit'], ['only' => ['edit', 'update']]);
-        $this->middleware(['permission:schedule-delete'], ['only' => ['destroy']]);
+        //$this->middleware(['permission:schedule-list|schedule-create|schedule-edit|schedule-delete'], ['only' => ['index', 'store']]);
+        //$this->middleware(['permission:schedule-create'], ['only' => ['create', 'store']]);
+        //$this->middleware(['permission:schedule-edit'], ['only' => ['edit', 'update']]);
+        //$this->middleware(['permission:schedule-delete'], ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

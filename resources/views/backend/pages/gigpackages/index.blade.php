@@ -9,7 +9,7 @@
                         <div class="pull-left">
                             <h2>Gig Package Management
                                 <div class="float-end">
-                                    @can('gig-create')
+                                    @can('admin.gigs.create')
                                         <a class="btn btn-success" href="{{ route('admin.gigpackages.create') }}"> Create New Gig Package</a>
                                     @endcan
                                 </div>
@@ -73,13 +73,13 @@
                                 <td>{{ $gigpackage->artist?->nickname }}</td>
                                 <td>
                                     <a class="btn btn-info" href="{{ route('admin.gigpackages.show', $gigpackage->id) }}">Show</a>
-                                    @can('admin.portfolios.index')
-                                    <form action="{{ route('admin.portfolios.post') }}" method="POST" class="d-inline">
+                                    {{-- @can('admin.portfolios.index')
+                                    <form action="{{ route('admin.portfolios.filter') }}" method="POST" class="d-inline">
                                         @csrf
                                         <input type="hidden" name="gig_package_id" value="{{ $gigpackage->id}}" />
                                         <button name="do_action" value="do_filter" class="btn btn-primary">Portfolio</button>
                                     </form>
-                                    @endcan
+                                    @endcan --}}
                                             
                                     @can('admin.gigpackages.edit')
                                         <a class="btn btn-primary" href="{{ route('admin.gigpackages.edit', $gigpackage->id) }}">Edit</a>

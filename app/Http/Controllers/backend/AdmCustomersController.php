@@ -16,10 +16,10 @@ class AdmCustomersController extends Controller
 {
     function __construct()
     {
-        $this->middleware(['permission:profile-list|profile-create|profile-edit|profile-delete'], ['only' => ['index', 'store']]);
-        $this->middleware(['permission:profile-create'], ['only' => ['create', 'store']]);
-        $this->middleware(['permission:profile-edit'], ['only' => ['edit', 'update']]);
-        $this->middleware(['permission:profile-delete'], ['only' => ['destroy']]);
+        //$this->middleware(['permission:profile-list|profile-create|profile-edit|profile-delete'], ['only' => ['index', 'store']]);
+        //$this->middleware(['permission:profile-create'], ['only' => ['create', 'store']]);
+        //$this->middleware(['permission:profile-edit'], ['only' => ['edit', 'update']]);
+        //$this->middleware(['permission:profile-delete'], ['only' => ['destroy']]);
     }
 
     public function index(Request $request)

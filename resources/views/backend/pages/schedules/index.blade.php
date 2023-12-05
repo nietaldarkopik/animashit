@@ -35,7 +35,7 @@
                         <div class="pull-left">
                             <h2>Schedule Management
                                 <div class="float-end">
-                                    @can('order-create')
+                                    @can('admin.orders.create')
                                         <a class="btn btn-success" href="{{ route('admin.schedules.create') }}"> Create New
                                             Schedule</a>
                                     @endcan
@@ -103,7 +103,7 @@
                                             method="POST">
                                             <a class="btn btn-info"
                                                 href="{{ route('admin.schedules.show', $schedule->id) }}">Show</a>
-                                            @can('order-edit')
+                                            @can('admin.orders.edit')
                                                 <a class="btn btn-primary"
                                                     href="{{ route('admin.schedules.edit', $schedule->id) }}">Edit</a>
                                             @endcan
@@ -111,7 +111,7 @@
 
                                             @csrf
                                             @method('DELETE')
-                                            @can('order-delete')
+                                            @can('admin.orders.destroy')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             @endcan
                                         </form>

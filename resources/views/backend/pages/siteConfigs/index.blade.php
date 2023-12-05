@@ -35,7 +35,7 @@
                         <div class="pull-left">
                             <h2>Config Management
                                 <div class="float-end">
-                                    @can('siteconfig-create')
+                                    @can('admin.siteconfigs.create')
                                         <a class="btn btn-success" href="{{ route('admin.siteconfigs.create') }}"> Create New
                                             Config</a>
                                     @endcan
@@ -76,7 +76,7 @@
                                             method="POST">
                                             <a class="btn btn-info"
                                                 href="{{ route('admin.siteconfigs.show', $siteconfig->id) }}">Show</a>
-                                            @can('siteconfig-edit')
+                                            @can('admin.siteconfigs.edit')
                                                 <a class="btn btn-primary"
                                                     href="{{ route('admin.siteconfigs.edit', $siteconfig->id) }}">Edit</a>
                                             @endcan
@@ -84,7 +84,7 @@
 
                                             @csrf
                                             @method('DELETE')
-                                            @can('siteconfig-delete')
+                                            @can('admin.siteconfigs.destroy')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             @endcan
                                         </form>

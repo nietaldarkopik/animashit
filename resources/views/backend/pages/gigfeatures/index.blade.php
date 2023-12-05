@@ -9,7 +9,7 @@
                         <div class="pull-left">
                             <h2>Gig Feature Management
                                 <div class="float-end">
-                                    @can('gig-create')
+                                    @can('admin.gigs.create')
                                         <a class="btn btn-success" href="{{ route('admin.gigfeatures.create') }}"> Create New Gig
                                             Feature</a>
                                     @endcan
@@ -28,7 +28,7 @@
             <div class="card-body">
                 <form class="d-flex" action="{{ route('admin.gigfeatures.post') }}" method="post">
                     @csrf
-                    <div class="col-12 col-md-6 col-lg-4 ms-auto">
+                    <div class="col-12 col-md-6 col-lg-6 ms-auto">
                         <div class="form-inline">
                             <div class="input-group">
                                 <label class="input-group-text bg-light" for="input-gig_id">Choose Gig</label>
@@ -81,7 +81,7 @@
                                     <form action="{{ route('admin.gigfeatures.destroy', $feature->id) }}" method="POST">
                                         <a class="btn btn-info"
                                             href="{{ route('admin.gigfeatures.show', $feature->id) }}">Show</a>
-                                        @can('gig-edit')
+                                        @can('admin.gigs.edit')
                                             <a class="btn btn-primary"
                                                 href="{{ route('admin.gigfeatures.edit', $feature->id) }}">Edit</a>
                                         @endcan
@@ -89,7 +89,7 @@
 
                                         @csrf
                                         @method('DELETE')
-                                        @can('gig-delete')
+                                        @can('admin.gigs.destroy')
                                             <button type="submit" class="btn btn-danger">Delete</button>
                                         @endcan
                                     </form>

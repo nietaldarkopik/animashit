@@ -16,15 +16,15 @@ class AdmArtistsController extends Controller
 {
     function __construct()
     {
-        $this->middleware(['permission:profile-list|profile-create|profile-edit|profile-delete'], ['only' => ['index', 'store']]);
-        $this->middleware(['permission:profile-create'], ['only' => ['create', 'store']]);
-        $this->middleware(['permission:profile-edit'], ['only' => ['edit', 'update']]);
-        $this->middleware(['permission:profile-delete'], ['only' => ['destroy']]);
+        //$this->middleware(['permission:profile-list|profile-create|profile-edit|profile-delete'], ['only' => ['index', 'store']]);
+        //$this->middleware(['permission:profile-create'], ['only' => ['create', 'store']]);
+        //$this->middleware(['permission:profile-edit'], ['only' => ['edit', 'update']]);
+        //$this->middleware(['permission:profile-delete'], ['only' => ['destroy']]);
     }
 
     public function index(Request $request)
     {
-        $artists = ProfileModel::where('user_type','=',4)->orderBy('id', 'DESC')->paginate(5);
+        $artists = ProfileModel::where('user_type','=',4)->orderBy('id', 'DESC')->paginate(10);
         return view('backend.pages.artists.index', compact('artists'));
     }
 

@@ -9,7 +9,7 @@
                         <div class="pull-left">
                             <h2>Gig Management
                                 <div class="float-end">
-                                    @can('gig-create')
+                                    @can('admin.gigs.create')
                                         <a class="btn btn-success" href="{{ route('admin.gigs.create') }}"> Create New Gig</a>
                                     @endcan
                                 </div>
@@ -40,7 +40,7 @@
                                     <td>
                                         <form action="{{ route('admin.gigs.destroy', $gig->id) }}" method="POST">
                                             <a class="btn btn-info" href="{{ route('admin.gigs.show', $gig->id) }}">Show</a>
-                                            @can('gig-edit')
+                                            @can('admin.gigs.edit')
                                                 <a class="btn btn-primary" href="{{ route('admin.gigs.edit', $gig->id) }}">Edit</a>
                                                 <a class="btn btn-primary" href="{{ route('admin.gigmedias.bygig', $gig->id) }}">Media</a>
                                             @endcan
@@ -48,7 +48,7 @@
 
                                             @csrf
                                             @method('DELETE')
-                                            @can('gig-delete')
+                                            @can('admin.gigs.destroy')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             @endcan
                                         </form>

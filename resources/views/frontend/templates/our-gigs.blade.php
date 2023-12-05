@@ -38,7 +38,7 @@
                                                     <div class="item">
                                                         <div class="card text-dark h-100 card-artist" data-id="{{ $art->id }}" data-gig_id="{{ $item->id }}">
                                                             <img class="card-img d-none object-fit-cover d-flex h-100"
-                                                                src="{{ url($art->avatar) }}" alt="Title">
+                                                                src="{{ url('uploads/artists/'.$art->avatar) }}" alt="Title">
                                                             <div
                                                                 class="card-img-overlay rounded-3 d-flex flex-column justify-content-end p-0 pb-2">
                                                                 <div class="anime-bg-secondary-trans1 px-1 py-1">
@@ -80,8 +80,9 @@
                                                     @endphp
                                                     <div class="item">
                                                         <div class="card text-dark h-100 card-portfolio" data-id="{{ $a->id }}" data-gig_id="{{ $item->gig_id }}">
-                                                            <img class="card-img d-none object-fit-cover d-flex h-100"
-                                                                src="{{ (isset($media->media)?url($media->media):'') }}" alt="Title">
+                                                            {{-- <img class="card-img d-none object-fit-cover d-flex h-100"
+                                                                src="{{ (isset($media->media)?url('uploads/portfolios/'.$media->media):'') }}" alt="Title"> --}}
+                                                            {!! ($a->showDisplay($a->id)) !!}
                                                             <div
                                                                 class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
                                                                 <div class="anime-bg-secondary-trans1 px-1 py-1">
@@ -129,6 +130,7 @@
                                     $query->where('gig_id',$item->id);
                                     $query->where('display','thumbnail');
                                 })->first();
+                                
                                 if(!isset($thumbnail->id))
                                 {
                                     $thumbnail = App\Models\GigMediaModel::where(function ($query) use($item) {
@@ -268,7 +270,17 @@
                 }
             })
         });
+
+        $("body").on("hidden.bs.modal","#modalPagePortfolio",function(){
+            $("#modalPagePortfolio .modal-body").html("");
+        });
+
+        $("body").on("hidden.bs.modal","#modalPage",function(){
+            $("#modalPage .modal-body").html("");
+        });
+
         $(document).ready(function() {
+
             $("body").on("click", ".owlcarousel-toggle", function() {
 
                 var container = $(".owlcarousel-main-container");
