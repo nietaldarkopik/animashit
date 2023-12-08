@@ -16,7 +16,7 @@ class ExportDatabase extends Command
         $filename = app_path('../backups/backup-'.date("YmdHis").'.sql');
 
         $command = sprintf(
-            storage_path('../../../../bin/mysql/mysql8.0.27/bin').'/mysqldump -u %s -p%s %s > %s',
+            storage_path('../../../bin/mysql/mysql8.0.27/bin').'/mysqldump -u %s -p%s %s > %s',
             config('database.connections.mysql.username'),
             config('database.connections.mysql.password'),
             config('database.connections.mysql.database'),

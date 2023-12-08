@@ -39,9 +39,9 @@
                                     <option value="0">Choose Order...</option>
                                     @foreach($orders as $i => $order)
                                     <option value="{{ $order->id }}" 
-                                        data-package="{{ $order->gigPackage->id}}" 
-                                        data-gig="{{ $order->gigPackage->gig->id}}" 
-                                        data-artist="{{ $order->gigPackage->artist->id}}" 
+                                        data-package="{{ $order->gigPackage?->id}}" 
+                                        data-gig="{{ $order->gigPackage?->gig->id}}" 
+                                        data-artist="{{ $order->gigPackage?->artist?->id}}" 
                                         data-customer="{{ $order->customer->id}}">#{{ str_pad($order->id,6,0,STR_PAD_LEFT) }} / {{ $order->gigPackage?->gig?->title }} / {{ $order->gigPackage?->title }} / {{ $order->customer->nickname }}</option>
                                     @endforeach
                                 </select>

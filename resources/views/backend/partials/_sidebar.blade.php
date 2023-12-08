@@ -194,5 +194,17 @@ $userType = $currentProfile->userType;
         <span class="menu-title">Site Configs</span>
       </a>
     </li>
+
+    <li class="nav-item menu-items">
+      <form method="post" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit" class="nav-link" href="{{route('admin.siteconfigs.index')}}">
+          <span class="menu-icon">
+            <i class="mdi mdi-playlist-play"></i>
+          </span>
+          <span class="menu-title">Logout</span>
+        </button>
+      </form>
+    </li>
   </ul>
 </nav>

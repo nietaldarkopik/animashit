@@ -19907,7 +19907,8 @@ div.tagsinput {
   background-size: cover; }
 
 .auth.lock-full-bg {
-  background: url("../images/auth/lockscreen-bg.jpg");
+  background: url("../images/dashboard/animashit-login.jpg");
+  background-blend-mode: var(--bs-dark);
   background-size: cover; }
 
 .auth .lock-profile-img {

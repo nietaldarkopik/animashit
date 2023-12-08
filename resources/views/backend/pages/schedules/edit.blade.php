@@ -43,7 +43,7 @@
                                         @selected($order->id == $schedule->order_id)
                                         data-package="{{ $order->gigPackage->id }}"
                                         data-gig="{{ $order->gigPackage->gig->id }}"
-                                        data-artist="{{ $order->gigPackage->artist->id }}"
+                                        data-artist="{{ $order->gigPackage->artist?->id }}"
                                         data-customer="{{ $order->customer->id }}">
                                         #{{ str_pad($order->id, 6, 0, STR_PAD_LEFT) }} /
                                         {{ $order->gigPackage?->gig?->title }}
