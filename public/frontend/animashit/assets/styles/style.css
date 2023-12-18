@@ -522,6 +522,9 @@ header {
 .zindex9 {z-index: 900;}
 .zindex10 {z-index: 1000;}
 .zindex11 {z-index: 1100;}
+.zindex12 {z-index: 1200;}
+.zindex13 {z-index: 1300;}
+.zindex15 {z-index: 1400;}
 .zindex99 {z-index: 2000;}
 
 .mt-6 {margin-top: 3rem !important;}
@@ -1386,6 +1389,11 @@ Widget Component
 }
 
 .mix-blend-difference {
+    mix-blend-mode: difference;
+    color: rgb(255, 255, 255);
+}
+
+.mix-blend-difference-container * {
     mix-blend-mode: difference;
     color: rgb(255, 255, 255);
 }

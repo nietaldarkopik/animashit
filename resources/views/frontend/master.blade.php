@@ -5,4 +5,5 @@
 
 @include("frontend.widgets.footer")
 @include("frontend.widgets.stickynav")
+@include("frontend.widgets.modalOffCanvas")
 @include("frontend.widgets.foot")

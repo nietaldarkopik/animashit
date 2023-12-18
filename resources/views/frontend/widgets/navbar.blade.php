@@ -19,7 +19,7 @@ $current_page = $page?->slug ?? '';
                     <ul class="navbar-nav ms-auto text-light mt-2 mt-lg-0" id="mainmenu">
                         @foreach($pages as $i => $p)
                         <li class="nav-item">
-                            <a class="nav-link ff-oswald fw-bold fs-5 @if($current_page == $p->slug || $current_page = "") active @endif" href="{{ url('page/'.$p->slug) }}"
+                            <a class="nav-link ff-oswald fw-bold fs-5 @if($current_page == $p->slug || $current_page == "") active @else ajax-link @endif" data-ajax-href="{{ route('modal.page',[$p])}}" href="{{ url('page/'.$p->slug) }}"
                                 aria-current="page">{{$p->title}} <span class="visually-hidden">(current)</span></a>
                         </li>
                         @endforeach

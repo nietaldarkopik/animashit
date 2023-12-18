@@ -24,7 +24,7 @@
                             $m = $p->media->first();
                         @endphp
                         @if (!empty($m))
-                            <img src="{{ url('uploads/portfolios/' . $m->media) }}"
+                            <img src="{{ url($m->media) }}"
                                 class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill" alt="First slide">
                         @endif
                         <div class="carousel-caption d-none d-md-block">
@@ -54,7 +54,7 @@
                             class="@if ($ip == 0) active @endif" aria-current="true"
                             aria-label="First slide">
                             @if (isset($p->media[0]))
-                                <img src="{!! url('uploads/portfolios/' . $p->media[0]->media ?? '') !!}" />
+                                <img src="{!! url($p->media[0]->media ?? '') !!}" />
                             @endif
                         </li>
                     @endforeach

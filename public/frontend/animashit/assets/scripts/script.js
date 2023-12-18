@@ -58,6 +58,50 @@ $(function() {
             /* $(".portfolio-item").removeClass("animate__delay-4s"); */
     });
     
+    
+    $("body").on("click", ".nav-link:not(.ajax-link)", function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
+        $(".nav-link").removeClass("active");
+        $(this).addClass("active");
+        
+        $(modalPage).modal("hide");            
+    });
+
+    $("body").on("click", ".ajax-link", function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        $(".nav-link").removeClass("active");
+        $(this).addClass("active");
+        
+        var href = $(this).data('ajax-href');
+
+        $(modalPage).modal("show");
+        $("#modalPage .modal-body").html(loading_html);
+
+        $.ajax({
+            url: href,
+            data: "",
+            dataType: "html",
+            type: "get",
+            success: function(msg) {
+                $("#modalPage .modal-body").html(msg);
+            }
+        })
+
+    });
+
+    $("body").on("hidden.bs.modal", "#modalPagePortfolio", function() {
+        $("#modalPagePortfolio .modal-body").html(loading_html);
+    });
+
+    $("body").on("hidden.bs.modal", "#modalPage", function() {
+        $("#modalPage .modal-body").html(loading_html);
+    });
+
+    
     var navbar_logo = $(".navbar-logo");
     var navbar_logolight = $(".navbar-logolight");
 

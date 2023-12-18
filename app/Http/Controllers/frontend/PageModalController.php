@@ -22,7 +22,7 @@ class PageModalController extends Controller
     {
         $page = PageModel::where('slug','=', $page)->get()->first();
         $template = $page->template ?? 'home';
-        return view('frontend.templates.'.$template,compact('page'));
+        return view('frontend.modals.'.$template,compact('page'));
     }
     
     public function artistDetail($id = 0,$gig_id = 0)

@@ -79,8 +79,8 @@
             var url = "{{ route("modal.portfolio.detail",["id" => "__yy__"])}}";
             url = url.replace('__yy__',id);
 
-            $("#modalPagePortfolio .modal-body").html("");
-            $("#modalPagePortfolio").modal("show");
+            $("#modalSubPage .modal-body").html("");
+            $("#modalSubPage").modal("show");
             $.ajax({
                 url: url,
                 data: "",
@@ -88,13 +88,13 @@
                 type: "get",
                 success: function(msg)
                 {
-                    $("#modalPagePortfolio .modal-body").html(msg);
+                    $("#modalSubPage .modal-body").html(msg);
                 }
             })
         });
 
-        $("body").on("hidden.bs.modal","#modalPagePortfolio",function(){
-            $("#modalPagePortfolio .modal-body").html("");
+        $("body").on("hidden.bs.modal","#modalSubPage",function(){
+            $("#modalSubPage .modal-body").html("");
         });
 
         $("body").on("hidden.bs.modal","#modalPage",function(){

@@ -47,9 +47,7 @@ class PortfolioModel extends Model {
             if($p->type == "upload_image") {
                 $output .= '
                     <div class="ratio ratio-16x9">
-                        <a href="'.asset($p->media).'" target="_blank">
-                            <img src="'.asset($p->media).'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
-                        </a>
+                        <img src="'.asset($p->media).'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
                     </div>';
             } elseif($p->type == "upload_video") {
                 $output .= '
@@ -59,9 +57,7 @@ class PortfolioModel extends Model {
             } elseif($p->type == "url_image") {
                 $output .= '
                     <div class="ratio ratio-16x9">
-                        <a href="'.asset($p->media).'" target="_blank">
-                            <img src="'.$p->media.'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
-                        </a>
+                        <img src="'.$p->media.'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
                     </div>';
             } elseif($p->type == "embed_video") {
     
