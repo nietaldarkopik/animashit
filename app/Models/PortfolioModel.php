@@ -39,7 +39,7 @@ class PortfolioModel extends Model {
         }])->get()->first();
 
         $p = isset($portfolio->media)?$portfolio->media->first():null;
-        $p = (empty($p))?$portfolio->media()->first():$p;
+        //$p = (empty($p))?$portfolio->media()->first():$p;
         $output = '';
         
         if(!empty($p))
@@ -63,6 +63,38 @@ class PortfolioModel extends Model {
                             <img src="'.$p->media.'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
                         </a>
                     </div>';
+            } elseif($p->type == "embed_video") {
+    
+                $output .= '
+                    <div class="ratio ratio-16x9">
+                        '. $p->media .'
+                    </div>';
+            }
+        }
+
+        return $output;
+    }
+    
+    public function getDisplay($id = 0) {
+        $portfolio = PortfolioModel::where('id',$id)->with(['media' => function($query){
+            $query->where('type','upload_image');
+        }])->get()->first();
+
+        $p = isset($portfolio->media)?$portfolio->media->first():null;
+        //$p = (empty($p))?$portfolio->media()->first():$p;
+        $output = '';
+        
+        if(!empty($p))
+        {
+            if($p->type == "upload_image") {
+                $output .= '<img src="'.asset($p->media).'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>';
+            } elseif($p->type == "upload_video") {
+                $output .= '
+                    <div class="ratio ratio-16x9">
+                        <video src="'.asset($p->media).'" class="w-100 object-fit-cover" controls></video>
+                    </div>';
+            } elseif($p->type == "url_image") {
+                $output .= '<img src="'.$p->media.'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>';
             } elseif($p->type == "embed_video") {
     
                 $output .= '

@@ -140,7 +140,7 @@ body {
 
 @media screen and (min-width: 1970px) {
     .container-xxxl {
-        width: 1960px !important;
+        /* width: 1960px !important; */
     }
 }
 
@@ -316,7 +316,7 @@ body {
 
 @media (min-width: 1970px) {
     .container-xxxl {
-        max-width: 1960px;
+        /* max-width: 1960px; */
     }
 }
 
@@ -354,6 +354,18 @@ header {
 }
 
 /**** Card ***/
+.anim-stroke,.anim-stroke-dark {
+    -webkit-text-stroke: #000000 0.5px !important;
+    color: #fff 0.5px !important;
+}
+.anim-stroke-light {
+    -webkit-text-stroke: #ffffff 0.5px !important;
+    color: #000 0.5px !important;
+}
+.anim-text-shadow {
+    text-shadow: 0px 5px 5px rgb(105, 105, 105);
+}
+
 .anim-shadow {
     box-sizing: border-box;
     background: #FFFFFF;
@@ -499,49 +511,26 @@ header {
     line-height: 12px !important;
 }
 
-.zindex1 {
-    z-index: 100;
-}
+.zindex1 {z-index: 100;}
+.zindex2 {z-index: 200;}
+.zindex3 {z-index: 300;}
+.zindex4 {z-index: 400;}
+.zindex5 {z-index: 500;}
+.zindex6 {z-index: 600;}
+.zindex7 {z-index: 700;}
+.zindex8 {z-index: 800;}
+.zindex9 {z-index: 900;}
+.zindex10 {z-index: 1000;}
+.zindex11 {z-index: 1100;}
+.zindex99 {z-index: 2000;}
 
-.zindex2 {
-    z-index: 200;
-}
-
-.zindex3 {
-    z-index: 300;
-}
-
-.zindex4 {
-    z-index: 400;
-}
-
-.zindex5 {
-    z-index: 500;
-}
-
-.zindex6 {
-    z-index: 600;
-}
-
-.zindex7 {
-    z-index: 700;
-}
-
-.zindex8 {
-    z-index: 800;
-}
-
-.zindex9 {
-    z-index: 900;
-}
-
-.zindex10 {
-    z-index: 1000;
-}
-
-.zindex11 {
-    z-index: 1100;
-}
+.mt-6 {margin-top: 3rem !important;}
+.mt-7 {margin-top: 3.5rem !important;}
+.mt-8 {margin-top: 4rem !important;}
+.mt-9 {margin-top: 4.5rem !important;}
+.mt-10 {margin-top: 5rem !important;}
+.mt-11 {margin-top: 6rem !important;}
+.mt-12 {margin-top: 7rem !important;}
 
 .mt-nav {
     margin-top: 60px;
@@ -679,10 +668,7 @@ header {
 } */
 
 .anime-card2 .card-body,
-.anime-card2>img {
-    z-index: 2;
-    background-color: #ffffff;
-}
+.anime-card2>img {z-index: 2;background-color: #ffffff;}
 
 .anime-card1 {
     border-radius: 0%;
@@ -796,10 +782,7 @@ header {
 }
 
 .anime-card4 .card-body,
-.anime-card4>img {
-    z-index: 2;
-    background-color: #ffffff;
-}
+.anime-card4>img {z-index: 2;background-color: #ffffff;}
 
 
 /******* end animecard 4 ****/
@@ -1638,4 +1621,65 @@ Widget Component
 
 }
 
+
+.offcanvas-bottom-gigs{
+    overflow: hidden;
+    border-radius: 0px;
+    border-top: 0px !important;
+    /* background-image: linear-gradient(0deg, rgb(92, 92, 92) 0%, rgba(255, 251, 0, .4) 20%, rgba(255, 251, 0, 0) 80%); */
+}
+
+.card-offcanvas-bottom .card-body-img, .block-border-white .ratio{
+    overflow: hidden;
+}
+.card-offcanvas-bottom .card-body-img, .block-border-white{
+    padding: 5px;
+    border: #fff solid 2px;
+    overflow: hidden;
+}
+
+.card-offcanvas-bottom .card-body-img .card-img, .block-border-white .card-img{
+    object-fit: cover;
+    height: 150px;
+    width: 100%;
+    border-radius: 0px;
+}
+
+.card-offcanvas-bottom{
+    border: 0px !important;
+}
+
+.boxed-white{
+    border: 4px #ffffff solid;
+    z-index: 99;
+    padding: 3px;
+    background: none;
+}
+
+.toggle-offcanvas{
+    border: 2px #ffffff solid;
+    z-index: 99;
+    padding: 3px;
+    background: none;
+}
+
+.gigs-slick .card-offcanvas-bottom{
+    opacity: 0.5;
+}
+.gigs-slick .card-offcanvas-bottom:hover{
+    opacity: 5;
+}
+.gigs-slick .card-offcanvas-bottom .card-img:hover{
+    transform: scale(150%);
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+.gigs-slick .card-offcanvas-bottom .card-title{
+    -webkit-transition: all 0.4s ease 0.4s;
+    -o-transition: all 0.4s ease 0.4s;
+    transition: all 0.4s ease 0.4s;
+    mix-blend-mode: difference !important;
+    background-blend-mode: color-dodge;
+    position: relative;
+}
 /*** END Our Schedule Page ***/

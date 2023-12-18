@@ -1,117 +1,10 @@
 @extends('../frontend.master')
-@php
-    $gigs = \App\Models\GigModel::orderBy('sort', 'ASC')->get();
-@endphp
 @section('content')
     <section id="main-container" class="p-0 min-vh-100 container-fluid">
         <div class="container-xxxl video-container position-relative p-0 mx-auto">
             @include('frontend.widgets.slider')
         </div>
     </section>
-        
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasStart" aria-labelledby="offcanvasStartLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasStartLabel">Offcanvas</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-        </div>
-    </div>
-
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEnd" aria-labelledby="offcanvasEndLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasEndLabel">Offcanvas</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div>
-                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists,
-                etc.
-            </div>
-            <div class="dropdown mt-3">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                    Dropdown button
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="offcanvas offcanvas offcanvas-bottom bg-transparent offcanvas-bottom" tabindex="-1"
-        id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel-body bg-transparent">
-        {{-- <div class="offcanvas-header align-items-center">
-            <h5 class="offcanvas-title ff-oswald text-white" id="offcanvasBottomLabel">Our <strong>Gigs</strong></h5>
-            <button type="button" class="btn-close text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div> --}}
-        <div class="offcanvas-body overflow-hidden p-0 bg-transparent">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center pt-1">
-                    <button class="ff-oswald text-white h-5 boxed-white d-inline-block h5" data-bs-dismiss="offcanvas" aria-label="Close">Our <strong>Gigs</strong></button>
-                </div>
-            </div>
-            <div class="row justify-content-center px-5 py-0">
-                <div class="col-12 gigs-slick">
-                    @foreach ($gigs as $i => $item)
-                        @php
-                            $thumbnail = App\Models\GigMediaModel::where(function ($query) use ($item) {
-                                $query->where('gig_id', $item->id);
-                                $query->where('display', 'thumbnail');
-                            })->first();
-
-                            if (!isset($thumbnail->id)) {
-                                $thumbnail = App\Models\GigMediaModel::where(function ($query) use ($item) {
-                                    $query->where('gig_id', $item->id);
-                                    $query->where('display', 'upload_image');
-                                })->first();
-                            }
-
-                        @endphp
-                        @if (isset($thumbnail->id))
-                            <div class="p-2">
-                                <div class="card card-offcanvas-bottom bg-transparent text-center card-gig"
-                                    data-gig_id="{{ $item->id }}">
-                                    <div class="card-body card-body-img">
-                                        <img class="card-img" src="{{ url(htmlspecialchars($thumbnail->media)) }}" alt="Title">
-                                    </div>
-                                    <div class="card-body p-1">
-                                        <h4 class="card-title my-1 h6 ff-oswald text-white">{{ $item->title }}</h4>
-                                        {{-- <p class="card-text my-1">Body</p> --}}
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Portfolio Detail-->
-    <div class="modal fade anime-modal p-0" id="modalPagePortfolio" tabindex="-1" role="dialog"
-        aria-hidden="true">
-        <div class="modal-dialog container-fluid mx-auto modal-sm modal-fullscreen p-0" role="document">
-            <div class="modal-content m-0 p-0">
-                <div class="modal-body ff-dmsans-regular m-0 p-0">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Artist Detail-->
-    <div class="modal fade anime-modal p-0" id="modalPage" tabindex="-1" role="dialog"
-    aria-hidden="true">
-
-    <div class="modal-dialog modal-dialog-scrollable container-fluid mx-auto modal-sm modal-fullscreen p-0" id="modalGeneral" role="document">
-        <div class="modal-content m-0 p-0">
-            <div class="modal-body ff-dmsans-regular">
-
-            </div>
-        </div>
-    </div>
-
 @endsection
 
 @section('style')
@@ -123,28 +16,13 @@
     <script>
         var baseUrl = "{{ url('/') }}";
         var currentPage = "{{ $page?->slug }}"
-        var bsOffcanvasBottom = new bootstrap.Offcanvas('.offcanvas-bottom');
-        var bsOffcanvasStart = new bootstrap.Offcanvas('.offcanvas-start');
-        var bsOffcanvasEnd = new bootstrap.Offcanvas('.offcanvas-end');
-        var loading_html = `
-                <div class="row justify-content-center align-items-center w-100 h-100">
-                    <div class="col-12 text-center">
-                        <button class="btn btn-primary" type="button" disabled>
-                            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
-                            Loading...
-                        </button>
-                    </div>
-                </div>
-            `;
+        var bsOffcanvas = new bootstrap.Offcanvas('.offcanvas-bottom-gigs');
 
-        //bsOffcanvasStart.show();
-        //bsOffcanvasEnd.show();
-
-        $("body").on('show.bs.offcanvas',bsOffcanvasBottom,function(){
+        $("body").on('show.bs.offcanvas',bsOffcanvas,function(){
             $(".toggle-offcanvas").hide();
         });
 
-        $("body").on('hidden.bs.offcanvas',bsOffcanvasBottom, function(){
+        $("body").on('hidden.bs.offcanvas',bsOffcanvas, function(){
             $(".toggle-offcanvas").show();
         });
         
@@ -153,9 +31,17 @@
             var url = "{{ route("modal.gig.detail",["id" => "__yy__"])}}";
             url = url.replace('__yy__',gig_id);
 
-            $("#modalPage .modal-body").html(loading_html);
+            $("#modalPage .modal-body").html(`
+            <div class="row justify-content-center align-items-center">
+            <div class="col-12">
+                <button class="btn btn-primary" type="button" disabled>
+                    <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                </button>
+            </div>
+            </div>
+                `);
             $("#modalPage").modal("show");
-            
             $.ajax({
                 url: url,
                 data: "",
@@ -166,7 +52,6 @@
                     $("#modalPage .modal-body").html(msg);
                 }
             })
-           
         });
         $("body").on("click", ".card-artist", function() {
             var id = $(this).data("id");
@@ -175,7 +60,7 @@
             url = url.replace('__xx__',gig_id);
             url = url.replace('__yy__',id);
 
-            $("#modalPage .modal-body").html(loading_html);
+            $("#modalPage .modal-body").html("");
             $("#modalPage").modal("show");
             $.ajax({
                 url: url,
@@ -194,7 +79,7 @@
             var url = "{{ route("modal.portfolio.detail",["id" => "__yy__"])}}";
             url = url.replace('__yy__',id);
 
-            $("#modalPagePortfolio .modal-body").html(loading_html);
+            $("#modalPagePortfolio .modal-body").html("");
             $("#modalPagePortfolio").modal("show");
             $.ajax({
                 url: url,
@@ -209,11 +94,11 @@
         });
 
         $("body").on("hidden.bs.modal","#modalPagePortfolio",function(){
-            $("#modalPagePortfolio .modal-body").html(loading_html);
+            $("#modalPagePortfolio .modal-body").html("");
         });
 
         $("body").on("hidden.bs.modal","#modalPage",function(){
-            $("#modalPage .modal-body").html(loading_html);
+            $("#modalPage .modal-body").html("");
         });
         $(document).ready(function() {
 
@@ -279,7 +164,7 @@
                                } */
             });
             
-            bsOffcanvasBottom.show();
+            bsOffcanvas.show();
         });
 
         {{--

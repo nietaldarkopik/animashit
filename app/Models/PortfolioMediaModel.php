@@ -122,4 +122,33 @@ class PortfolioMediaModel extends Model
 
         return $output;
     }
+
+    public function getDisplay($id = 0) {
+        $portfolio = PortfolioMediaModel::where('id',$id)->first();
+
+        $p = (!empty($portfolio))?$portfolio:null;
+        $output = '';
+        
+        if(!empty($p))
+        {
+            if($p->type == "upload_image") {
+                $output .= '<img src="'.asset($p->media).'" class="img-fluid w-100 object-fit-cover"/>';
+            } elseif($p->type == "upload_video") {
+                $output .= '
+                    <div class="ratio ratio-16x9">
+                        <video src="'.asset($p->media).'" class="w-100 object-fit-cover" muted autoplay controls></video>
+                    </div>';
+            } elseif($p->type == "url_image") {
+                $output .= '<img src="'.$p->media.'" class="img-fluid w-100 object-fit-cover"/>';
+            } elseif($p->type == "embed_video") {
+    
+                $output .= '
+                    <div class="ratio ratio-16x9">
+                        '. $p->media .'
+                    </div>';
+            }
+        }
+
+        return $output;
+    }
 }

@@ -46,6 +46,26 @@ class PageModalController extends Controller
         return view('frontend.modals.artist-detail',compact('artist','package_heads','porfolios','gig'));
     }
     
+    public function gigDetail($gig_id = 0)
+    {
+        $gig = GigModel::where('id',$gig_id)->get()->first();
+        $package_heads = GigPackageHeadModel::where('gig_id',$gig_id)->with([
+            'packages' => function($query)
+            {
+                $query->orderBy('sort','ASC');
+            }
+        ])->get();
+        $porfolios = PortfolioModel::where('gig_id',$gig_id)->with([
+            'media' => function($query)
+            {
+                $query->orderBy('id','DESC');
+            }
+        ])->get();
+
+        //dd(compact('artist','package_heads','porfolios','gig'));
+        return view('frontend.modals.gig-detail',compact('package_heads','porfolios','gig'));
+    }
+    
     public function artistPortfolios($id = 0, $gig_id = 0)
     {
         $gig = GigModel::where('id',$gig_id)->get()->first();

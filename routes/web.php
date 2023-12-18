@@ -48,6 +48,7 @@ Route::get('thanks-contact', [PageController::class, 'thankContact'])->name('con
 Route::get('modal/artist-detail/{id}/{gig_id?}', [PageModalController::class, 'artistDetail'])->name('modal.artist.detail');
 Route::get('modal/artist-portfolios/{id}/{gig_id?}', [PageModalController::class, 'artistPortfolios'])->name('modal.artist.portfolios');
 Route::get('modal/portfolio-detail/{id}', [PageModalController::class, 'portfolioDetail'])->name('modal.portfolio.detail');
+Route::get('modal/gig-detail/{id}', [PageModalController::class, 'gigDetail'])->name('modal.gig.detail');
 
 
 Route::get('dashboard', [AdmDashboardController::class, 'index'])->name('admin.dashboard0')->middleware(['auth', 'verified'])->name('dashboard');
