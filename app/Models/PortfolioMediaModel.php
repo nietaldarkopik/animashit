@@ -94,19 +94,19 @@ class PortfolioMediaModel extends Model
         {
             if($p->type == "upload_image") {
                 $output .= '
-                    <div class="ratio ratio-16x9">
+                    <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
                         <a href="'.asset($p->media).'" target="_blank">
                             <img src="'.asset($p->media).'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
                         </a>
                     </div>';
             } elseif($p->type == "upload_video") {
                 $output .= '
-                    <div class="ratio ratio-16x9">
+                    <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
                         <video src="'.asset($p->media).'" class="w-100 object-fit-cover" autoplay controls></video>
                     </div>';
             } elseif($p->type == "url_image") {
                 $output .= '
-                    <div class="ratio ratio-16x9">
+                    <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
                         <a href="'.asset($p->media).'" target="_blank">
                             <img src="'.$p->media.'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
                         </a>
@@ -114,7 +114,7 @@ class PortfolioMediaModel extends Model
             } elseif($p->type == "embed_video") {
     
                 $output .= '
-                    <div class="ratio ratio-16x9">
+                    <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
                         '. $p->media .'
                     </div>';
             }
@@ -135,7 +135,7 @@ class PortfolioMediaModel extends Model
                 $output .= '<img src="'.asset($p->media).'" class="img-fluid w-100 object-fit-cover"/>';
             } elseif($p->type == "upload_video") {
                 $output .= '
-                    <div class="ratio ratio-16x9">
+                    <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
                         <video src="'.asset($p->media).'" class="w-100 object-fit-cover" muted autoplay controls></video>
                     </div>';
             } elseif($p->type == "url_image") {
@@ -143,7 +143,7 @@ class PortfolioMediaModel extends Model
             } elseif($p->type == "embed_video") {
     
                 $output .= '
-                    <div class="ratio ratio-16x9">
+                    <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
                         '. $p->media .'
                     </div>';
             }

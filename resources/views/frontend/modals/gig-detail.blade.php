@@ -8,23 +8,50 @@
         </button>
     </div>
 </div>
+<div class="col-12 z-1 top-0 left-0 p-0 fixed-bottom carousel-modal opacity-25 zindex99">
+    {{-- <div class="overlay overlay1"></div> --}}
+    <div id="carouselArtistDetail" class="carousel slide  z-1 top-0 left-0 p-3 p-sm-0"
+        data-bs-ride="carousel" data-bs-interval="5">
+        {{-- <div class="overlay overlay2 ></div> --}}
+        <div class="carousel-inner m-0 p-0" role="listbox">
+            @foreach ($porfolios as $ip => $p)
+                @php
+                    $m = $p->media->last();
+                    $id_media = (isset($m->id))?$m->id:0;
+                @endphp
+                @if(!empty($m))
+                <div class="carousel-item @if ($ip == 0) active @endif">
+                    {{-- @if (!empty($m) and file_exists(public_path($m->media))) --}}
+                        {{-- <img src="{{ url(htmlspecialchars($m->media)) }}" class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill" alt="First slide"> --}}
+                        {!! $m->getDisplay($id_media) !!}
+                    {{-- @endif --}}
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3 class="mix-blend-difference">{{ $p->title }}</h3>
+                        <p class="mix-blend-difference">{{ $p->description }}</p>
+                    </div>
+                </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+</div>
 <div class="row mt-12">
     <div class="col-12 p-0 zindex10 mt-3 container-xxxl overflow-y-auto gig-containergig-container-{{ $gig->id }}">
-        <div class="d-flex justify-content-between align-items-start mix-blend-difference zindex99 align-content-around container-xxxl overflow-y-auto flex-column flex-sm-row">
-            <div class="col-12 col-md-6 px-3 text-justify zindex11">
-                <h2 class="page-subtitle size3 ff-oswald"></span>
-                <h1 class="page-title ff-oswald anim-text-shadow anim-stroke-light">
-                    <strong>{!! $gig->title !!}</strong> Gig
+        <div class="d-flex flex-wrap justify-content-between align-items-start zindex99 align-content-around container-xxxl overflow-y-auto flex-column flex-sm-row px-2">
+            <div class="col-12 col-md-6 px-3 text-justify zindex11 flex-wrap mix-blend-difference">
+                <h2 class="text-white page-subtitle size3 ff-oswald"></span>
+                <h1 class="text-white page-title ff-oswald anim-text-shadow position-relative">
+                    <strong class="anim-stroke-light">{!! $gig->title !!}</strong> Gig
                 </h1>
-                <div class="overflow-auto p-1 page-description anim-text-shadow anim-stroke-light" style="max-height: 80dvh;">
+                <div class="overflow-auto p-1 page-description text-white" style="max-height: 80dvh;">
                     {!! $gig->description !!}
                 </div>
             </div>
-            <div class="col-12 col-md-6 px-5 pb-5 zindex10 mb-5">
+            <div class="col-12 col-md-6 px-3 pb-5 zindex10 mb-5 flex-wrap mix-blend-difference">
                 <div class="row justify-content-start align-items-start g-1">
-                    <div class="col-12">
-                        <span class="page-subtitle size3 anim-text-shadow anim-stroke-dark  ff-oswald fw-bold">{!! $gig->title !!}</span>
-                        <span class="page-subtitle size3 anim-text-shadow anim-stroke-dark  ff-oswald">Artist</span>
+                    <div class="col-12 mix-blend-difference">
+                        <span class="page-subtitle size3 text-white ff-oswald anim-text-shadow anim-stroke-light fw-bold">{!! $gig->title !!}</span>
+                        <span class="page-subtitle size3 text-white ff-oswald anim-text-shadow">Artist</span>
                     </div>
                     <div class="col-12">
                         <div class="owlcarousel-artists owl-carousel owl-theme">
@@ -67,8 +94,8 @@
                 </div>
                 <div class="row justify-content-start align-items-start g-1 mt-5 mb-5">
                     <div class="col-12">
-                        <span class="page-subtitle size3 anim-text-shadow anim-stroke-dark text-light ff-oswald fw-bold">{!! $gig->title !!}</span>
-                        <span class="page-subtitle size3 anim-text-shadow anim-stroke-dark text-light ff-oswald">Portfolios</span>
+                        <span class="page-subtitle size3 ff-oswald anim-text-shadow anim-stroke-light fw-bold">{!! $gig->title !!}</span>
+                        <span class="page-subtitle size3 ff-oswald anim-text-shadow">Portfolios</span>
                     </div>
                     <div class="col-12">
                         <div class="owlcarousel-portfolios owl-carousel owl-theme">
@@ -104,32 +131,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 z-1 top-0 left-0 p-0 fixed-bottom carousel-modal">
-        <div id="carouselArtistDetail" class="carousel slide  z-1 top-0 left-0 p-3 p-sm-0"
-            data-bs-ride="carousel" data-bs-interval="5">
-            {{-- <div class="overlay overlay2 mix-blend-difference"></div> --}}
-            <div class="carousel-inner m-0 p-0" role="listbox">
-                @foreach ($porfolios as $ip => $p)
-                    @php
-                        $m = $p->media->last();
-                        $id_media = (isset($m->id))?$m->id:0;
-                    @endphp
-                    @if(!empty($m))
-                    <div class="carousel-item @if ($ip == 0) active @endif">
-                        {{-- @if (!empty($m) and file_exists(public_path($m->media))) --}}
-                            {{-- <img src="{{ url(htmlspecialchars($m->media)) }}" class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill" alt="First slide"> --}}
-                            {!! $m->getDisplay($id_media) !!}
-                        {{-- @endif --}}
-                        <div class="carousel-caption d-none d-md-block">
-                            <h3>{{ $p->title }}</h3>
-                            <p>{{ $p->description }}</p>
-                        </div>
-                    </div>
-                    @endif
-                @endforeach
             </div>
         </div>
     </div>

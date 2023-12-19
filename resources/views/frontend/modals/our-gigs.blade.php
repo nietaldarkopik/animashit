@@ -2,6 +2,7 @@
     $gigs = \App\Models\GigModel::orderBy('sort', 'ASC')->get();
 @endphp
 
+<div class="gig-detail-container d-block w-100 h-100"></div>
 <div class="fixed-bottom">
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center">
@@ -119,15 +120,15 @@
         url = url.replace('__xx__', gig_id);
         url = url.replace('__yy__', id);
 
-        $("#modalPage .modal-body").html(loading_html);
-        $("#modalPage").modal("show");
+        $("#modalSubPage .modal-body").html(loading_html);
+        $("#modalSubPage").modal("show");
         $.ajax({
             url: url,
             data: "",
             dataType: "html",
             type: "get",
             success: function(msg) {
-                $("#modalPage .modal-body").html(msg);
+                $("#modalSubPage .modal-body").html(msg);
             }
         })
     });
@@ -159,13 +160,24 @@
         $("#modalPage .modal-body").html(loading_html);
     });
 
+    
+    $("body").on('show.bs.offcanvas',bsOffcanvasBottom,function(){
+        $(".toggle-offcanvas").hide();
+    });
+
+    $("body").on('hidden.bs.offcanvas',bsOffcanvasBottom, function(){
+        $(".toggle-offcanvas").show();
+    });
+    
+    
     $("body").on("click", ".card-gig", function() {
         var gig_id = $(this).data("gig_id");
         var url = "{{ route("modal.gig.detail",["id" => "__yy__"])}}";
         url = url.replace('__yy__',gig_id);
 
-        $("#modalPage .modal-body").html(loading_html);
+        $("#modalPage .modal-body .gig-detail-container").html(loading_html);
         $("#modalPage").modal("show");
+        
         $.ajax({
             url: url,
             data: "",
@@ -173,7 +185,7 @@
             type: "get",
             success: function(msg)
             {
-                $("#modalPage .modal-body").html(msg);
+                $("#modalPage .modal-body .gig-detail-container").html(msg);
             }
         })
     });

@@ -16,15 +16,15 @@
         <div class="home-owl-carousel owl-carousel owl-theme z-3">
             @foreach($sliders as $i => $slider)
             <div class="item vw-100 vh-100 d-block justify-content-center">
-                <div class="row d-flex h-100 justify-content-center align-items-center container-xxxl z-2 overlay-content">
+                <div class="row d-flex h-100 justify-content-center align-items-center container-xxxl z-2 overlay-content mix-blend-difference">
                     <div class="col-lg-6 offset-lg-6x p-5">
-                        <div class="w-100 p-5 overflow-y-auto mix-blend-difference-container text-black anim-text-shadow anim-stroke-dark" style="max-height: 80vh;">
+                        <div class="w-100 p-5 overflow-y-auto text-white anim-text-shadow" style="max-height: 80vh;">
                             {!! $slider->description !!}
                         </div>
                     </div>
                     <div class="col-lg-6 offset-lg-6x p-5">
-                        <span class="mix-blend-difference mix-blend-difference-container anim-text-shadow anim-stroke-dark owlcarousel-subtitle">{{ $slider->subtitle}}</span>
-                        <h1 class="mix-blend-difference mix-blend-difference-container anim-text-shadow anim-stroke-dark owlcarousel-title">{{ $slider->title }}</h1>
+                        <span class="anim-text-shadow anim-stroke-light owlcarousel-subtitle">{{ $slider->subtitle}}</span>
+                        <h1 class="anim-text-shadow anim-stroke-light owlcarousel-title">{{ $slider->title }}</h1>
                     </div>
                 </div>
                 <div class="w-100 h-100 overlay-content z-1">

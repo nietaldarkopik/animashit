@@ -81,7 +81,7 @@
         </div>
     </div>
     <!-- Modal Artist Detail-->
-    <div class="modal fade anime-modal p-0 zindex11" id="modalPage" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+    <div class="modal fade anime-modal p-0 zindex11" id="modalSubPage" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
         aria-hidden="true">
         <div class="modal-dialog container-fluid mx-auto modal-sm modal-fullscreen p-0" role="document">
             <div class="modal-content m-0 p-0">
@@ -135,15 +135,15 @@
         url = url.replace('__xx__', gig_id);
         url = url.replace('__yy__', id);
 
-        $("#modalPage .modal-body").html(loading_html);
-        $("#modalPage").modal("show");
+        $("#modalSubPage .modal-body").html(loading_html);
+        $("#modalSubPage").modal("show");
         $.ajax({
             url: url,
             data: "",
             dataType: "html",
             type: "get",
             success: function(msg) {
-                $("#modalPage .modal-body").html(msg);
+                $("#modalSubPage .modal-body").html(msg);
             }
         })
     });
@@ -171,8 +171,8 @@
         $("#modalSubPage .modal-body").html(loading_html);
     });
 
-    $("body").on("hidden.bs.modal", "#modalPage", function() {
-        $("#modalPage .modal-body").html(loading_html);
+    $("body").on("hidden.bs.modal", "#modalSubPage", function() {
+        $("#modalSubPage .modal-body").html(loading_html);
     });
 
     $("body").on("click", ".card-gig", function() {
@@ -180,8 +180,8 @@
         var url = "{{ route("modal.gig.detail",["id" => "__yy__"])}}";
         url = url.replace('__yy__',gig_id);
 
-        $("#modalPage .modal-body").html(loading_html);
-        $("#modalPage").modal("show");
+        $("#modalSubPage .modal-body").html(loading_html);
+        $("#modalSubPage").modal("show");
         $.ajax({
             url: url,
             data: "",
@@ -189,7 +189,7 @@
             type: "get",
             success: function(msg)
             {
-                $("#modalPage .modal-body").html(msg);
+                $("#modalSubPage .modal-body").html(msg);
             }
         })
     });
