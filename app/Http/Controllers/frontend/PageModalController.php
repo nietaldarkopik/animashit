@@ -82,5 +82,16 @@ class PageModalController extends Controller
         $medias = $portfolio->media;
         return view('frontend.modals.portfolio-detail',compact('portfolio','artist','client','package','gig','medias'));
     }
+    
+    public function scheduleArtist($id = 0)
+    {
+        $portfolio = PortfolioModel::where('id',$id)->get()->first();
+        $artist = $portfolio->profile;
+        $client = $portfolio->client;
+        $package = $portfolio->gigPackage;
+        $gig = $portfolio->gig;
+        $medias = $portfolio->media;
+        return view('frontend.modals.schedule-artist',compact('portfolio','artist','client','package','gig','medias'));
+    }
 
 }

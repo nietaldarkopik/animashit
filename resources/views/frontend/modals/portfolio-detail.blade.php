@@ -1,4 +1,14 @@
-<div class="row justify-content-start align-items-center m-0 mt-5">
+<div class="row mt-10 fixed-top">
+    <div class="col-12">
+        <button type="button" class="btn btn-warning position-relative zindex99"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+        >
+            <span class="fa fa-arrow-left"></span> Back
+        </button>
+    </div>
+</div>
+<div class="row justify-content-start align-items-center m-0 mt-10">
     <div class="row top-0 left-0 p-0 m-0 gap-1">
         <div class="col-12 z-2 col-xxl-3 col-sm-3 px-1 ms-auto">
             <div class="accordion accordion-flush" id="idPortfolioDetail">
@@ -272,11 +282,6 @@
             </div>
         </div> --}}
         <div class="col-12 z-1 top-0 left-0 p-0 position-fixed carousel-modal">
-            <a class="btn btn-lg z-3 btn-warning position-fixed top-0 left-0 m-5" href="javascript:void(0);"
-                data-bs-dismiss="modal" data-bs-placement="bottom" data-bs-toggle="popover"
-                title="Close" data-bs-title="Close" data-bs-content="Close">
-                <i class="fas fa-caret-left"></i> Back
-            </a>
             <div id="carouselArtistDetail"
                 class="carousel slide vh-sm-100  z-1 top-0 left-0 p-3 p-sm-0"
                 data-bs-ride="carousel">

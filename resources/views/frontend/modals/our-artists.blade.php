@@ -109,15 +109,15 @@
                 if (gig_id == a.packages[0].gig.id || gig_id == '') {
 
                     var card = `
-                                <div class="card-group anime-bg-primary-trans p-2 rounded-3 card-gig-all card-gig-` + a
+                                <div class="card-group bg-transparent p-2 rounded-0 border-5 card-gig-all block-border-white card-gig-` + a
                         .packages[0].gig.id +
                         `">
-                                    <div class="card border-0 rounded-start-3 rounded-3">
-                                        <img class="card-img-top border-0 rounded-start-3 w-100 h-100 object-fit-cover" src="` + url + '/' +
+                                    <div class="card border-0 rounded-start-0 rounded-0 bg-transparent">
+                                        <img class="card-img-top border-0 rounded-start-0 w-100 h-100 object-fit-cover" src="` + url + '/' +
                         a.avatar +
                         `"
                                             alt="Title">
-                                        <div class="card-img-overlay rounded-start-3 d-flex p-0">
+                                        <div class="card-img-overlay rounded-start-0 d-flex p-0">
                                             <div class="col-12 bg-animashit-secondary-trans p-2 mt-auto">
                                                 <h4 class="card-title ff-oswald fw-bolder mix-blend-differencex text-strokex text-dark size5">` +
                         a.nickname + `</h4>
@@ -127,42 +127,42 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card p-0 border-0 rounded-end-3">
-                                        <div class="card-body h-100  rounded-end-3">
-                                            <ul class="list-group list-group-flush p-0  rounded-end-3">
-                                                <li class="list-group-item p-1">
+                                    <div class="card p-0 border-0 rounded-end-0 bg-animashit-light-trans">
+                                        <div class="card-body h-100  rounded-end-0 bg-transparent">
+                                            <ul class="list-group list-group-flush p-0  bg-transparent rounded-end-0">
+                                                <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">Gig</span>
                                                     <span class="float-end fw-bold ff-oswald">` + a.packages[0].gig
                         .title + `</span>
                                                 </li>
-                                                <li class="list-group-item p-1">
+                                                <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">On Hold </span>
                                                     <span class="float-end fw-bold ff-satisfy">20</span>
                                                 </li>
-                                                <li class="list-group-item p-1">
+                                                <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">On Going </span>
                                                     <span class="float-end fw-bold ff-satisfy">20</span>
                                                 </li>
-                                                <li class="list-group-item p-1">
+                                                <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">Completed </span>
                                                     <span class="float-end fw-bold ff-satisfy">20</span>
                                                 </li>
-                                                <li class="list-group-item p-1">
+                                                <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">Range Price </span>
                                                     <span class="float-end fw-bold ff-satisfy">$20 - $100</span>
                                                 </li>
-                                                <li class="list-group-item text-center d-flex py-1 px-0">
-                                                    <a class="col-6 btn btn-sm btn-outline-warning btn-block py-1 px-2 ff-poppins-regular rounded-0 " href="#" role="button">
+                                                <li class="list-group-item bg-transparent text-center d-flex py-1 px-0">
+                                                    <a class="col-6 btn btn-sm btn-outline-warning btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-schedule" href="#" role="button" data-gig_id="` + a.packages[0].gig.id + `" data-id="` + a.id + `">
                                                         <i class="m-1 fa fa-calendar-alt" aria-hidden="true"></i>Schedules
                                                     </a>
-                                                    <a class="col-6 btn btn-sm btn-outline-warning btn-block py-1 px-2 ff-poppins-regular rounded-0 " href="#" role="button">
+                                                    <a class="col-6 btn btn-sm btn-outline-warning btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-portfolio" href="#" role="button" data-gig_id="` + a.packages[0].gig.id + `" data-id="` + a.id + `">
                                                         <i class="m-1 fa fa-user-alt" aria-hidden="true"></i>Portfolios
                                                     </a>
                                                 </li>
-                                                <li class="list-group-item text-center">
+                                                <li class="list-group-item bg-transparent text-center">
                                                     <span class="ff-caveat size4 fw-bold text-success">Available Now!</span>
                                                 </li>
-                                                <li class="list-group-item text-center">
+                                                <li class="list-group-item bg-transparent text-center">
                                                     <a class="btn btn-sm p-1 btn-primary ff-poppins-regular anime-bg-success rounded-0 px-3" href="#" role="button">
                                                         <i class="m-1 fa fa-check-circle" aria-hidden="true"></i>Hire Him!
                                                     </a>
@@ -198,5 +198,43 @@
                 ourartistlist = initCarousel();
             }
         });
+
+        $("body").on("click", ".btn-portfolio", function() {
+            var id = $(this).data("id");
+            var gig_id = $(this).data("gig_id");
+            var url = "{{ route('modal.artist.detail', ['gig_id' => '__xx__', 'id' => '__yy__']) }}";
+            url = url.replace('__xx__', gig_id);
+            url = url.replace('__yy__', id);
+
+            $("#modalSubPage .modal-body").html(loading_html);
+            $("#modalSubPage").modal("show");
+            $.ajax({
+                url: url,
+                data: "",
+                dataType: "html",
+                type: "get",
+                success: function(msg) {
+                    $("#modalSubPage .modal-body").html(msg);
+                }
+            })
+        });
+
+        $("body").on("click", ".btn-schedule", function() {
+            var id = $(this).data("id");
+            var url = "{{ route('modal.schedule.artist', ['id' => '__yy__']) }}";
+            url = url.replace('__yy__', id);
+
+            $("#modalSubPage .modal-body").html(loading_html);
+            $("#modalSubPage").modal("show");
+            $.ajax({
+                url: url,
+                data: "",
+                dataType: "html",
+                type: "get",
+                success: function(msg) {
+                    $("#modalSubPage .modal-body").html(msg);
+                }
+            })
+        });        
     });
 </script>

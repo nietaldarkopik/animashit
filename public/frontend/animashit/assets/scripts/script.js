@@ -144,4 +144,5 @@ $(function() {
         let top = window.scrollY;
         switchNavbarColor(top);
     });
-});
+    
+}); 

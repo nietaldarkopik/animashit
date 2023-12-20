@@ -49,6 +49,7 @@ Route::get('modal/artist-detail/{id}/{gig_id?}', [PageModalController::class, 'a
 Route::get('modal/artist-portfolios/{id}/{gig_id?}', [PageModalController::class, 'artistPortfolios'])->name('modal.artist.portfolios');
 Route::get('modal/portfolio-detail/{id}', [PageModalController::class, 'portfolioDetail'])->name('modal.portfolio.detail');
 Route::get('modal/gig-detail/{id}', [PageModalController::class, 'gigDetail'])->name('modal.gig.detail');
+Route::get('modal/schedule-artist/{id}', [PageModalController::class, 'scheduleArtist'])->name('modal.schedule.artist');
 Route::get('modal/page/{Modal:slug}', [PageModalController::class, 'index'])->name('modal.page');
 
 
