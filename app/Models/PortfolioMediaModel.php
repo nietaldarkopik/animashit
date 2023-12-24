@@ -84,7 +84,7 @@ class PortfolioMediaModel extends Model
         $deleteNotIn = $this->where('portfolio_id',$portfolio_id)->whereNotIn('id',$id_exists)->delete();
     }
     
-    public function showDisplay($id = 0) {
+    public function showDisplay($id = 0,$size = 'thumbnail-300x500') {
         $portfolio = PortfolioMediaModel::where('id',$id)->first();
 
         $p = (!empty($portfolio))?$portfolio:null;
@@ -96,7 +96,7 @@ class PortfolioMediaModel extends Model
                 $output .= '
                     <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
                         <a href="'.asset($p->media).'" target="_blank">
-                            <img src="'.asset($p->media).'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
+                            <img src="'.asset(resize($p->media,$size,false)).'" class="img-fluid w-100 object-fit-cover"/>
                         </a>
                     </div>';
             } elseif($p->type == "upload_video") {
@@ -128,7 +128,8 @@ class PortfolioMediaModel extends Model
 
         $p = (!empty($portfolio))?$portfolio:null;
         $output = '';
-        
+        return $p;
+        /* 
         if(!empty($p))
         {
             if($p->type == "upload_image") {
@@ -149,6 +150,6 @@ class PortfolioMediaModel extends Model
             }
         }
 
-        return $output;
+        return $output; */
     }
 }

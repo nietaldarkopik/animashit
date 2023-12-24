@@ -28,15 +28,15 @@ class AdmPortfoliosController extends Controller
         if($do_action == 'do_filter')
         {
             $post_filter = $request->input('filter');
-            $request->session()->put('filter_gigfeature',$post_filter);
+            $request->session()->put('filter_portfolio',$post_filter);
         }
         if($do_action == 'do_reset')
         {
             $post_filter = $request->input('filter');
-            $request->session()->put('filter_gigfeature',[]);
+            $request->session()->put('filter_portfolio',[]);
         }
         
-        $post_filter = $request->session()->get('filter_gigfeature');
+        $post_filter = $request->session()->get('filter_portfolio');
         
         $gigs = GigModel::orderBy('id', 'DESC')->get();
         $portfolios = PortfolioModel::when($do_action, function($query) use ($post_filter){

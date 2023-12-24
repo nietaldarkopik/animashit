@@ -124,14 +124,16 @@
     function setDatePosition(timelineComponents, min) {
         for (i = 0; i < timelineComponents['timelineDates'].length; i++) { 
             var distance = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][i]),
-                distanceNorm = Math.round(distance/timelineComponents['eventsMinLapse']) + 2;
+                distanceNorm = Math.round(1/timelineComponents['eventsMinLapse']) + 2;
+                //distanceNorm = Math.round(distance/timelineComponents['eventsMinLapse']) + 2;
             timelineComponents['timelineEvents'].eq(i).css('left', distanceNorm*min+'px');
         }
     }
     
     function setTimelineWidth(timelineComponents, width) {
         var timeSpan = daydiff(timelineComponents['timelineDates'][0], timelineComponents['timelineDates'][timelineComponents['timelineDates'].length-1]),
-            timeSpanNorm = timeSpan/timelineComponents['eventsMinLapse'],
+            timeSpanNorm = 1/timelineComponents['eventsMinLapse'],
+            //timeSpanNorm = timeSpan/timelineComponents['eventsMinLapse'],
             timeSpanNorm = Math.round(timeSpanNorm) + 4,
             totalWidth = timeSpanNorm*width;
         timelineComponents['eventsWrapper'].css('width', totalWidth+'px');

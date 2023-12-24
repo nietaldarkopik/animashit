@@ -24,7 +24,7 @@ class AdmCustomersController extends Controller
 
     public function index(Request $request)
     {
-        $customers = ProfileModel::where('user_type','=',5)->orderBy('id', 'DESC')->paginate(5);
+        $customers = ProfileModel::where('user_type','=',5)->orderBy('id', 'DESC')->paginate(20);
         return view('backend.pages.customers.index', compact('customers'));
     }
 

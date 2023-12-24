@@ -11,16 +11,15 @@
         "php": "^8.1",
         "biscolab/laravel-recaptcha": "^6.0",
         "guzzlehttp/guzzle": "^7.2",
+        "kwaadpepper/image-resizer": "^2.1",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
-        "norkunas/youtube-dl-php": "^2.2",
         "spatie/laravel-permission": "^5.11"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.25",
-        "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",

@@ -3,96 +3,10 @@
     $gigs = \App\Models\GigModel::orderBy('sort', 'ASC')->get();
 @endphp
 @section('content')
-    <div class="overlay overlay1"></div>
-    <div class="fixed-bottom">
-        <div class="container-fluid">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-12 text-center pb-3">
-                    <a class="ff-oswald text-white text-decoration-none toggle-offcanvas h5" data-bs-toggle="offcanvas"
-                        href="#offcanvasBottom" role="button" aria-controls="offcanvasBottom">Our <strong>Gigs</strong></a>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('../frontend.modals.our-gigs')
+@endsection
 
-    <div class="offcanvas offcanvas offcanvas-bottom bg-transparent offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
-        aria-labelledby="offcanvasBottomLabel-body bg-transparent">
-        {{-- 
-        <div class="offcanvas-header align-items-center">
-            <h5 class="offcanvas-title ff-oswald text-white" id="offcanvasBottomLabel">Our <strong>Gigs</strong></h5>
-            <button type="button" class="btn-close text-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div> 
-        --}}
-
-        <div class="offcanvas-body overflow-hidden p-0 bg-transparent">
-            <div class="row justify-content-center">
-                <div class="col-12 text-center pt-1">
-                    <button class="ff-oswald text-white h-5 boxed-white d-inline-block h5" data-bs-dismiss="offcanvas"
-                        aria-label="Close">Our <strong>Gigs</strong></button>
-                </div>
-            </div>
-            <div class="row justify-content-center px-5 py-0">
-                <div class="col-12 gigs-slick">
-                    @foreach ($gigs as $i => $item)
-                        @php
-                            $thumbnail = App\Models\GigMediaModel::where(function ($query) use ($item) {
-                                $query->where('gig_id', $item->id);
-                                $query->where('display', 'thumbnail');
-                            })->first();
-
-                            if (!isset($thumbnail->id)) {
-                                $thumbnail = App\Models\GigMediaModel::where(function ($query) use ($item) {
-                                    $query->where('gig_id', $item->id);
-                                    $query->where('display', 'upload_image');
-                                })->first();
-                            }
-
-                        @endphp
-                        @if (isset($thumbnail->id))
-                            <div class="p-2">
-                                <div class="card card-offcanvas-bottom bg-transparent text-center card-gig"
-                                    data-gig_id="{{ $item->id }}">
-                                    <div class="card-body card-body-img">
-                                        <img class="card-img" src="{{ url(htmlspecialchars($thumbnail->media)) }}"
-                                            alt="Title">
-                                    </div>
-                                    <div class="card-body p-1">
-                                        <h4 class="card-title my-1 h6 ff-oswald text-white">{{ $item->title }}</h4>
-                                        {{-- <p class="card-text my-1">Body</p> --}}
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal Portfolio Detail-->
-    <div class="modal fade anime-modal p-0 zindex12" id="modalSubPage" tabindex="-1" role="dialog"
-        aria-labelledby="modalTitleId" aria-hidden="true">
-        <div class="modal-dialog container-fluid mx-auto modal-sm modal-fullscreen p-0" role="document">
-            <div class="modal-content m-0 p-0">
-                <div class="modal-body ff-dmsans-regular m-0 p-0">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Artist Detail-->
-    <div class="modal fade anime-modal p-0 zindex11" id="modalSubPage" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
-        aria-hidden="true">
-        <div class="modal-dialog container-fluid mx-auto modal-sm modal-fullscreen p-0" role="document">
-            <div class="modal-content m-0 p-0">
-                <div class="modal-body ff-dmsans-regular m-0 p-0">
-
-                </div>
-            </div>
-        </div>
-    @endsection
-
-    @section('script')
+@section('scriptx')
         
 <script>
     var baseUrl = "{{ url('/') }}";
@@ -668,4 +582,4 @@
      */
 </script>
 
-    @endsection
+@endsection

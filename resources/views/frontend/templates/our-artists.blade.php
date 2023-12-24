@@ -4,47 +4,10 @@
     $gigs = App\Models\GigModel::get();
     $artists = App\Models\ProfileModel::where('user_type',4)->get();
 @endphp
-    <div class="overlay overlay1"></div>
-    <section id="main-container" class="container-fluid">
-        <div class="container-xxxl container-main mx-auto">
-            <div class="row justify-content-center align-items-center align-self-center pt-5">
-                <div class="col-md-12 pt-5 text-center">
-                    <h2 class="page-title">{{ $page->title ?? ''}}</h2>
-                    {{ $page->description ?? ''}}
-                </div>
-                <div class="col-md-12 p-0 align-self-center align-items-center align-content-stretch my-auto">
-                    <div class="container-xxxl">
-                        <div class="row justify-content-stretch align-items-baseline w-100">
-                            <div class="col-12">
-                                <form class="justify-content-center align-items-center row py-5">
-                                    <div class="col-12 col-sm-4 px-0 text-center">
-                                        <h3 class="ff-oswald">Filter By Gig</h3>
-                                        <select name="filter-gig" id="filter-gig" class="text-center rounded-0 form-control" placeholder="filter-gig" aria-describedby="helpId">
-                                            <option value="">All Gigs ...</option>
-                                            @foreach($gigs as $i => $g)
-                                            <option value="{{$g->id}}">{{ $g->title }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center align-items-center our-artist-list owl-carousel w-100">                            
-                            {{-- 
-                                @foreach($artists as $i => $a)
-                                @endforeach 
-                            --}}
-                        </div>
-                    </div>
-                    <div class="col-12 our-artist-list-nav justify-content-center align-items-center d-flex">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    @include('../frontend.modals.our-artists')
 @endsection
 
-@section('script')
+@section('scriptx')
     <script>
         @php
             $dataGigs = [];

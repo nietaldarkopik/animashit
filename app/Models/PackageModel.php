@@ -28,4 +28,5 @@ class PackageModel extends Model
     {
         return $this->hasMany(GigPackageHeadModel::class,'gig_package_head_id');
     }
+    
 }

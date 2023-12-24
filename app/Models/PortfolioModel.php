@@ -33,7 +33,7 @@ class PortfolioModel extends Model {
         return $this->hasMany(PortfolioMediaModel::class, 'portfolio_id');
     }
 
-    public function showDisplay($id = 0) {
+    public function showDisplay($id = 0,$size = 'thumbnail-300x500') {
         $portfolio = PortfolioModel::where('id',$id)->with(['media' => function($query){
             $query->where('type','upload_image');
         }])->get()->first();
@@ -47,7 +47,7 @@ class PortfolioModel extends Model {
             if($p->type == "upload_image") {
                 $output .= '
                     <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
-                        <img src="'.asset($p->media).'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
+                        <img src="'.asset(resize($p->media,$size,false)).'" class="img-fluid w-100 object-fit-cover"/>
                     </div>';
             } elseif($p->type == "upload_video") {
                 $output .= '
@@ -57,7 +57,7 @@ class PortfolioModel extends Model {
             } elseif($p->type == "url_image") {
                 $output .= '
                     <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
-                        <img src="'.$p->media.'" class="img-fluid w-100 object-fit-cover" style="max-height: 300px;"/>
+                        <img src="'.$p->media.'" class="img-fluid w-100 object-fit-cover" style="min-height: 300px;"/>
                     </div>';
             } elseif($p->type == "embed_video") {
     

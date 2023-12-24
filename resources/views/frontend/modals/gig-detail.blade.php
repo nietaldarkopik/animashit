@@ -8,11 +8,11 @@
         </button>
     </div>
 </div>
-<div class="col-12 z-1 top-0 left-0 p-0 fixed-bottom carousel-modal opacity-25 zindex99">
-    {{-- <div class="overlay overlay1"></div> --}}
+{{-- <div class="col-12 z-1 top-0 left-0 p-0 fixed-bottom carousel-modal opacity-25 zindex99 d-none">
+    \{\{-- <div class="overlay overlay1"></div> --\}\}
     <div id="carouselArtistDetail" class="carousel slide  z-1 top-0 left-0 p-3 p-sm-0"
         data-bs-ride="carousel" data-bs-interval="5">
-        {{-- <div class="overlay overlay2 ></div> --}}
+        \{\{-- <div class="overlay overlay2 ></div> --\}\}
         <div class="carousel-inner m-0 p-0" role="listbox">
             @foreach ($porfolios as $ip => $p)
                 @php
@@ -21,20 +21,20 @@
                 @endphp
                 @if(!empty($m))
                 <div class="carousel-item @if ($ip == 0) active @endif">
-                    {{-- @if (!empty($m) and file_exists(public_path($m->media))) --}}
-                        {{-- <img src="{{ url(htmlspecialchars($m->media)) }}" class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill" alt="First slide"> --}}
+                    \{\{-- @if (!empty($m) and file_exists(public_path($m->media))) --\}\}
+                        \{\{-- <img src="\{\{ url(htmlspecialchars($m->media)) \}\}" class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill" alt="First slide"> --\}\}
                         {!! $m->getDisplay($id_media) !!}
-                    {{-- @endif --}}
+                    \{\{-- @endif --\}\}
                     <div class="carousel-caption d-none d-md-block">
-                        <h3 class="mix-blend-difference">{{ $p->title }}</h3>
-                        <p class="mix-blend-difference">{{ $p->description }}</p>
+                        <h3 class="mix-blend-difference">\{\{ $p->title }}</h3>
+                        <p class="mix-blend-difference">\{\{ $p->description }}</p>
                     </div>
                 </div>
                 @endif
             @endforeach
         </div>
     </div>
-</div>
+</div> --}}
 <div class="row mt-12">
     <div class="col-12 p-0 zindex10 mt-3 container-xxxl overflow-y-auto gig-containergig-container-{{ $gig->id }}">
         <div class="d-flex flex-wrap justify-content-between align-items-start zindex99 align-content-around container-xxxl overflow-y-auto flex-column flex-sm-row px-2">
@@ -67,7 +67,7 @@
                                             {{-- <img class="card-img d-none object-fit-cover d-flex h-100" src="{{ (isset($a->media)?url($a->media):'') }}" alt="Title"> --}}
                                             <div class="ratio ratio-16x9">
                                                 <img class="card-img object-fit-cover bg-transparent d-flex h-100"
-                                                    src="{!! url('uploads/artists/' . $art->avatar) !!}" alt="Title">
+                                                    src="{!! asset(resizePublic('uploads/artists/' . $art->avatar,'thumbnail-300x500',false)) !!}" alt="Title">
                                             </div>
                                         </div>
                                         <div
@@ -99,10 +99,11 @@
                     </div>
                     <div class="col-12">
                         <div class="owlcarousel-portfolios owl-carousel owl-theme">
-                            @foreach ($gig->portfolios as $ia => $a)
+                            {{-- @foreach ($gig->portfolios as $ia => $a) --}}
+                            @foreach ($portfolios as $ia => $a)
                                 @php
-                                    $artist = isset($a->profile) ? $a->profile->where('user_type', 4)->first() : [];
-                                    $client = isset($a->profile) ? $a->profile->where('user_type', 5)->first() : [];
+                                    $artist = isset($a->profile) ? $a->profile : [];
+                                    $client = isset($a->client) ? $a->client : [];
                                     $media = $a->media->where('type', 'image')->first();
                                 @endphp
                                 <div class="item">
@@ -127,7 +128,7 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="owlcarouselportfolios-dot-container position-absolutex owl-dots z-3">
+                        <div class="owlcarouselportfolios-dot-container position-absolutex owl-dots z-3 d-none">
                         </div>
                     </div>
                 </div>

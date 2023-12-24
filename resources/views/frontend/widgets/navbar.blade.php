@@ -2,7 +2,7 @@
 $pages = \App\Models\PageModel::where('status','=','publish')->orderBy('sort','ASC')->get();
 $current_page = $page?->slug ?? '';
 @endphp
-<header class="container-fluid fixed-top mx-auto main-navbar zindex99">
+<header class="container-fluid fixed-top mx-auto main-navbar zindex99 mix-blend-difference">
     <div class="row">
         <div class="col-md-12 p-0">
             <nav class="navbar navbar-expand-md px-4 fixed-topx container-xxxl mx-auto">

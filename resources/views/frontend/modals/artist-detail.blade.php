@@ -2,6 +2,7 @@
     <div class="col-12">
         <button type="button" class="btn btn-warning position-relative zindex99"
             data-bs-dismiss="modal"
+            data-bs-target="#subPageModal"
             aria-label="Close"
         >
             <span class="fa fa-arrow-left"></span> Back
@@ -69,8 +70,8 @@
             </div>
         </div>
     </div>
-    <div class="col-12 z-3 col-xxl-3 col-sm-3 p-0 overflow-y-auto bottom-0 left-0 p-0 ms-auto me-0 mt-10">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="col-12 z-3 col-xxl-3 col-sm-3 p-0 overflow-y-auto bottom-0 left-0 p-0 ms-auto me-0 mt-10 opacity-75">
+        <div class="accordion accordion-flush mt-5" id="accordionFlushExample">
             <div class="accordion-item bg-animashit-primary-trans">
                 <h2 class="accordion-header" id="flush-headingOne">
                     <a href="javascript:void(0);" class="accordion-button collapsed text-decoration-none"

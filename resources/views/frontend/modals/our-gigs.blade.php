@@ -2,6 +2,7 @@
     $gigs = \App\Models\GigModel::orderBy('sort', 'ASC')->get();
 @endphp
 
+<div class="overlay overlay1"></div>
 <div class="gig-detail-container d-block w-100 h-100"></div>
 <div class="fixed-bottom">
     <div class="container-fluid">
@@ -52,7 +53,7 @@
                             <div class="card card-offcanvas-bottom bg-transparent text-center card-gig"
                                 data-gig_id="{{ $item->id }}">
                                 <div class="card-body card-body-img">
-                                    <img class="card-img" src="{{ url(htmlspecialchars($thumbnail->media)) }}"
+                                    <img class="card-img" src="{{ asset(resizePublic($thumbnail->media,'thumbnail-300x500',false)) }}"
                                         alt="Title">
                                 </div>
                                 <div class="card-body p-1">
@@ -69,7 +70,7 @@
 </div>
 
 <script>
-    $(document).ready(function() {
+   /*  $(document).ready(function() {
         var modalPage = document.getElementById('modalPage');
         modalPage.addEventListener('show.bs.modal', function(event) {
             let button = event.relatedTarget;
@@ -77,7 +78,7 @@
         });
 
         //$("#modalPage").modal("show");
-    });
+    }); */
 </script>
 <script>
     var baseUrl = "{{ url('/') }}";
@@ -174,8 +175,12 @@
         var gig_id = $(this).data("gig_id");
         var url = "{{ route("modal.gig.detail",["id" => "__yy__"])}}";
         url = url.replace('__yy__',gig_id);
-
-        $("#modalPage .modal-body .gig-detail-container").html(loading_html);
+        var gigdetailcontainer = $("#modalPage .modal-body .gig-detail-container");
+        if(gigdetailcontainer.length == 0)
+        {
+            gigdetailcontainer = $("#modalPage .modal-body");
+        }
+        $(gigdetailcontainer).html(loading_html);
         $("#modalPage").modal("show");
         
         $.ajax({
@@ -185,7 +190,7 @@
             type: "get",
             success: function(msg)
             {
-                $("#modalPage .modal-body .gig-detail-container").html(msg);
+                $(gigdetailcontainer).html(msg);
             }
         })
     });

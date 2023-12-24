@@ -4,10 +4,8 @@
 @endphp
 <div class="row mt-10 fixed-top">
     <div class="col-12">
-        <button type="button" class="btn btn-warning position-relative zindex99"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-        >
+        <button type="button" class="btn btn-warning position-relative zindex99" data-bs-dismiss="modal"
+            aria-label="Close">
             <span class="fa fa-arrow-left"></span> Back
         </button>
     </div>
@@ -15,231 +13,60 @@
 <div class="overlay overlay1"></div>
 <div class="row justify-content-start align-items-center m-0 mt-10 h-100">
     <div class="col-lg-12">
-        <div class="card">
-            <div class="body">
-                <div class="cd-horizontal-timeline loaded">
-                    <div class="timeline">
-                        <div class="events-wrapper">
-                            <div class="events" style="width: 1800px;">
-                                <ol>
-                                    <li><a href="#0" data-date="16/01/2017" class="older-event"
-                                            style="left: 120px;">16 Jan</a></li>
-                                    <li><a href="#0" data-date="28/02/2017" style="left: 300px;"
-                                            class="older-event">28 Feb</a></li>
-                                    <li><a href="#0" data-date="20/04/2017" style="left: 480px;"
-                                            class="selected">20 Mar</a></li>
-                                    <li><a href="#0" data-date="20/05/2017" style="left: 600px;">20 May</a>
-                                    </li>
-                                    <li><a href="#0" data-date="09/07/2017" style="left: 780px;">09 Jul</a>
-                                    </li>
-                                    <li><a href="#0" data-date="30/08/2017" style="left: 960px;">30 Aug</a>
-                                    </li>
-                                    <li><a href="#0" data-date="15/09/2017" style="left: 1020px;">15
-                                            Sep</a></li>
-                                    <li><a href="#0" data-date="01/11/2017" style="left: 1200px;">01
-                                            Nov</a></li>
-                                    <li><a href="#0" data-date="10/12/2017" style="left: 1380px;">10
-                                            Dec</a></li>
-                                    <li><a href="#0" data-date="19/01/2018" style="left: 1500px;">29
-                                            Jan</a></li>
-                                    <li><a href="#0" data-date="03/03/2018" style="left: 1680px;">3 Mar</a>
-                                    </li>
-                                </ol>
-                                <span class="filling-line" aria-hidden="true"
-                                    style="transform: scaleX(0.281506);"></span>
+        <div class="card border-0 bg-transparent w-100">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4 col-sm-2 px-1">
+                        <h4 class="text-center ff-oswald">Date Schedule</h4>
+                        <div id="schedule-items-artist"
+                            class="d-flex flex-column schedule-items-artist-scrollspy text-center overflow-y-auto py-2"
+                            style="max-height: 70vh;">
+                            <div class="list-group bg-transparent rounded-0 p-0 pe-3">
+                                @foreach ($schedules as $i => $s)
+                                    <a class="list-group-item list-group-item-action bg-animashit-light-trans p-0 mb-1 py-2"
+                                        href="#schedule-item-{{ strtotime($i) }}">{{ date('M d, Y', strtotime($i)) }}</a>
+                                @endforeach
                             </div>
-                            <!-- .events -->
                         </div>
-                        <!-- .events-wrapper -->
-                        <ul class="cd-timeline-navigation">
-                            <li><a href="#0" class="prev inactive">Prev</a></li>
-                            <li><a href="#0" class="next">Next</a></li>
-                        </ul>
-                        <!-- .cd-timeline-navigation -->
                     </div>
-                    <!-- .timeline -->
-                    <div class="events-content" style="height: 225px;">
-                        <ol>
-                            <li class="" data-date="16/01/2017">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar1.png"> Horizontal
-                                    Timeline<br>
-                                    <small>January 16th, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="28/02/2017" class="">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar2.png"> Horizontal
-                                    Timeline<br>
-                                    <small>Feb 28th, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="20/04/2017" class="selected">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar3.png"> Horizontal
-                                    Timeline<br>
-                                    <small>March 20th, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="20/05/2017">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar4.png"> Horizontal
-                                    Timeline<br>
-                                    <small>May 20th, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="09/07/2017">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar1.png"> Horizontal
-                                    Timeline<br>
-                                    <small>July 9th, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="30/08/2017">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar2.png"> Horizontal
-                                    Timeline<br>
-                                    <small>August 30th, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="15/09/2017">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar6.png"> Horizontal
-                                    Timeline<br>
-                                    <small>September 15th, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="01/11/2017">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar7.png"> Horizontal
-                                    Timeline<br>
-                                    <small>November 01st, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="10/12/2017">
-                                <h4>
-                                    <img class="rounded float-left m-r-15" width="40" alt="user"
-                                        src="https://bootdey.com/img/Content/avatar/avatar8.png"> Horizontal
-                                    Timeline<br>
-                                    <small>December 10th, 2017</small>
-                                </h4>
-                                <hr>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.
-                                    <br>
-                                    <button class="btn btn-primary btn-round">Read more</button>
-                                </p>
-                            </li>
-                            <li data-date="19/01/2018">
-                                <h4>Event title here</h4>
-                                <em>January 19th, 2018</em>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.</p>
-                            </li>
-                            <li data-date="03/03/2018">
-                                <h4>Event title here</h4>
-                                <em>March 3rd, 2018</em>
-                                <p>It is a long established fact that a reader will be distracted by the
-                                    readable content of a page when looking at its layout. The point of using
-                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                    opposed to using 'Content here, content here', making it look like readable
-                                    English. Many desktop publishing packages and web page editors infancy.</p>
-                            </li>
-                        </ol>
+                    <div class="col-8 col-sm-10">
+                        <h4 class="ff-oswald">Tasks</h4>
+                        <div data-bs-spy="scroll" data-bs-target="#schedule-items-artist" data-bs-offset="0"
+                            data-bs-smooth-scroll="true" class="scrollspy-artist overflow-y-auto pe-3" data-bs-root-margin="0px 0px -40%" tabindex="0"
+                            style="max-height: 70vh;">
+                            @php
+                                $no = 0;
+                            @endphp
+                            @foreach ($schedules as $i => $s)
+                                <div class="card border-0 rounded-start-0 rounded-0 bg-animashit-light-trans w-100 my-5" id="schedule-item-{{ strtotime($i) }}">
+                                    <div class="card-body h-100  rounded-end-0 bg-transparent">
+                                        <h4 class="card-title">
+                                            <img class="rounded float-left m-r-15" width="40" alt="user"
+                                                src="https://bootdey.com/img/Content/avatar/avatar1.png"> 
+                                                Horizontal Timeline
+                                        </h4>
+                                        <h6 class="card-subtitle mb-2 text-body-secondary"><small>{{ date('d M, Y', strtotime($i)) }}</small></h6>
+                                        <p class="card-text">It is a long established fact that a reader will be
+                                            distracted by the
+                                            readable content of a page when looking at its layout. The point of using
+                                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
+                                            opposed to using 'Content here, content here', making it look like readable
+                                            English. Many desktop publishing packages and web page editors infancy.</p>
+                                        <button class="btn btn-primary btn-round">Read more</button>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
 
-<script src="{{ url('frontend/animashit/assets/scripts/schedule.js')}}"></script>
+<script></script>
+{{-- <script src="{{ url('frontend/animashit/assets/scripts/schedule.js')}}"></script>
 <script>
 var eventsMinDistance  = 60;
 $(document).ready(function(){    
@@ -247,4 +74,4 @@ $(document).ready(function(){
 
 	(timelines.length > 0) && initTimeline(timelines);
 })
-</script>
+</script> --}}

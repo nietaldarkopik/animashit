@@ -28,4 +28,20 @@ class GigPackageHeadModel extends Model
     {
         return $this->belongsTo(ProfileModel::class, 'profile_id');
     }
+    
+    public function minPrice()
+    {
+        return  $this->hasMany(GigPackageModel::class, 'gig_package_head_id')->min('price');
+    }
+    
+    public function maxPrice()
+    {
+        return $this->hasMany(GigPackageModel::class, 'gig_package_head_id')->max('price');
+    }
+    
+    public function scheduleSummary($artist = 0,$status = 1)
+    {
+        return $this->belongsToMany(ScheduleModel::class, 'gig_package_head', 'gig_id', 'profile_id','gig_id','artist_id')->where('artist_id',$artist)->where('schedules.status',$status)->count();
+        //return new ScheduleModel::class, GigPackageModel::class, 'gig_id', 'artist_id')->where('artist_id',$artist)->where('status',$status)->count();
+    }
 }

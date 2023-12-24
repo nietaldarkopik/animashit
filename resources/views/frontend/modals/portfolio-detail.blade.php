@@ -28,7 +28,7 @@
                             <div class="card anime-card1 bg-animashit-primary-trans">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{ url('uploads/artists/'.$artist->avatar) }}"
+                                        <img src="{{ asset(resize('uploads/artists/'.$artist->avatar,'thumbnail-300x500',false)) }}"
                                             class="img-fluid w-100 h-100 object-fit-cover"
                                             alt="Card title">
                                     </div>
@@ -299,7 +299,7 @@
                                 <source src="{{ url($p->media) }}" type="video/mp4"/>
                             </video>
                             @endif --}}
-                            {!! ($p->showDisplay($p->id)) !!}
+                            {!! ($p->showDisplay($p->id,'fullpage')) !!}
                             <div class="carousel-caption d-none d-md-block">
                                 <h3>{{ $p->title }}</h3>
                                 <p>{{ $p->description }}</p>

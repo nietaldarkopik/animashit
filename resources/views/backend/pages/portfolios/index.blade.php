@@ -46,7 +46,7 @@
                                             {{ $g->nickname }}</option>
                                     @endforeach
                                 </select>
-                                <select class="form-select" id="input-cusstomer_id" name="filter[cusstomer_id]">
+                                <select class="form-select" id="input-customer_id" name="filter[customer_id]">
                                     <option value="">All Customer ...</option>
                                     @foreach ($customers as $i => $g)
                                         <option value="{{ $g->id }}" @selected(isset($post_filter) and isset($post_filter['customer_id']) and $post_filter['customer_id'] == $g->id)>

@@ -52,7 +52,6 @@ Route::get('modal/gig-detail/{id}', [PageModalController::class, 'gigDetail'])->
 Route::get('modal/schedule-artist/{id}', [PageModalController::class, 'scheduleArtist'])->name('modal.schedule.artist');
 Route::get('modal/page/{Modal:slug}', [PageModalController::class, 'index'])->name('modal.page');
 
-
 Route::get('dashboard', [AdmDashboardController::class, 'index'])->name('admin.dashboard0')->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->prefix('admservices')->group(function () {

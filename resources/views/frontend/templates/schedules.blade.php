@@ -5,9 +5,18 @@
 //$start_date = date("Y-m-d", strtotime("2023-09-15"));
 //$end_date = date("Y-m-d", strtotime("2023-12-01"));
 
-$start_date = App\Models\ScheduleModel::min('start_date');
-$end_date = App\Models\ScheduleModel::max('end_date');
-$schedule_items = App\Models\ScheduleItemModel::with(['schedule','statusSchedule'])->get();
+$start_date = App\Models\ScheduleModel::whereIn('status',[1,2,3])->where('start_date','>=',date('Y-m-d',strtotime('-3 month')))->min('start_date');
+$end_date = App\Models\ScheduleModel::whereIn('status',[1,2,3])->where('end_date','>=',date('Y-m-d'))->max('end_date');
+//DB::enableQueryLog();
+
+$schedule_items = App\Models\ScheduleItemModel::whereHas('schedule',function($query) {
+    $query->where('start_date','>=',date('Y-m-d',strtotime('-3 month')));
+    $query->where('end_date','>=',date('Y-m-d'));
+    $query->whereIn('status',[1,2,3]);
+    //$query->with(['statusSchedule']);
+})->get();
+//dd(DB::getQueryLog());
+
 $schedule_item_list = [];
 
 foreach($schedule_items as $i => $sc)
@@ -57,7 +66,7 @@ if(!function_exists('get_childs_number'))
 }
 
 $gigs = App\Models\GigModel::get();
-$schedule_status = App\Models\ScheduleStatusModel::orderBy('sorting','asc')->get();
+$schedule_status = App\Models\ScheduleStatusModel::whereIn('id',[1,2,3])->orderBy('sorting','asc')->get();
 $timeline_mode = "weekly";
 $weekly_size = ($timeline_mode == 'weekly')?5:35;
 $daily_size = 35;
@@ -250,7 +259,7 @@ $daily_size = 35;
                                                     @endphp
                                                     @foreach($gigs as $i => $g)
                                                         @php
-                                                        $schedules = \App\Models\ScheduleModel::where('gig_id',$g->id)->get();
+                                                        $schedules = \App\Models\ScheduleModel::whereIn('status',[1,2,3])->where('end_date','>=',date('Y-m-d'))->where('start_date','>=',date('Y-m-d',strtotime('-3 month')))->where('gig_id',$g->id)->get();
                                                         $no++;
                                                         @endphp
                                                         <tr class="tr-gigs">
@@ -422,7 +431,8 @@ $daily_size = 35;
                                                 <div class="accordion accordion-flush" id="accordianScheduleBoard{{ $st->id }}">
                                                     @foreach($gigs as $ig => $g)
                                                         @php
-                                                            $schedule_board = \App\Models\ScheduleModel::where('gig_id',$g->id)->get();
+                                                            //$schedule_board = \App\Models\ScheduleModel::where('gig_id',$g->id)->get();
+                                                            $schedule_board = \App\Models\ScheduleModel::whereIn('status',[1,2,3])->where('end_date','>=',date('Y-m-d'))->where('start_date','>=',date('Y-m-d',strtotime('-3 month')))->where('gig_id',$g->id)->get();
                                                         @endphp
                                                         <div class="accordion-item">
                                                             <h2 class="accordion-header ff-oswald" id="flush-heading{{$st->id}}-{{ $g->id }}">

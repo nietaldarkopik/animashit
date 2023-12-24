@@ -42,23 +42,30 @@
     </div>
 </section>
 
-<script>
+@php
+    $dataGigs = [];
+@endphp
+@foreach ($artists as $i => $a)
     @php
-        $dataGigs = [];
-    @endphp
-    @foreach ($artists as $i => $a)
-        @php
-            $gig = $a;
-            $packages = $a->packages[0];
-            $packages['gig'] = $packages->gig;
-            $gig['packages'] = $packages;
+        $gig = $a;
+        $packages = $a->packages;
+
+        foreach($packages as $ip => $p)
+        {
+            $p['rangePrices'] = [$p->minPrice() , $p->maxPrice()];
+            $p['summary'] = [$p->scheduleSummary($a->id,1),$p->scheduleSummary($a->id,2),$p->scheduleSummary($a->id,3)];
+            $p['gig'] = $p->gig;
+            $p['artist_id'] = $a->id;
+            $p['gig_id'] = $p->gig->id;
+            $gig['packages'] = $p;
+            $gig['avatar_thumbnail'] = asset(resize('uploads/artists/'.$a->avatar,'thumbnail-500x500',false));
             $dataGigs[] = $gig;
-        @endphp
-    @endforeach
+        }
+    @endphp
+@endforeach
+<script>
     {{-- /* var dataGigs = @php echo json_encode($artists->with(['packages','gig'])); @endphp ; */ --}}
     var dataGigs = @php echo json_encode($dataGigs); @endphp;
-
-    console.log(dataGigs);
 
     $(document).ready(function() {
         function initCarousel() {
@@ -105,6 +112,7 @@
         function generateCard(gig_id) {
             var output = '';
             var url = "{{ url('uploads/artists') }}";
+
             dataGigs.forEach(a => {
                 if (gig_id == a.packages[0].gig.id || gig_id == '') {
 
@@ -113,8 +121,7 @@
                         .packages[0].gig.id +
                         `">
                                     <div class="card border-0 rounded-start-0 rounded-0 bg-transparent">
-                                        <img class="card-img-top border-0 rounded-start-0 w-100 h-100 object-fit-cover" src="` + url + '/' +
-                        a.avatar +
+                                        <img class="card-img-top border-0 rounded-start-0 w-100 h-100 object-fit-cover" src="` + a.avatar_thumbnail +
                         `"
                                             alt="Title">
                                         <div class="card-img-overlay rounded-start-0 d-flex p-0">
@@ -137,35 +144,36 @@
                                                 </li>
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">On Hold </span>
-                                                    <span class="float-end fw-bold ff-satisfy">20</span>
+                                                    <span class="float-end fw-bold ff-satisfy">` + a.packages[0].summary[0] + `</span>
                                                 </li>
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">On Going </span>
-                                                    <span class="float-end fw-bold ff-satisfy">20</span>
+                                                    <span class="float-end fw-bold ff-satisfy">` + a.packages[0].summary[1] + `</span>
                                                 </li>
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">Completed </span>
-                                                    <span class="float-end fw-bold ff-satisfy">20</span>
+                                                    <span class="float-end fw-bold ff-satisfy">` + a.packages[0].summary[2] + `</span>
                                                 </li>
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">Range Price </span>
-                                                    <span class="float-end fw-bold ff-satisfy">$20 - $100</span>
+                                                    <span class="float-end fw-bold ff-satisfy">$` + a.packages[0].rangePrices[0] + ` - $` + a.packages[0].rangePrices[1] + `</span>
                                                 </li>
-                                                <li class="list-group-item bg-transparent text-center d-flex py-1 px-0">
-                                                    <a class="col-6 btn btn-sm btn-outline-warning btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-schedule" href="#" role="button" data-gig_id="` + a.packages[0].gig.id + `" data-id="` + a.id + `">
+                                                <li class="list-group-item bg-transparent mix-blend-difference text-center d-flex py-1 px-0">
+                                                    <a class="col-6 btn btn-sm btn-outline-warning text-light btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-schedule" href="#" role="button" data-gig_id="` + a.packages[0].gig.id + `" data-id="` + a.id + `">
                                                         <i class="m-1 fa fa-calendar-alt" aria-hidden="true"></i>Schedules
                                                     </a>
-                                                    <a class="col-6 btn btn-sm btn-outline-warning btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-portfolio" href="#" role="button" data-gig_id="` + a.packages[0].gig.id + `" data-id="` + a.id + `">
-                                                        <i class="m-1 fa fa-user-alt" aria-hidden="true"></i>Portfolios
+                                                    <a class="col-6 btn btn-sm btn-outline-warning text-light btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-portfolio" href="#" role="button" data-gig_id="` + a.packages[0].gig.id + `" data-id="` + a.id + `">
+                                                        <i class="m-1 fa fa-user-alt" aria-hidden="true"></i>Detail
                                                     </a>
                                                 </li>
-                                                <li class="list-group-item bg-transparent text-center">
-                                                    <span class="ff-caveat size4 fw-bold text-success">Available Now!</span>
-                                                </li>
-                                                <li class="list-group-item bg-transparent text-center">
+                                                <li class="list-group-item bg-transparent text-center">`
+                                                    + ((a.packages[0].status == 'Open')?`<span class="ff-caveat size4 fw-bold text-success">Available!</span>`:`<span class="ff-caveat size4 fw-bold text-muted">Closed</span>`) +
+                                                `</li>
+                                                <li class="list-group-item bg-transparent text-center">`
+                                                    + ((a.packages[0].status == 'Open')?`
                                                     <a class="btn btn-sm p-1 btn-primary ff-poppins-regular anime-bg-success rounded-0 px-3" href="#" role="button">
                                                         <i class="m-1 fa fa-check-circle" aria-hidden="true"></i>Hire Him!
-                                                    </a>
+                                                    </a>`:`` ) + `
                                                 </li>
                                             </ul>
                                         </div>

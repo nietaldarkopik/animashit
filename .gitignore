@@ -20,6 +20,8 @@ storage/*.key
 Homestead.yaml
 Homestead.json
 /.vagrant
+.vscode
+trello.json
 .phpunit.result.cache
 001 omis v2.mp4
 002 brighter-.mp4

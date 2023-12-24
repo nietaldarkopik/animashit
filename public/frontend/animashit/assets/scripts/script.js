@@ -144,5 +144,17 @@ $(function() {
         let top = window.scrollY;
         switchNavbarColor(top);
     });
-    
+
+    /* 
+    var dataSpyList = document.querySelectorAll('[data-bs-spy="scroll"]');
+    var scrollSpy = new bootstrap.ScrollSpy(".scrollspy-artist"); 
+    */
+
+    /* 
+    var dataSpyList = document.querySelectorAll('[data-bs-spy="scroll"]');
+    var scrollSpy = new bootstrap.ScrollSpy(".scrollspy-artist", {
+        target: '#schedule-items-artist',
+        rootMargin: '0px 0px -100%'
+    }); 
+    */
 }); 
