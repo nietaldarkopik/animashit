@@ -8,11 +8,11 @@
 @endsection
 
 @section('style')
-    <link rel="stylesheet" href="{{ url('frontend/animashit/assets/scripts/slick-1.8.1/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ url('frontend/animashit/assets/scripts/slick-1.8.1/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/animashit/assets/scripts/slick-1.8.1/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/animashit/assets/scripts/slick-1.8.1/slick/slick-theme.css') }}">
 @endsection
 @section('script')
-    <script src="{{ url('frontend/animashit/assets/scripts/slick-1.8.1/slick/slick.js') }}"></script>
+    <script src="{{ asset('frontend/animashit/assets/scripts/slick-1.8.1/slick/slick.js') }}"></script>
     <script>
         var baseUrl = "{{ url('/') }}";
         var currentPage = "{{ $page?->slug }}"

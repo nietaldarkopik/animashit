@@ -8,7 +8,7 @@ $socmeds = \App\Models\SettingModel::where('value','!=','')->where('type','conta
 <section id="main-container" class="p-0 min-vh-100 container-fluid">
     <div class="container-xxxl video-container position-relative p-0 mx-auto">
         <video class="w-100 h-100 object-fit-cover p-0 m-0" autoplay loop muted>
-            <source src="{{ url('frontend/animashit/assets/videos/004 denzio.mp4') }}">
+            <source src="{{ asset('frontend/animashit/assets/videos/004 denzio.mp4') }}">
         </video>
         <div class="overlay overlay1"></div>
         <div class="w-100 h-100 overlay-content p-0 m-0">

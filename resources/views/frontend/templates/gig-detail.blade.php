@@ -5,7 +5,7 @@
 <section id="main-container" class="p-0 bg-light schema-1 min-vh-100xx">
     <div class="container-fluid video-containerx position-relative pt-5">
         <!-- <video class="w-100" autoplay loop muted>
-            <source src="{{ url('frontend/animashit/assets/videos/video1.mp4') }}" type="video/mp4" class="w-100">
+            <source src="{{ asset('frontend/animashit/assets/videos/video1.mp4') }}" type="video/mp4" class="w-100">
         </video> -->
         <div class="container-fluid container-main min-vh-100xx py-2">
             <div class="row justify-content-between align-items-stretch align-self-scretch  min-vh-100xx">
@@ -29,7 +29,7 @@
                                     <div class="row justify-content-center align-items-center">
                                         <div class="col-12 video-container-block">
                                             <video class="w-100" autoplay loop muted>
-                                                <source src="{{ url('frontend/animashit/assets/videos/008 Project Beyond-.mp4') }}" type="video/mp4"
+                                                <source src="{{ asset('frontend/animashit/assets/videos/008 Project Beyond-.mp4') }}" type="video/mp4"
                                                     class="w-50">
                                             </video>
                                             <div class="portfolio-list col-12 anime-bg-primary-trans1">
@@ -41,7 +41,7 @@
                                                             data-flip-category="Category <?php echo ($i % 2) ? '2' : (($i % 3) ? 3 : 1); ?>">
                                                             <div
                                                                 class="card text-dark anim-shadow-hoverx anim-animate-heart portfolio-itemx h-100">
-                                                                <img class="card-img object-fit-cover" src="{{ url('frontend/animashit/assets/images/Yukki.png') }}"
+                                                                <img class="card-img object-fit-cover" src="{{ asset('frontend/animashit/assets/images/Yukki.png') }}"
                                                                     height="150">
                                                                 <div
                                                                     class="card-img-overlay d-flex flex-column justify-content-end p-0 pb-2">
@@ -69,11 +69,11 @@
 </section>
 @endsection
 @section('style')
-<!-- <link href="{{ url('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.css') }}" rel="stylesheet" /> -->
+<!-- <link href="{{ asset('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.css') }}" rel="stylesheet" /> -->
 @endsection
 
 @section('script')
-<!-- <script type="text/javascript" src="{{ url('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.js') }}"></script> -->
+<!-- <script type="text/javascript" src="{{ asset('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.js') }}"></script> -->
 <script type="text/javascript">
     $(document).ready(function(){
         jQuery(".portfolio-list").flipster({

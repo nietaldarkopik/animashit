@@ -22,7 +22,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useBootstrapFive();
-        echo env('local');
         /* if(env('local'))
         {
             \Illuminate\Support\Facades\URL::forceScheme('https');

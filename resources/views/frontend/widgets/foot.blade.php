@@ -1,8 +1,8 @@
-<script src="{{ url('frontend/animashit/assets/owlcarousel2-2.3.4/dist/owl.carousel.min.js') }}"></script>
-<script src="{{ url('frontend/animashit/assets/scripts/holderjs/holder.js') }}"></script>
-<script src="{{ url('frontend/animashit/assets/scripts/script.js') }}"></script>
-<script src="{{ url('frontend/animashit/assets/scripts/pages.js') }}"></script>
-<script src="{{ url('frontend/animashit/assets/scripts/slick-1.8.1/slick/slick.js') }}"></script>
+<script src="{{ asset('frontend/animashit/assets/owlcarousel2-2.3.4/dist/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('frontend/animashit/assets/scripts/holderjs/holder.js') }}"></script>
+<script src="{{ asset('frontend/animashit/assets/scripts/script.js') }}"></script>
+<script src="{{ asset('frontend/animashit/assets/scripts/pages.js') }}"></script>
+<script src="{{ asset('frontend/animashit/assets/scripts/slick-1.8.1/slick/slick.js') }}"></script>
 <script>
     var baseUrl = "{{ url('/') }}";
     var currentPage = "{{ $page?->slug }}";

@@ -3,7 +3,7 @@
 <section id="main-banner" class="p-0 min-vh-100">
     <div class="container-fluid video-container position-relative p-0">
         <video class="w-100 h-100vh" autoplay loop muted>
-            <source src="{{ url('frontend/animashit/assets/videos/video1.mp4') }}" type="video/mp4" class="w-100">
+            <source src="{{ asset('frontend/animashit/assets/videos/video1.mp4') }}" type="video/mp4" class="w-100">
         </video>
         <div class="container-fluid container-main d-flex">
             <div class="row justify-content-center align-items-center g-2 flex-row w-100">

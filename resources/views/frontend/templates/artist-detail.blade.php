@@ -4,7 +4,7 @@
 <section id="main-gigs2" class="p-0 bg-light schema-1 min-vh-100xx">
     <div class="container-fluid video-containerx position-relative p-0">
         <!-- <video class="w-100" autoplay loop muted>
-            <source src="{{ url('frontend/animashit/assets/videos/video1.mp4') }}" type="video/mp4" class="w-100">
+            <source src="{{ asset('frontend/animashit/assets/videos/video1.mp4') }}" type="video/mp4" class="w-100">
         </video> -->
         <div class="container-fluid container-main min-vh-100xx py-2">
             @include('../modals/artist-detail')
@@ -13,11 +13,11 @@
 </section>
 @endsection
 @section('style')
-<!-- <link href="{{ url('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.css') }}" rel="stylesheet" /> -->
+<!-- <link href="{{ asset('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.css') }}" rel="stylesheet" /> -->
 @endsection
 
 @section('script')
-<!-- <script type="text/javascript" src="{{ url('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.js') }}"></script> -->
+<!-- <script type="text/javascript" src="{{ asset('frontend/animashit/assets/node_modules/jquery.flipster/dist/jquery.flipster.min.js') }}"></script> -->
 <script type="text/javascript">
     $(document).ready(function(){
         jQuery(".portfolio-list").flipster({

@@ -25,7 +25,7 @@
                             $m = $p->media->first();
                         @endphp
                         @if (!empty($m))
-                            <img src="{{ url($m->media) }}"
+                            <img src="{{ asset(resizeImage($m->media,'fullpage',false)) }}"
                                 class="w-100 d-block min-vw-100 min-vh-100x object-fit-fill" alt="First slide">
                         @endif
                         <div class="carousel-caption d-none d-md-block">
@@ -55,7 +55,7 @@
                             class="@if ($ip == 0) active @endif" aria-current="true"
                             aria-label="First slide">
                             @if (isset($p->media[0]))
-                                <img src="{!! url($p->media[0]->media ?? '') !!}" />
+                                <img src="{!! asset(resizeImage($p->media[0]->media ?? '','thumbnail-500x500',false)) !!}" />
                             @endif
                         </li>
                     @endforeach
@@ -85,7 +85,7 @@
                         <div class="card anime-card1 bg-animashit-primary-trans">
                             <div class="row g-0">
                                 <div class="col-md-4">
-                                    <img src="{{ url('uploads/artists/' . $artist->avatar) }}"
+                                    <img src="{{ asset('uploads/artists/' . $artist->avatar) }}"
                                         class="img-fluid w-100 h-100 object-fit-cover" alt="Card title">
                                 </div>
                                 <div class="col-md-8">

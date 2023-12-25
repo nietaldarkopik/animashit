@@ -68,6 +68,16 @@ return [
             'format' => 'webp',
             'trim' => ['transparent', null, 10]
         ],
+        'thumbnail-500x300' => [
+            'height' => 500,
+            'width' => 300,
+            'resize' => true,
+            'fit' => true,
+            'keepRatio' => true,
+            'inCanvas' => true,
+            'format' => 'webp',
+            'trim' => ['transparent', null, 10]
+        ],
         'thumbnail-500x500' => [
             'height' => 500,
             'width' => 500,

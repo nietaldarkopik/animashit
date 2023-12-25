@@ -47,7 +47,7 @@ class PortfolioModel extends Model {
             if($p->type == "upload_image") {
                 $output .= '
                     <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
-                        <img src="'.asset(resize($p->media,$size,false)).'" class="img-fluid w-100 object-fit-cover"/>
+                        <img src="'.asset(resizeImage($p->media,$size,false)).'" class="img-fluid w-100 object-fit-cover"/>
                     </div>';
             } elseif($p->type == "upload_video") {
                 $output .= '

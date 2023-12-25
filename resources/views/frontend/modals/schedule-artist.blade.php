@@ -66,7 +66,7 @@
 </div>
 
 <script></script>
-{{-- <script src="{{ url('frontend/animashit/assets/scripts/schedule.js')}}"></script>
+{{-- <script src="{{ asset('frontend/animashit/assets/scripts/schedule.js')}}"></script>
 <script>
 var eventsMinDistance  = 60;
 $(document).ready(function(){    

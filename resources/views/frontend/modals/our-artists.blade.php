@@ -58,7 +58,7 @@
             $p['artist_id'] = $a->id;
             $p['gig_id'] = $p->gig->id;
             $gig['packages'] = $p;
-            $gig['avatar_thumbnail'] = asset(resize('uploads/artists/'.$a->avatar,'thumbnail-500x500',false));
+            $gig['avatar_thumbnail'] = asset(resizeImage('uploads/artists/'.$a->avatar,'thumbnail-500x500',false));
             $dataGigs[] = $gig;
         }
     @endphp
@@ -111,7 +111,7 @@
 
         function generateCard(gig_id) {
             var output = '';
-            var url = "{{ url('uploads/artists') }}";
+            var url = "{{ asset('uploads/artists') }}";
 
             dataGigs.forEach(a => {
                 if (gig_id == a.packages[0].gig.id || gig_id == '') {

@@ -96,7 +96,7 @@ class PortfolioMediaModel extends Model
                 $output .= '
                     <div class="ratio ratio-16x9" style="--bs-aspect-ratio: 100%;">
                         <a href="'.asset($p->media).'" target="_blank">
-                            <img src="'.asset(resize($p->media,$size,false)).'" class="img-fluid w-100 object-fit-cover"/>
+                            <img src="'.asset(resizeImage($p->media,$size,false)).'" class="img-fluid w-100 object-fit-cover"/>
                         </a>
                     </div>';
             } elseif($p->type == "upload_video") {
