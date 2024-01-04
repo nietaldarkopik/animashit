@@ -31,6 +31,11 @@ class ProfileModel extends Model
         return $this->hasMany(GigPackageHeadModel::class,"profile_id");
     }
 
+    public function gigs()
+    {
+        return $this->hasManyThrough(GigModel::class,GigPackageHeadModel::class,"id","gig_id","profile_id");
+    }
+
     public function currentProfile(){
         $user = Auth::user();
         $profile = $this->where('user_id',$user->id)->get()->first();

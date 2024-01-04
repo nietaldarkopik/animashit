@@ -67,7 +67,7 @@
                                             {{-- <img class="card-img d-none object-fit-cover d-flex h-100" src="{{ (isset($a->media)?url($a->media):'') }}" alt="Title"> --}}
                                             <div class="ratio ratio-16x9">
                                                 <img class="card-img object-fit-cover bg-transparent d-flex h-100"
-                                                    src="{!! asset(resizeImage('uploads/artists/' . $art->avatar,'thumbnail-300x500',false)) !!}" alt="Title">
+                                                    src="{!! asset(resizeImage('uploads/artists/' . $art->avatar,'thumbnail-500x300',false)) !!}" alt="Title">
                                             </div>
                                         </div>
                                         <div

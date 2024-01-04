@@ -44,6 +44,7 @@ Route::get('page/{Page:slug}', [PageController::class, 'index'])->name('front.ho
 Route::get('page/artist/{id}', [PageController::class, 'artistDetail'])->name('front.artist.detail');
 Route::post('send-contact', [PageController::class, 'sendContact'])->name('contact.send');
 Route::get('thanks-contact', [PageController::class, 'thankContact'])->name('contact.thanks');
+Route::get('thanks-order', [PageController::class, 'thankOrder'])->name('order.thanks');
 
 Route::get('modal/artist-detail/{id}/{gig_id?}', [PageModalController::class, 'artistDetail'])->name('modal.artist.detail');
 Route::get('modal/artist-portfolios/{id}/{gig_id?}', [PageModalController::class, 'artistPortfolios'])->name('modal.artist.portfolios');
@@ -51,6 +52,9 @@ Route::get('modal/portfolio-detail/{id}', [PageModalController::class, 'portfoli
 Route::get('modal/gig-detail/{id}', [PageModalController::class, 'gigDetail'])->name('modal.gig.detail');
 Route::get('modal/schedule-artist/{id}', [PageModalController::class, 'scheduleArtist'])->name('modal.schedule.artist');
 Route::get('modal/page/{Modal:slug}', [PageModalController::class, 'index'])->name('modal.page');
+Route::post('modal/order-artist', [PageModalController::class, 'orderArtist'])->name('modal.order.artist');
+Route::post('modal/do-order-artist', [PageModalController::class, 'doOrderArtist'])->name('modal.order.artist.do');
+Route::get('modal/order-artist/{gig_package_id?}/{gig_id?}/{artist_id?}', [PageModalController::class, 'orderArtist'])->name('modal.order.artist');
 
 Route::get('dashboard', [AdmDashboardController::class, 'index'])->name('admin.dashboard0')->middleware(['auth', 'verified'])->name('dashboard');
 

@@ -1,6 +1,8 @@
 @php
     $gigs = App\Models\GigModel::get();
-    $artists = App\Models\ProfileModel::where('user_type', 4)->get();
+    $artists = App\Models\ProfileModel::where('user_type', 4)->with(['packages' => function($query){
+        $query->with('gig');
+    }])->get();
 @endphp
 <div class="overlay overlay1"></div>
 <section id="main-container" class="container-fluid">
@@ -45,21 +47,26 @@
 @php
     $dataGigs = [];
 @endphp
+
 @foreach ($artists as $i => $a)
     @php
+        $tmp = [];
+
         $gig = $a;
         $packages = $a->packages;
-
+        
         foreach($packages as $ip => $p)
         {
-            $p['rangePrices'] = [$p->minPrice() , $p->maxPrice()];
-            $p['summary'] = [$p->scheduleSummary($a->id,1),$p->scheduleSummary($a->id,2),$p->scheduleSummary($a->id,3)];
-            $p['gig'] = $p->gig;
-            $p['artist_id'] = $a->id;
-            $p['gig_id'] = $p->gig->id;
-            $gig['packages'] = $p;
-            $gig['avatar_thumbnail'] = asset(resizeImage('uploads/artists/'.$a->avatar,'thumbnail-500x500',false));
-            $dataGigs[] = $gig;
+            $tmp['id'] = $a->id;
+            $tmp['name'] = $a->name;
+            $tmp['nickname'] = $a->nickname;
+            $tmp['avatar'] = $a->avatar;
+            $tmp['rangePrices'] = [$p->minPrice() , $p->maxPrice()];
+            $tmp['summary'] = [$p->scheduleSummary($a->id,1),$p->scheduleSummary($a->id,2),$p->scheduleSummary($a->id,3)];
+            $tmp['gig'] = $p->gig;
+            $tmp['status'] = $p->status;
+            $tmp['avatar_thumbnail'] = asset(resizeImage('uploads/artists/'.$a->avatar,'thumbnail-500x500',false));
+            $dataGigs[] = $tmp;
         }
     @endphp
 @endforeach
@@ -114,11 +121,11 @@
             var url = "{{ asset('uploads/artists') }}";
 
             dataGigs.forEach(a => {
-                if (gig_id == a.packages[0].gig.id || gig_id == '') {
+                if (gig_id == a.gig.id || gig_id == '') {
 
                     var card = `
                                 <div class="card-group bg-transparent p-2 rounded-0 border-5 card-gig-all block-border-white card-gig-` + a
-                        .packages[0].gig.id +
+                        .gig.id +
                         `">
                                     <div class="card border-0 rounded-start-0 rounded-0 bg-transparent">
                                         <img class="card-img-top border-0 rounded-start-0 w-100 h-100 object-fit-cover" src="` + a.avatar_thumbnail +
@@ -129,7 +136,7 @@
                                                 <h4 class="card-title ff-oswald fw-bolder mix-blend-differencex text-strokex text-dark size5">` +
                         a.nickname + `</h4>
                                                 <p class="card-text ff-sriracha fw-bolder mix-blend-differencex text-warning text-dark size5">
-                                                    <strong class="fw-bold ff-oswald">` + a.packages[0].gig.title + `</strong>
+                                                    <strong class="fw-bold ff-oswald">` + a.gig.title + `</strong>
                                                 Artist</p>
                                             </div>
                                         </div>
@@ -139,39 +146,39 @@
                                             <ul class="list-group list-group-flush p-0  bg-transparent rounded-end-0">
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">Gig</span>
-                                                    <span class="float-end fw-bold ff-oswald">` + a.packages[0].gig
+                                                    <span class="float-end fw-bold ff-oswald">` + a.gig
                         .title + `</span>
                                                 </li>
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">On Hold </span>
-                                                    <span class="float-end fw-bold ff-satisfy">` + a.packages[0].summary[0] + `</span>
+                                                    <span class="float-end fw-bold ff-satisfy">` + a.summary[0] + `</span>
                                                 </li>
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">On Going </span>
-                                                    <span class="float-end fw-bold ff-satisfy">` + a.packages[0].summary[1] + `</span>
+                                                    <span class="float-end fw-bold ff-satisfy">` + a.summary[1] + `</span>
                                                 </li>
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">Completed </span>
-                                                    <span class="float-end fw-bold ff-satisfy">` + a.packages[0].summary[2] + `</span>
+                                                    <span class="float-end fw-bold ff-satisfy">` + a.summary[2] + `</span>
                                                 </li>
                                                 <li class="list-group-item bg-transparent p-1">
                                                     <span class="ff-oswald">Range Price </span>
-                                                    <span class="float-end fw-bold ff-satisfy">$` + a.packages[0].rangePrices[0] + ` - $` + a.packages[0].rangePrices[1] + `</span>
+                                                    <span class="float-end fw-bold ff-satisfy">$` + a.rangePrices[0] + ` - $` + a.rangePrices[1] + `</span>
                                                 </li>
                                                 <li class="list-group-item bg-transparent mix-blend-difference text-center d-flex py-1 px-0">
-                                                    <a class="col-6 btn btn-sm btn-outline-warning text-light btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-schedule" href="#" role="button" data-gig_id="` + a.packages[0].gig.id + `" data-id="` + a.id + `">
+                                                    <a class="col-6 btn btn-sm btn-outline-warning text-light btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-schedule" href="#" role="button" data-gig_id="` + a.gig.id + `" data-id="` + a.id + `">
                                                         <i class="m-1 fa fa-calendar-alt" aria-hidden="true"></i>Schedules
                                                     </a>
-                                                    <a class="col-6 btn btn-sm btn-outline-warning text-light btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-portfolio" href="#" role="button" data-gig_id="` + a.packages[0].gig.id + `" data-id="` + a.id + `">
+                                                    <a class="col-6 btn btn-sm btn-outline-warning text-light btn-block py-1 px-2 ff-poppins-regular rounded-0 btn-portfolio" href="#" role="button" data-gig_id="` + a.gig.id + `" data-id="` + a.id + `">
                                                         <i class="m-1 fa fa-user-alt" aria-hidden="true"></i>Detail
                                                     </a>
                                                 </li>
                                                 <li class="list-group-item bg-transparent text-center">`
-                                                    + ((a.packages[0].status == 'Open')?`<span class="ff-caveat size4 fw-bold text-success">Available!</span>`:`<span class="ff-caveat size4 fw-bold text-muted">Closed</span>`) +
+                                                    + ((a.status == 'Open')?`<span class="ff-caveat size4 fw-bold text-success">Available!</span>`:`<span class="ff-caveat size4 fw-bold text-muted">Closed</span>`) +
                                                 `</li>
                                                 <li class="list-group-item bg-transparent text-center">`
-                                                    + ((a.packages[0].status == 'Open')?`
-                                                    <a class="btn btn-sm p-1 btn-primary ff-poppins-regular anime-bg-success rounded-0 px-3" href="#" role="button">
+                                                    + ((a.status == 'Open')?`
+                                                    <a class="btn btn-sm p-1 btn-primary ff-poppins-regular btn-hireme anime-bg-success rounded-0 px-3" href="#" role="button" data-gig_package_id="` + a.id + `" data-gig_id="` + a.gig.id + `" data-artist_id="` + a.id + `">
                                                         <i class="m-1 fa fa-check-circle" aria-hidden="true"></i>Hire Him!
                                                     </a>`:`` ) + `
                                                 </li>
@@ -239,6 +246,35 @@
                 data: "",
                 dataType: "html",
                 type: "get",
+                success: function(msg) {
+                    $("#modalSubPage .modal-body").html(msg);
+                }
+            })
+        });        
+
+        
+        $("body").on("click", ".btn-hireme", function() {
+            var id = $(this).data("id");
+            var gig_id = $(this).data("gig_id");
+            var artist_id = $(this).data("artist_id");
+            var gig_package_id = $(this).data("gig_package_id");
+            var url = "{{ route('modal.order.artist') }}";
+            //var url = "{{ route('modal.order.artist', ['gig_package_id' => '__xx__','gig_id' => '__yy__','artist_id' => '__zz__']) }}";
+            //url = url.replace('__xx__', gig_package_id);
+            //url = url.replace('__yy__', gig_id);
+            //url = url.replace('__zz__', artist_id);
+
+            $("#modalSubPage .modal-body").html(loading_html);
+            $("#modalSubPage").modal("show");
+            $.ajax({
+                url: url,
+                data: {
+                    gig_package_id: gig_package_id,
+                    gig_id: gig_id,
+                    artist_id: artist_id,
+                },
+                dataType: "html",
+                type: "post",
                 success: function(msg) {
                     $("#modalSubPage .modal-body").html(msg);
                 }

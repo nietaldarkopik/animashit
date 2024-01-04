@@ -11,7 +11,7 @@ class OrderModel extends Model
     protected $table = 'orders'; // Nama tabel dalam database
 
     protected $fillable = [
-        'customer_id','gig_package_id','prices','status','date','note'
+        'customer_id','gig_package_id','price','status','date','note'
     ];
 
     public function customer()

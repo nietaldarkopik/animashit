@@ -37,6 +37,12 @@ class PageController extends Controller
         return view('frontend.templates.contact-thanks',compact('page'));
     }
 
+    public function thankOrder()
+    {
+        $page = PageModel::where('slug','=', 'thanks-order')->get()->first();
+        return view('frontend.templates.order-thanks',compact('page'));
+    }
+
     public function sendContact(Request $request)
     {
         

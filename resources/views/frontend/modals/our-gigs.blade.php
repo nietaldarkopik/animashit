@@ -53,7 +53,7 @@
                             <div class="card card-offcanvas-bottom bg-transparent text-center card-gig"
                                 data-gig_id="{{ $item->id }}">
                                 <div class="card-body card-body-img">
-                                    <img class="card-img" src="{{ asset(resizeImage($thumbnail->media,'thumbnail-300x500',false)) }}"
+                                    <img class="card-img" src="{{ asset(resizeImage($thumbnail->media,'thumbnail-500x300',false)) }}"
                                         alt="Title">
                                 </div>
                                 <div class="card-body p-1">

@@ -42,14 +42,14 @@ return [
      *   format => select tha wantd ouput form, yan can just convert images if you want
      * example :
      *  'small' => [
-     *      'height' => 500,
      *      'width' => 250,
+     *      'height' => 500,
      *      'inCanvas' => true,
      *      'trim' => ['transparent', null, 10]
      *  ],
      *  'smallWebp' => [
-     *      'height' => 500,
      *      'width' => 250,
+     *      'height' => 500,
      *      'inCanvas' => true,
      *      'format' => 'webp'
      *  ],
@@ -58,9 +58,9 @@ return [
      *  ]
      */
     'templates' => [
-        'thumbnail-300x500' => [
-            'height' => 300,
+        'thumbnail-500x300' => [
             'width' => 500,
+            'height' => 300,
             'resize' => true,
             'fit' => true,
             'keepRatio' => true,
@@ -68,9 +68,9 @@ return [
             'format' => 'webp',
             'trim' => ['transparent', null, 10]
         ],
-        'thumbnail-500x300' => [
-            'height' => 500,
+        'thumbnail-300x500' => [
             'width' => 300,
+            'height' => 500,
             'resize' => true,
             'fit' => true,
             'keepRatio' => true,
@@ -79,8 +79,8 @@ return [
             'trim' => ['transparent', null, 10]
         ],
         'thumbnail-500x500' => [
-            'height' => 500,
             'width' => 500,
+            'height' => 500,
             'resize' => true,
             'fit' => true,
             'keepRatio' => false,
@@ -89,8 +89,8 @@ return [
             'trim' => ['transparent', null, 10]
         ],
         'fullpage' => [
-            'height' => 1080,
             'width' => 1920,
+            'height' => 1080,
             'resize' => true,
             'fit' => true,
             'inCanvas' => true,

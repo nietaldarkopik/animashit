@@ -43,16 +43,10 @@
                                         <h4 class="card-title">
                                             <img class="rounded float-left m-r-15" width="40" alt="user"
                                                 src="https://bootdey.com/img/Content/avatar/avatar1.png"> 
-                                                Horizontal Timeline
+                                                {{ $s->artist->nickname }}
                                         </h4>
-                                        <h6 class="card-subtitle mb-2 text-body-secondary"><small>{{ date('d M, Y', strtotime($i)) }}</small></h6>
-                                        <p class="card-text">It is a long established fact that a reader will be
-                                            distracted by the
-                                            readable content of a page when looking at its layout. The point of using
-                                            Lorem Ipsum is that it has a more-or-less normal distribution of letters, as
-                                            opposed to using 'Content here, content here', making it look like readable
-                                            English. Many desktop publishing packages and web page editors infancy.</p>
-                                        <button class="btn btn-primary btn-round">Read more</button>
+                                        <h6 class="card-subtitle mb-2 text-body-secondary"><small>{{ date('F j, Y', strtotime($s->start_date)) . ' - ' . date('F j, Y', strtotime($s->end_date)) }}</small></h6>
+                                        @if($s->statusSchedule) <strong class="btn short p-1 size6 ff-sriracha" style="background-color: {{ $s->statusSchedule?->bg }}; color: {{ $s->statusSchedule?->color }}; border: 1px {{ $s->statusSchedule?->color }} solid;"> {{ $s->statusSchedule?->title }} </strong> @endif
                                     </div>
                                 </div>
                             @endforeach

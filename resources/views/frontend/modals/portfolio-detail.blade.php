@@ -73,7 +73,7 @@
                             <div class="card anime-card1 bg-animashit-primary-trans">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{ asset(resizeImage('uploads/clients/'.$client->avatar,'thumbnail-300x500',false)) }}"
+                                        <img src="{{ asset(resizeImage('uploads/customers/'.$client->avatar,'thumbnail-500x300',false)) }}"
                                             class="img-fluid w-100 h-100 object-fit-cover"
                                             alt="Card title">
                                     </div>
