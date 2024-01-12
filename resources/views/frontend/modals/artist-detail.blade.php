@@ -100,10 +100,10 @@
                                         <p class="text-light card-text placeholder-artist-description">
                                             {{ $artist->description ?? '' }}
                                         </p>
-                                        <p class="card-text placeholder-artist-status">
+                                        {{-- <p class="card-text placeholder-artist-status">
                                             <small class="text-light">Last updated 3 mins
                                                 ago</small>
-                                        </p>
+                                        </p> --}}
                                     </div>
                                 </div>
                             </div>
@@ -175,16 +175,17 @@
                                                                         @if ($f->feature->type == 'default')
                                                                             <li class="list-group-item ff-oswald">
                                                                                 @if ($f->feature->input_type == 'text')
+                                                                                    {{ $f->value }}
                                                                                     @if ($f->feature->unit !== '')
                                                                                         {{ $f->feature->unit }}
                                                                                     @else
                                                                                         {{ $f->feature->title }}
                                                                                     @endif
                                                                                 @else
-                                                                                    @if ($f->value == '1')
+                                                                                    @if ($f->value == 'Yes')
                                                                                         <i
                                                                                             class="fas fa-check text-success"></i>
-                                                                                    @elseif($f->value == '0')
+                                                                                    @elseif($f->value == 'No')
                                                                                         <i
                                                                                             class="fas fa-close text-danger"></i>
                                                                                     @else
@@ -220,10 +221,10 @@
                                                                                             {{ $f->price }}
                                                                                         </span>
                                                                                     @else
-                                                                                        @if ($f->value == '1')
+                                                                                        @if ($f->value == 'Yes')
                                                                                             <i
                                                                                                 class="fas fa-check text-success"></i>
-                                                                                        @elseif($f->value == '0')
+                                                                                        @elseif($f->value == 'No')
                                                                                             <i
                                                                                                 class="fas fa-close text-danger"></i>
                                                                                         @else

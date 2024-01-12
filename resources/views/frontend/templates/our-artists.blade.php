@@ -6,7 +6,7 @@
 @endphp
     @include('../frontend.modals.our-artists')
 @endsection
-
+{{-- 
 @section('scriptx')
     <script>
         @php
@@ -21,7 +21,7 @@
                 $dataGigs[] = $gig;
             @endphp
         @endforeach
-        {{-- /* var dataGigs = @php echo json_encode($artists->with(['packages','gig'])); @endphp ; */ --}}
+        /* var dataGigs = @php echo json_encode($artists->with(['packages','gig'])); @endphp ; */
         var dataGigs = @php echo json_encode($dataGigs); @endphp ;
 
         console.log(dataGigs);
@@ -164,3 +164,4 @@
         });
     </script>
 @endsection
+ --}}

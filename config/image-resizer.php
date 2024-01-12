@@ -92,9 +92,9 @@ return [
             'width' => 1920,
             'height' => 1080,
             'resize' => true,
-            'fit' => true,
+            'fit' => false,
             'inCanvas' => true,
-            'keepRatio' => false,
+            'keepRatio' => true,
             'format' => 'webp',
             'trim' => ['transparent', null, 10]
         ]

@@ -12,6 +12,7 @@
     <div class="row top-0 left-0 p-0 m-0 gap-1">
         <div class="col-12 z-2 col-xxl-3 col-sm-3 px-1 ms-auto">
             <div class="accordion accordion-flush" id="idPortfolioDetail">
+                @if(!empty($artist))
                 <div class="accordion-item bg-animashit-primary-trans">
                     <h2 class="accordion-header" id="flush-PortFolio">
                         <a href="javascript:void(0);"
@@ -46,10 +47,10 @@
                                                 class="text-light card-text placeholder-artist-description">
                                                 {{ $artist->description ?? '' }}
                                             </p>
-                                            <p class="card-text placeholder-artist-status">
+                                            {{-- <p class="card-text placeholder-artist-status">
                                                 <small class="text-light">Last updated 3 mins
                                                     ago</small>
-                                            </p>
+                                            </p> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -57,6 +58,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if(!empty($client))
                 <div class="accordion-item bg-animashit-primary-trans">
                     <h2 class="accordion-header" id="flush-PortFolio">
                         <a href="javascript:void(0);"
@@ -94,6 +97,8 @@
                         </div>
                     </div>
                 </div>
+                @endif
+                @if(!empty($package))
                 <div class="accordion-item bg-animashit-primary-trans">
                     <h2 class="accordion-header" id="flush-headingTwo">
                         <a href="javascript:void(0);"
@@ -244,6 +249,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
         

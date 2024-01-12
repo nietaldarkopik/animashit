@@ -28,6 +28,7 @@ class SettingModel extends Model
         
         $keyword = $link?->keyword;
         $value = $link?->value;
+        $title = $link?->title;
         $socmed = $link_urls[$keyword] ?? [];
         $link_url = $socmed['url'] ?? '';
         $icon = $socmed['icon'] ?? '';
@@ -35,7 +36,7 @@ class SettingModel extends Model
 
         $output = '
                     <a href="' . $link_url . $value .'" target="_blank" class="rounded-4 btn btn-lg btn-primary d-flex justify-content-center align-content-center align-items-center" style="'.$style.'">
-                        <i class="'.$icon.' size5"></i> <span class="size5 p-1 mb-1">' . $value .'</span>
+                        <i class="'.$icon.' size5"></i> <span class="size5 p-1 mb-1">' . $title .'</span>
                     </a>';
 
         return $output;
@@ -53,4 +54,13 @@ class SettingModel extends Model
 
         return $output;
     }
+
+    
+    static public function getByKeyword($keyword = '')
+    {
+        $socmeds = SettingModel::where('keyword','=',$keyword)->first();
+        return $socmeds;
+    }
+
+    
 }

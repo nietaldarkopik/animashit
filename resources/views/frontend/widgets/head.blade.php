@@ -1,3 +1,15 @@
+@php
+    $meta_tags = [];
+    $meta_tags['meta_title'] = \App\Models\SettingModel::getByKeyword('meta-title');
+    $meta_tags['meta_description'] = \App\Models\SettingModel::getByKeyword('meta-description');
+    $meta_tags['meta_keywords'] = \App\Models\SettingModel::getByKeyword('meta-keywords');
+    $meta_tags['meta_robots'] = \App\Models\SettingModel::getByKeyword('meta-robots');
+    $meta_tags['meta_language'] = \App\Models\SettingModel::getByKeyword('meta-language');
+    $meta_tags['meta_revisit_after'] = \App\Models\SettingModel::getByKeyword('meta-revisit-after');
+    $meta_tags['meta_author'] = \App\Models\SettingModel::getByKeyword('meta-author');
+    $google_analytic = \App\Models\SettingModel::getByKeyword('google-analytic');
+@endphp
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,12 +18,21 @@
 <html>
 
 <head>
+    {!! $google_analytic->description !!}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="X-UA-Compatible" name="csrf-token" content="{{csrf_token()}}">
-    <title>Animashit Studio Official Website</title>
-    <meta name="description" content="Animashit Studio Official Website">
+    <title>{{$meta_tags['meta_title']->description}}</title>
+    @foreach($meta_tags as $i => $m)
+        <meta name="{{$m->title}}" content="{{$m->description}}">
+    @endforeach
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('frontend/animashit/assets/icon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('frontend/animashit/assets/icon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('frontend/animashit/assets/icon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('frontend/animashit/assets/icon/site.webmanifest') }}">
+
     <link rel="stylesheet" href="{{ asset('frontend/animashit/assets/bootstrap-5.3.2-dist/css/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/animashit/assets/fontawesome6.4.2/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/animashit/assets/styles/style.css') }}">
